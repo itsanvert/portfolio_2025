@@ -7,6 +7,12 @@
     "projects": "Projects",
     "contact": "Contact Me"
   },
+  "hero": {
+    "greeting": "Hi, I'm Vert San",
+    "description": "A passionate full-stack developer",
+    "cta": "Get in touch",
+    "alt": "Vert San's profile picture"
+  },
   "home": {
     "title": "Welcome to my portfolio",
     "description": "Explore my world of development, design, and creativity."
@@ -17,6 +23,15 @@
   },
   "guestbook": {
     "title": "Guestbook",
-    "description": "Feel free to leave your thoughts and feedback here."
+    "description": "Feel free to leave your thoughts and feedback here.",
+    "logout": "Logout",
+    "messageLabel": "Message",
+    "placeholder": "Your Message...",
+    "signForFree": "Sign for free"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a software engineer with a passion for creating efficient and user-friendly web applications. I have experience in developing scalable and maintainable web applications using modern technologies and frameworks. I am passionate about creating innovative and user-friendly solutions that solve real-world problems.",
+    "cta": "Get in Touch!"
   }
 }

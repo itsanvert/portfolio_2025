@@ -3,6 +3,7 @@ import { FavoriteProjects } from "./components/FavoriteProjects";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import { SectionTwo } from "./components/SectionTwo";
+import GuestbookPage from "./guestbook/page";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <SectionTwo />
       <AboutSection />
       <FavoriteProjects />
+      <GuestbookPage />
       <Footer />
     </div>
   );

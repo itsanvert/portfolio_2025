@@ -18,9 +18,12 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "@/components/ui/toggle-light-black";
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
+import "@/lib/181n";
 
 export function MobileMenu() {
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   return (
     <Dialog>
@@ -45,7 +48,7 @@ export function MobileMenu() {
                 "group flex items-center px-2 py-2 text-md font-medium rounded-md"
               )}
             >
-              {item.name}
+              {t(`nav.${item.name.toLowerCase()}`)}
             </Link>
           ))}
         </div>

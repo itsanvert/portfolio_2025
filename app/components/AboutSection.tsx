@@ -14,11 +14,7 @@ export function AboutSection() {
           {t("about.title")}
         </h1>
         <p className="mt-4 text-muted-foreground lg:text-lg">
-          I am a software engineer with a passion for creating efficient and
-          user-friendly web applications. I have experience in developing
-          scalable and maintainable web applications using modern technologies
-          and frameworks. I am passionate about creating innovative and
-          user-friendly solutions that solve real-world problems.
+          {t("about.description")}
         </p>
 
         <a
@@ -28,7 +24,7 @@ export function AboutSection() {
           <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-foreground transition-colors duration-300 ease-out border-2 border-primary rounded-lg group-hover:text-background">
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-background"></span>
             <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-primary group-hover:-rotate-180 ease"></span>
-            <span className="relative">Get in Touch!</span>
+            <span className="relative">{t("about.cta")}</span>
           </span>
           <span
             className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-primary rounded-lg group-hover:mb-0 group-hover:mr-0"

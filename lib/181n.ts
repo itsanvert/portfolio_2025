@@ -5,9 +5,21 @@ import en from "@/locale/en.json";
 import km from "@/locale/km.json";
 import zh from "@/locale/zh.json"; // Corrected import for Chinese
 
+// Detect language from localStorage or browser, default to 'en'
+let initialLanguage = "en";
+if (typeof window !== "undefined") {
+  initialLanguage =
+    localStorage.getItem("language") ||
+    navigator.language.split("-")[0] ||
+    "en";
+  if (!["en", "km", "zh"].includes(initialLanguage)) {
+    initialLanguage = "en";
+  }
+}
+
 i18n.use(initReactI18next).init({
-  lng: "km",
-  fallbackLng: "km",
+  lng: initialLanguage,
+  fallbackLng: "en",
   resources: {
     en: { translation: en },
     km: { translation: km },

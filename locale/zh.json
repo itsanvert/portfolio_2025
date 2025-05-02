@@ -17,6 +17,21 @@
   },
   "guestbook": {
     "title": "留言簿",
-    "description": "欢迎留言和反馈您的想法。"
+    "description": "欢迎留言和反馈您的想法。",
+    "logout": "退出登录",
+    "messageLabel": "留言",
+    "placeholder": "您的留言...",
+    "signForFree": "免费签名"
+  },
+  "hero": {
+    "greeting": "你好，我是奕辰峰",
+    "description": "充满热情的全栈开发者",
+    "cta": "联系我",
+    "alt": "奕辰峰的头像"
+  },
+  "about": {
+    "title": "关于我",
+    "description": "我是一名软件工程师，热衷于创建高效且用户友好的 Web 应用程序。我拥有使用现代技术和框架开发可扩展和可维护 Web 应用的经验。我热爱创造创新且实用的解决方案，致力于解决现实世界中的问题。",
+    "cta": "联系我！"
   }
 }

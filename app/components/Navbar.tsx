@@ -18,15 +18,15 @@ import "@/lib/181n";
 
 export const navigationItems = [
   {
-    name: "Home",
+    name: "home",
     href: "/",
   },
   {
-    name: "Guestbook",
+    name: "guestbook",
     href: "/guestbook",
   },
   {
-    name: "Projects",
+    name: "projects",
     href: "/project",
   },
 ];
