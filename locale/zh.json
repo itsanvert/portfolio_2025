@@ -6,11 +6,12 @@
     "guestbook": "留言簿",
     "projects": "项目",
     "about": "关于",
+    "course": "课程",
     "contact": "联系"
   },
   "hero": {
-    "greeting": "你好，我是桑·沃特",
-    "description": "充满热情的全栈开发者",
+    "greeting": "你好，我是奕辰峰",
+    "description": "充满热情的全栈开发者和IT专业人士",
     "cta": "联系我",
     "alt": "桑·沃特的照片"
   },
@@ -37,38 +38,48 @@
     "education": {
       "title": "教育背景",
       "degree": "计算机科学学士",
-      "university": "科技大学",
-      "period": "2018 - 2022",
-      "specialization": "软件工程和网络开发专业"
+      "university": "桑德普雷马哈桑加拉吉布里克里大学",
+      "period": "2022 - 至今",
+      "specialization": "预计2026年毕业"
     },
     "experience": {
       "title": "工作经验",
       "current": {
-        "position": "高级全栈开发工程师",
-        "company": "科技解决方案公司",
-        "period": "2022 - 至今",
-        "description": "领导开发团队并使用React、Node.js和云技术实施现代网络应用程序。"
+        "position": "网站开发和管理员",
+        "company": "桑德普雷马哈桑加拉吉布里克里大学",
+        "period": "2025 - 至今",
+        "description": "管理大学网站(sbku.edu.kh)并开发网络应用程序。"
       },
       "previous": {
-        "position": "初级网络开发工程师",
-        "company": "数字创新公司",
-        "period": "2020 - 2022",
-        "description": "开发和维护网络应用程序，专注于用户体验和性能优化。"
+        "position": "ICT教师和计算机维护",
+        "company": "金边国际标准学院",
+        "period": "2023 - 2025",
+        "description": "作为兼职教师教授ICT课程并维护计算机系统。"
       }
     },
     "skills": {
       "title": "技能",
       "list": [
+        "HTML",
+        "CSS",
         "JavaScript",
-        "TypeScript",
-        "React",
-        "Next.js",
-        "Node.js",
-        "Python",
+        "C#",
+        "PHP",
         "SQL",
-        "MongoDB",
-        "Git",
-        "Docker"
+        "Next.js",
+        "Tailwind CSS",
+        "Laravel",
+        "SQL Server",
+        "MySQL",
+        "Supabase",
+        "网络配置",
+        "Windows Server",
+        "摄影",
+        "视频编辑",
+        "数字营销",
+        "IT故障排除",
+        "网络安全",
+        "AI工具"
       ]
     }
   },
@@ -79,5 +90,15 @@
       "twitter": "Twitter",
       "linkedin": "LinkedIn"
     }
+  },
+  "course": {
+    "title": "我的课程",
+    "description": "学习全面的课程，掌握现代网络开发技能。",
+    "duration": "时长",
+    "lessons": "课程",
+    "level": "级别",
+    "beginner": "初级",
+    "intermediate": "中级",
+    "advanced": "高级"
   }
 }

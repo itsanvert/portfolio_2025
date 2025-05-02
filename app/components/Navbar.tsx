@@ -33,6 +33,10 @@ export const navigationItems = [
     name: "projects",
     href: "/project",
   },
+  {
+    name: "course",
+    href: "/course",
+  },
 ];
 
 export const Navbar = () => {

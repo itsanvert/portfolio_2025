@@ -6,11 +6,12 @@
     "guestbook": "Guestbook",
     "projects": "Projects",
     "about": "About",
+    "course": "Courses",
     "contact": "Contact Me"
   },
   "hero": {
     "greeting": "Hi, I'm San Vert",
-    "description": "A passionate full-stack developer",
+    "description": "A passionate full-stack developer and IT professional",
     "cta": "Get in touch",
     "alt": "San Vert's profile picture"
   },
@@ -32,43 +33,53 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I am San Vert, a software engineer with a passion for creating efficient and user-friendly web applications. I have experience in developing scalable and maintainable web applications using modern technologies and frameworks. I am passionate about creating innovative and user-friendly solutions that solve real-world problems.",
+    "description": "I am San Vert, a passionate software developer and IT professional with expertise in both frontend and backend technologies. I have experience in web development, IT support, and teaching. I am currently pursuing a Bachelor's degree in Computer Science while working on various projects and teaching ICT part-time.",
     "cta": "Get in Touch!",
     "education": {
       "title": "Education",
-      "degree": "Bachelor of Science in Computer Science",
-      "university": "University of Technology",
-      "period": "2018 - 2022",
-      "specialization": "Specialized in Software Engineering and Web Development"
+      "degree": "Bachelor of Computer Science",
+      "university": "Samdech Preah Mahasanghara Bour Kry University",
+      "period": "2022 - Present",
+      "specialization": "Expected Graduation: 2026"
     },
     "experience": {
       "title": "Experience",
       "current": {
-        "position": "Senior Full Stack Developer",
-        "company": "Tech Solutions Inc.",
-        "period": "2022 - Present",
-        "description": "Leading development teams and implementing modern web applications using React, Node.js, and cloud technologies."
+        "position": "Web Developer and Admin Manager",
+        "company": "Samdech Preah Mahasanghara Bour Kry University",
+        "period": "2025 - Present",
+        "description": "Managing the university's website (sbku.edu.kh) and developing web applications."
       },
       "previous": {
-        "position": "Junior Web Developer",
-        "company": "Digital Innovations",
-        "period": "2020 - 2022",
-        "description": "Developed and maintained web applications, focusing on user experience and performance optimization."
+        "position": "ICT Teacher and Computer Maintenance",
+        "company": "Phnom Penh International Standard Academy",
+        "period": "2023 - 2025",
+        "description": "Teaching ICT and maintaining computer systems as a part-time instructor."
       }
     },
     "skills": {
       "title": "Skills",
       "list": [
+        "HTML",
+        "CSS",
         "JavaScript",
-        "TypeScript",
-        "React",
-        "Next.js",
-        "Node.js",
-        "Python",
+        "C#",
+        "PHP",
         "SQL",
-        "MongoDB",
-        "Git",
-        "Docker"
+        "Next.js",
+        "Tailwind CSS",
+        "Laravel",
+        "SQL Server",
+        "MySQL",
+        "Supabase",
+        "Network Configuration",
+        "Windows Server",
+        "Photography",
+        "Video Editing",
+        "Digital Marketing",
+        "IT Troubleshooting",
+        "Cybersecurity",
+        "AI Tools"
       ]
     }
   },
@@ -79,5 +90,15 @@
       "twitter": "Twitter",
       "linkedin": "LinkedIn"
     }
+  },
+  "course": {
+    "title": "My Courses",
+    "description": "Learn from comprehensive courses designed to help you master modern web development.",
+    "duration": "Duration",
+    "lessons": "lessons",
+    "level": "Level",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
   }
 }

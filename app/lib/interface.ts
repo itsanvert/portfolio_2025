@@ -6,3 +6,11 @@ export interface ProjectsCard {
   description: string;
   link: string;
 }
+export interface Course {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  lessons: number;
+  thumbnail: string;
+}

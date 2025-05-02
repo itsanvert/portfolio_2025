@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { navigationItems } from "./Navbar";
 import { useTranslation } from "react-i18next";
 
@@ -9,7 +8,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary text-secondary-foreground py-8">
+    <footer className=" text-secondary-foreground py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between space-y-4">
           <div className="flex items-center space-x-4">
