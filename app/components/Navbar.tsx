@@ -22,6 +22,10 @@ export const navigationItems = [
     href: "/",
   },
   {
+    name: "about",
+    href: "/about",
+  },
+  {
     name: "guestbook",
     href: "/guestbook",
   },

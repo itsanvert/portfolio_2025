@@ -1,37 +1,83 @@
 {
   "nav": {
-    "firstname": "奕辰",
-    "lastname": "峰",
+    "firstname": "桑",
+    "lastname": "沃特",
     "home": "首页",
     "guestbook": "留言簿",
     "projects": "项目",
-    "contact": "联系我"
+    "about": "关于",
+    "contact": "联系"
+  },
+  "hero": {
+    "greeting": "你好，我是桑·沃特",
+    "description": "充满热情的全栈开发者",
+    "cta": "联系我",
+    "alt": "桑·沃特的照片"
   },
   "home": {
-    "title": "欢迎来到我的作品集",
-    "description": "探索我的开发、设计和创意世界。"
+    "title": "欢迎来到我的网站",
+    "description": "探索我的开发、设计和创新世界。"
   },
   "projects": {
     "title": "我的项目",
-    "description": "以下是我最近构建的一些精彩项目。"
+    "description": "这是我最近创建的一些精彩项目。"
   },
   "guestbook": {
     "title": "留言簿",
-    "description": "欢迎留言和反馈您的想法。",
-    "logout": "退出登录",
-    "messageLabel": "留言",
-    "placeholder": "您的留言...",
+    "description": "在这里签名并留下您的评论。",
+    "logout": "退出",
+    "messageLabel": "消息",
+    "placeholder": "您的消息...",
     "signForFree": "免费签名"
-  },
-  "hero": {
-    "greeting": "你好，我是奕辰峰",
-    "description": "充满热情的全栈开发者",
-    "cta": "联系我",
-    "alt": "奕辰峰的头像"
   },
   "about": {
     "title": "关于我",
-    "description": "我是一名软件工程师，热衷于创建高效且用户友好的 Web 应用程序。我拥有使用现代技术和框架开发可扩展和可维护 Web 应用的经验。我热爱创造创新且实用的解决方案，致力于解决现实世界中的问题。",
-    "cta": "联系我！"
+    "description": "我是桑·沃特，一位对创建高效且用户友好的网络应用程序充满热情的软件工程师。我在使用现代技术和框架开发可扩展且可维护的网络应用程序方面拥有丰富的经验。我热衷于创建创新且用户友好的解决方案来解决现实世界的问题。",
+    "cta": "联系我！",
+    "education": {
+      "title": "教育背景",
+      "degree": "计算机科学学士",
+      "university": "科技大学",
+      "period": "2018 - 2022",
+      "specialization": "软件工程和网络开发专业"
+    },
+    "experience": {
+      "title": "工作经验",
+      "current": {
+        "position": "高级全栈开发工程师",
+        "company": "科技解决方案公司",
+        "period": "2022 - 至今",
+        "description": "领导开发团队并使用React、Node.js和云技术实施现代网络应用程序。"
+      },
+      "previous": {
+        "position": "初级网络开发工程师",
+        "company": "数字创新公司",
+        "period": "2020 - 2022",
+        "description": "开发和维护网络应用程序，专注于用户体验和性能优化。"
+      }
+    },
+    "skills": {
+      "title": "技能",
+      "list": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Python",
+        "SQL",
+        "MongoDB",
+        "Git",
+        "Docker"
+      ]
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} 桑·沃特，保留所有权利。",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
+    }
   }
 }

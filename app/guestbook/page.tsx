@@ -3,6 +3,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import prisma from "../lib/db";
 import GuestbookClient from "./GuestbookClient";
 import { unstable_noStore as noStore } from "next/cache";
+import { Footer } from "../components/Footer";
 
 async function getGuestBrookEntry() {
   noStore();
@@ -29,5 +30,10 @@ export default async function GuestbookPage() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   const entries = await getGuestBrookEntry();
-  return <GuestbookClient user={user} entries={entries} />;
+  return (
+    <div className="max-w-7xl w-full px-4 md:px-8 mx-auto ">
+      <GuestbookClient user={user} entries={entries} />
+      <Footer />
+    </div>
+  );
 }

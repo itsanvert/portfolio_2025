@@ -1,17 +1,18 @@
 {
   "nav": {
-    "firstname": "Vert",
-    "lastname": "San",
+    "firstname": "San",
+    "lastname": "Vert",
     "home": "Home",
     "guestbook": "Guestbook",
     "projects": "Projects",
+    "about": "About",
     "contact": "Contact Me"
   },
   "hero": {
-    "greeting": "Hi, I'm Vert San",
+    "greeting": "Hi, I'm San Vert",
     "description": "A passionate full-stack developer",
     "cta": "Get in touch",
-    "alt": "Vert San's profile picture"
+    "alt": "San Vert's profile picture"
   },
   "home": {
     "title": "Welcome to my portfolio",
@@ -31,7 +32,52 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I am a software engineer with a passion for creating efficient and user-friendly web applications. I have experience in developing scalable and maintainable web applications using modern technologies and frameworks. I am passionate about creating innovative and user-friendly solutions that solve real-world problems.",
-    "cta": "Get in Touch!"
+    "description": "I am San Vert, a software engineer with a passion for creating efficient and user-friendly web applications. I have experience in developing scalable and maintainable web applications using modern technologies and frameworks. I am passionate about creating innovative and user-friendly solutions that solve real-world problems.",
+    "cta": "Get in Touch!",
+    "education": {
+      "title": "Education",
+      "degree": "Bachelor of Science in Computer Science",
+      "university": "University of Technology",
+      "period": "2018 - 2022",
+      "specialization": "Specialized in Software Engineering and Web Development"
+    },
+    "experience": {
+      "title": "Experience",
+      "current": {
+        "position": "Senior Full Stack Developer",
+        "company": "Tech Solutions Inc.",
+        "period": "2022 - Present",
+        "description": "Leading development teams and implementing modern web applications using React, Node.js, and cloud technologies."
+      },
+      "previous": {
+        "position": "Junior Web Developer",
+        "company": "Digital Innovations",
+        "period": "2020 - 2022",
+        "description": "Developed and maintained web applications, focusing on user experience and performance optimization."
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "list": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Python",
+        "SQL",
+        "MongoDB",
+        "Git",
+        "Docker"
+      ]
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} San Vert. All rights reserved.",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
+    }
   }
 }
