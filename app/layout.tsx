@@ -33,22 +33,31 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(
+    "https://web.facebook.com/profile.php?id=61574843070322"
+  ),
   title: { default: "Vert San", template: "%s | My Site" },
-  description: "Welcome to My Site",
+  description: "Welcome to Vert San",
   alternates: {
     canonical: "https://example.com",
     languages: {
-      "en-US": "https://example.com/en-US",
-      "de-DE": "https://example.com/de-DE",
+      "km-KH":
+        "https://static.vecteezy.com/system/resources/previews/010/251/203/original/cambodia-flag-icon-sign-png.png",
+      "en-US":
+        "https://icon-library.com/images/english-icon-png/english-icon-png-2.jpg",
+      "zh-CN": "https://images.icon-icons.com/107/PNG/512/china_18230.png",
     },
   },
   openGraph: {
-    title: "My Site",
-    description: "Welcome to My Site",
-    url: "https://example.com",
-    siteName: "My Site",
-    images: [{ url: "https://example.com/og.png" }],
+    title: "Vert San",
+    description: "Welcome to Vert San",
+    url: "https://web.facebook.com/profile.php?id=61574843070322",
+    siteName: "Vert San",
+    images: [
+      {
+        url: "https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png",
+      },
+    ],
   },
 };
 
@@ -64,11 +73,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${notoKhmer.variable} ${roboto.variable}`}
     >
       <head>
-        <link
-          rel="shortcut icon"
-          href="https://scontent.fpnh2-1.fna.fbcdn.net/v/t39.30808-6/488705577_122101331852828102_2981929377363940132_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF9LJXsuNGXw9UY3PNQQ_FBQhSJK36Hp31CFIkrfoenfah3GIon1-UgNFnC_N3Q4Cv8PmSX5xY9vIdMZi37NPZM&_nc_ohc=E5feI7WLDeYQ7kNvwE6JwDa&_nc_oc=AdnY1-eyNs2rXundT3FB7_55UXjhIXKJQDfto_xzPzY6Zfr-K1_-QIYKzAcdL1SBdU0&_nc_zt=23&_nc_ht=scontent.fpnh2-1.fna&_nc_gid=uDlSs_4kn4Db7zwkaJCtkQ&oh=00_AfE_u_kDHfPT9zdKxZn54aaTvVZHhDe6Btlm_nJ4-L9wsw&oe=6804860D"
-          type="image/png"
-        />
+        <link rel="shortcut icon" href="/public/me.jpg" type="image/x-icon" />
       </head>
       <body>
         <ThemeProvider

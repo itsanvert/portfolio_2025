@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 import { Play, Clock, BookOpen, Award } from "lucide-react";
-import { getCourses } from "@/app/actions/course";
+
 import { useEffect, useState } from "react";
+import { getCourses } from "../actions/course";
 
 interface Course {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   duration: string;
@@ -76,6 +77,8 @@ export default function CoursePage() {
     );
   }
 
+  if (!courses.length) return <div>No courses found.</div>;
+
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
       <motion.div
@@ -104,7 +107,7 @@ export default function CoursePage() {
         >
           {courses.map((course) => (
             <motion.div
-              key={course.id}
+              key={course._id}
               variants={fadeInUp}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
