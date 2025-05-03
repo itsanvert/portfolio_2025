@@ -37,7 +37,14 @@ export const metadata: Metadata = {
     "https://web.facebook.com/profile.php?id=61574843070322"
   ),
   title: { default: "Vert San", template: "%s | My Site" },
-  description: "Welcome to Vert San",
+  description: "Welcome to Vert San - Developer, Designer, and Tech Enthusiast",
+  keywords: [
+    "Vert San",
+    "Developer",
+    "Portfolio",
+    "Web Development",
+    "Software Engineer",
+  ],
   alternates: {
     canonical: "https://example.com",
     languages: {
@@ -50,7 +57,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Vert San",
-    description: "Welcome to Vert San",
+    description:
+      "Welcome to Vert San - Developer, Designer, and Tech Enthusiast",
     url: "https://web.facebook.com/profile.php?id=61574843070322",
     siteName: "Vert San",
     images: [
@@ -58,6 +66,36 @@ export const metadata: Metadata = {
         url: "https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vert San",
+    description:
+      "Welcome to Vert San - Developer, Designer, and Tech Enthusiast",
+    images: [
+      "https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png",
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-site-verification",
+    yandex: "your-yandex-verification",
+    yahoo: "your-yahoo-verification",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 

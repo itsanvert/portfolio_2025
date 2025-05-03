@@ -85,7 +85,9 @@ export const Navbar = () => {
           </div>
 
           {/* Button for larger screens */}
-          <Button className="hidden sm:block">{t("nav.contact")}</Button>
+          <a href="https://t.me/itsanvert">
+            <Button className="hidden sm:block">{t("nav.contact")}</Button>
+          </a>
 
           {/* Mobile Menu for smaller screens */}
           <div className="sm:hidden">

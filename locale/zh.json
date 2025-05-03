@@ -100,5 +100,24 @@
     "beginner": "初级",
     "intermediate": "中级",
     "advanced": "高级"
+  },
+  "Course": {
+    "comingSoon": "即将推出",
+    "description": "我们正在为您的学习之旅打造非凡体验。准备好通过我们即将推出的课程来提升您的技能。",
+    "features": {
+      "expertLed": {
+        "title": "专家指导",
+        "description": "向行业专家学习"
+      },
+      "interactive": {
+        "title": "互动学习",
+        "description": "参与式和实践性学习"
+      },
+      "comprehensive": {
+        "title": "全面课程",
+        "description": "完整的学习路径"
+      }
+    },
+    "joinWaitlist": "加入等待名单"
   }
 }

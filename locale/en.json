@@ -100,5 +100,24 @@
     "beginner": "Beginner",
     "intermediate": "Intermediate",
     "advanced": "Advanced"
+  },
+  "Course": {
+    "comingSoon": "Coming Soon",
+    "description": "We're crafting something extraordinary for your learning journey. Get ready to transform your skills with our upcoming courses.",
+    "features": {
+      "expertLed": {
+        "title": "Expert-Led",
+        "description": "Learn from industry professionals"
+      },
+      "interactive": {
+        "title": "Interactive",
+        "description": "Engaging and hands-on learning"
+      },
+      "comprehensive": {
+        "title": "Comprehensive",
+        "description": "Complete learning paths"
+      }
+    },
+    "joinWaitlist": "Join the Waitlist"
   }
 }

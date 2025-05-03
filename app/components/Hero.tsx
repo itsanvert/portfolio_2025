@@ -33,7 +33,7 @@ export function Hero() {
         </h2>
 
         <a
-          href="mailto:itsanvert@gmail.com"
+          href="https://t.me/itsanvert"
           className="relative inline-block text-lg group mt-10 w-fit animate-fade-in delay-200"
         >
           <span className="relative z-10 block px-8 py-3 overflow-hidden font-bold leading-tight transition-colors duration-300 ease-out border-2 border-primary rounded-xl group-hover:text-background shadow-md">
