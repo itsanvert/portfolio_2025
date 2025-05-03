@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import imageUrlBuilder from '@sanity/image-url'
 
 export const courseType = defineType({
   name: 'course',
@@ -50,6 +51,12 @@ export const courseType = defineType({
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'videos',
+      title: 'Videos',
+      type: 'array',
+      of: [{type: 'video'}],
     }),
   ],
 })
