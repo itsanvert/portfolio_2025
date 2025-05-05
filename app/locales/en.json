@@ -1,4 +1,7 @@
 {
+  "site": {
+    "title": "Vert"
+  },
   "Course": {
     "title": "Our Courses",
     "viewCourse": "View Course",

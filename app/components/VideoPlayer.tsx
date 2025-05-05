@@ -42,8 +42,11 @@ export default function VideoPlayer({
       );
       if (currentTime) {
         // Convert duration string (e.g., "45:00") to seconds
-        const [minutes, seconds] = video.duration.split(":").map(Number);
-        const totalDuration = minutes * 60 + seconds;
+        const totalDuration = video.duration
+          ? video.duration
+              .split(":")
+              .reduce((acc, time) => 60 * acc + Number(time), 0)
+          : 0;
         const newProgress = currentTime / totalDuration;
         setProgress(newProgress);
         if (onProgressUpdate) {

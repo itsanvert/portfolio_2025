@@ -26,14 +26,11 @@ async function getGuestBrookEntry() {
   return data;
 }
 
-export default async function GuestbookPage() {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  const entries = await getGuestBrookEntry();
+export default function GuestbookPage() {
   return (
-    <div className="max-w-7xl w-full px-4 md:px-8 mx-auto ">
-      <GuestbookClient user={user} entries={entries} />
-      <Footer />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h1 className="text-4xl font-bold mb-8">Guestbook</h1>
+      {/* Add your guestbook content here */}
     </div>
   );
 }
