@@ -1,0 +1,34 @@
+{
+  "Course": {
+    "title": "我们的课程",
+    "viewCourse": "查看课程",
+    "enrollNow": "立即报名",
+    "searchPlaceholder": "搜索课程...",
+    "filters": {
+      "allLevels": "所有级别",
+      "beginner": "初级",
+      "intermediate": "中级",
+      "advanced": "高级",
+      "sortBy": {
+        "durationAsc": "时长：短到长",
+        "durationDesc": "时长：长到短",
+        "lessonsAsc": "课程：少到多",
+        "lessonsDesc": "课程：多到少"
+      }
+    },
+    "courseDetails": {
+      "videos": "课程视频",
+      "watch": "观看",
+      "duration": "时长",
+      "lessons": "课时",
+      "videosCount": "个视频"
+    },
+    "errors": {
+      "fetchFailed": "获取课程失败",
+      "timeout": "请求超时。请检查您的网络连接。",
+      "cors": "CORS错误。请检查您的Sanity CORS设置。",
+      "auth": "认证错误。请检查您的Sanity令牌。",
+      "tryAgain": "重试"
+    }
+  }
+}

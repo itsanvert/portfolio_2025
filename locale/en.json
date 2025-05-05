@@ -1,7 +1,7 @@
 {
   "nav": {
-    "firstname": "San",
-    "lastname": "Vert",
+    "firstname": "Vert",
+    "lastname": "San",
     "home": "Home",
     "guestbook": "Guestbook",
     "projects": "Projects",
@@ -10,7 +10,7 @@
     "contact": "Contact Me"
   },
   "hero": {
-    "greeting": "Hi, I'm San Vert",
+    "greeting": "Hi, I'm Vert San",
     "description": "A passionate full-stack developer and IT professional",
     "cta": "Get in touch",
     "alt": "San Vert's profile picture"
@@ -102,22 +102,35 @@
     "advanced": "Advanced"
   },
   "Course": {
-    "comingSoon": "Coming Soon",
-    "description": "We're crafting something extraordinary for your learning journey. Get ready to transform your skills with our upcoming courses.",
-    "features": {
-      "expertLed": {
-        "title": "Expert-Led",
-        "description": "Learn from industry professionals"
-      },
-      "interactive": {
-        "title": "Interactive",
-        "description": "Engaging and hands-on learning"
-      },
-      "comprehensive": {
-        "title": "Comprehensive",
-        "description": "Complete learning paths"
+    "title": "Our Courses",
+    "viewCourse": "View Course",
+    "enrollNow": "Enroll Now",
+    "searchPlaceholder": "Search courses...",
+    "filters": {
+      "allLevels": "All Levels",
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "sortBy": {
+        "durationAsc": "Duration: Short to Long",
+        "durationDesc": "Duration: Long to Short",
+        "lessonsAsc": "Lessons: Few to Many",
+        "lessonsDesc": "Lessons: Many to Few"
       }
     },
-    "joinWaitlist": "Join the Waitlist"
+    "courseDetails": {
+      "videos": "Course Videos",
+      "watch": "Watch",
+      "duration": "Duration",
+      "lessons": "lessons",
+      "videosCount": "videos"
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch courses",
+      "timeout": "Request timed out. Please check your internet connection.",
+      "cors": "CORS error. Please check your Sanity CORS settings.",
+      "auth": "Authentication error. Please check your Sanity token.",
+      "tryAgain": "Try Again"
+    }
   }
 }

@@ -1,0 +1,34 @@
+{
+  "Course": {
+    "title": "Our Courses",
+    "viewCourse": "View Course",
+    "enrollNow": "Enroll Now",
+    "searchPlaceholder": "Search courses...",
+    "filters": {
+      "allLevels": "All Levels",
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "sortBy": {
+        "durationAsc": "Duration: Short to Long",
+        "durationDesc": "Duration: Long to Short",
+        "lessonsAsc": "Lessons: Few to Many",
+        "lessonsDesc": "Lessons: Many to Few"
+      }
+    },
+    "courseDetails": {
+      "videos": "Course Videos",
+      "watch": "Watch",
+      "duration": "Duration",
+      "lessons": "lessons",
+      "videosCount": "videos"
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch courses",
+      "timeout": "Request timed out. Please check your internet connection.",
+      "cors": "CORS error. Please check your Sanity CORS settings.",
+      "auth": "Authentication error. Please check your Sanity token.",
+      "tryAgain": "Try Again"
+    }
+  }
+}

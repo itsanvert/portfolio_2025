@@ -102,22 +102,35 @@
     "advanced": "高级"
   },
   "Course": {
-    "comingSoon": "即将推出",
-    "description": "我们正在为您的学习之旅打造非凡体验。准备好通过我们即将推出的课程来提升您的技能。",
-    "features": {
-      "expertLed": {
-        "title": "专家指导",
-        "description": "向行业专家学习"
-      },
-      "interactive": {
-        "title": "互动学习",
-        "description": "参与式和实践性学习"
-      },
-      "comprehensive": {
-        "title": "全面课程",
-        "description": "完整的学习路径"
+    "title": "我们的课程",
+    "viewCourse": "查看课程",
+    "enrollNow": "立即报名",
+    "searchPlaceholder": "搜索课程...",
+    "filters": {
+      "allLevels": "所有级别",
+      "beginner": "初级",
+      "intermediate": "中级",
+      "advanced": "高级",
+      "sortBy": {
+        "durationAsc": "时长：短到长",
+        "durationDesc": "时长：长到短",
+        "lessonsAsc": "课程：少到多",
+        "lessonsDesc": "课程：多到少"
       }
     },
-    "joinWaitlist": "加入等待名单"
+    "courseDetails": {
+      "videos": "课程视频",
+      "watch": "观看",
+      "duration": "时长",
+      "lessons": "课时",
+      "videosCount": "个视频"
+    },
+    "errors": {
+      "fetchFailed": "获取课程失败",
+      "timeout": "请求超时。请检查您的网络连接。",
+      "cors": "CORS错误。请检查您的Sanity CORS设置。",
+      "auth": "认证错误。请检查您的Sanity令牌。",
+      "tryAgain": "重试"
+    }
   }
 }
