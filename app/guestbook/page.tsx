@@ -5,7 +5,7 @@ import GuestbookClient from "./GuestbookClient";
 import { unstable_noStore as noStore } from "next/cache";
 import { Footer } from "../components/Footer";
 
-async function getGuestBrookEntry() {
+async function getGuestbookEntries() {
   noStore();
   const data = await prisma.guestBookEntry.findMany({
     select: {
@@ -26,11 +26,15 @@ async function getGuestBrookEntry() {
   return data;
 }
 
-export default function GuestbookPage() {
+export default async function GuestbookPage() {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const entries = await getGuestbookEntries();
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-4xl font-bold mb-8">Guestbook</h1>
-      {/* Add your guestbook content here */}
+    <div className="min-h-screen flex flex-col">
+      <GuestbookClient user={user} entries={entries} />
+      <Footer />
     </div>
   );
 }
