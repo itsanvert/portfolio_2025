@@ -1,6 +1,8 @@
 "use client";
+
+import React from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -9,35 +11,22 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
-import Link from "next/link";
-import React from "react";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { MobileMenu } from "./MobileMenu";
 import { ModeToggle } from "@/components/ui/toggle-light-black";
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import "@/lib/181n";
 
-// Main navigation items
+// Main nav items
 export const navigationItems = [
-  {
-    name: "home",
-    href: "/",
-  },
-  {
-    name: "about",
-    href: "/about",
-  },
-  {
-    name: "course",
-    href: "/course",
-  },
-  {
-    name: "projects", // We will skip this from map() and manually add it with submenu
-    href: "/project",
-  },
+  { name: "home", href: "/" },
+  { name: "about", href: "/about" },
+  { name: "course", href: "/course" },
+  { name: "projects", href: "/project" }, // rendered manually with submenu
 ];
 
-// Project submenu items
+// Submenu under projects
 export const projectItems = [
   { name: "project_all", href: "/project" },
   { name: "project_web", href: "/project/web" },
@@ -50,45 +39,45 @@ export default function Navbar() {
 
   return (
     <nav className="max-w-7xl mx-auto px-4 md:px-8 py-5 flex items-center justify-between">
-      {/* Left Logo */}
+      {/* Logo */}
       <div className="flex-shrink-0">
-        <Link href="/" legacyBehavior>
-          <h1 className="text-2xl font-semibold">
-            {t("nav.firstname")}{" "}
-            <span className="text-blue-400">{t("nav.lastname")}</span>
-          </h1>
+        <Link href="/" className="text-2xl font-semibold">
+          {t("nav.firstname")}{" "}
+          <span className="text-blue-400">{t("nav.lastname")}</span>
         </Link>
       </div>
-      {/* Navigation Menu - Large Screens */}
+
+      {/* Large screen menu */}
       <div className="hidden md:flex items-center justify-center flex-1 ml-10">
         <NavigationMenu>
           <NavigationMenuList className="flex gap-4">
-            {navigationItems.map((item, index) => {
-              if (item.name === "projects") return null; // Skip and render manually below
+            {navigationItems.map((item) => {
+              if (item.name === "projects") return null;
               return (
-                <NavigationMenuItem key={index}>
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
+                <NavigationMenuItem key={item.name}>
+                  <NavigationMenuLink
+                    asChild
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    <Link href={item.href}>
                       {t(`nav.${item.name.toLowerCase()}`)}
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               );
             })}
 
-            {/* Projects with submenu */}
+            {/* Project dropdown */}
             <NavigationMenuItem>
               <NavigationMenuTrigger>{t("nav.projects")}</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-56 gap-2 p-2">
-                  {projectItems.map((item, index) => (
-                    <li key={index}>
+                  {projectItems.map((item) => (
+                    <li key={item.name}>
                       <Link
                         href={item.href}
                         className="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-                        legacyBehavior>
+                      >
                         {t(`nav.${item.name}`)}
                       </Link>
                     </li>
@@ -99,17 +88,18 @@ export default function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      {/* Right Side: Language Switcher, Mode Toggle, Contact Button */}
+
+      {/* Right controls */}
       <div className="flex items-center gap-4">
         <div className="hidden md:flex items-center gap-4">
           <ModeToggle />
           <LanguageSwitcher />
-          <Link href="https://t.me/itsanvert" legacyBehavior>
+          <Link href="https://t.me/itsanvert">
             <Button>{t("nav.contact")}</Button>
           </Link>
         </div>
 
-        {/* Mobile Menu for smaller screens */}
+        {/* Mobile menu */}
         <div className="md:hidden">
           <MobileMenu />
         </div>

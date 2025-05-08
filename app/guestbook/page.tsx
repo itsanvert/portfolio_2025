@@ -34,7 +34,6 @@ export default async function GuestbookPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <GuestbookClient user={user} entries={entries} />
-      <Footer />
     </div>
   );
 }

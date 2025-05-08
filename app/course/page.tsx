@@ -7,16 +7,11 @@ import {
   Tag,
   User,
   DollarSign,
-  Filter,
-  ChevronDown,
-  Search,
-  Play,
   ArrowRight,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import "@/lib/181n";
-import { useEffect, useState } from "react";
-import { client, fetchSanityData } from "../lib/sanity";
+import { useEffect, useState, useCallback } from "react";
+import { client } from "../lib/sanity";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { Course } from "../lib/interface";
@@ -31,9 +26,15 @@ import {
 } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 
+// Initialize Sanity Image Builder
 const builder = imageUrlBuilder(client);
 function urlFor(source: any) {
-  return builder.image(source);
+  return builder
+    .image(source)
+    .width(400)
+    .height(250)
+    .auto("format")
+    .quality(80); // Adjust image size and quality
 }
 
 type SortOption =
@@ -51,6 +52,18 @@ export default function CoursePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
   const [sortBy, setSortBy] = useState<SortOption>("duration-asc");
+
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+
+  // Debounced search query handler
+  const debouncedSearch = useCallback(
+    (query: string) => {
+      setSearchQuery(query);
+    },
+    [setSearchQuery]
+  );
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -89,6 +102,7 @@ export default function CoursePage() {
   useEffect(() => {
     let filtered = [...courses];
 
+    // Search filter
     if (searchQuery) {
       filtered = filtered.filter(
         (course) =>
@@ -97,10 +111,12 @@ export default function CoursePage() {
       );
     }
 
+    // Level filter
     if (selectedLevel !== "all") {
       filtered = filtered.filter((course) => course.level === selectedLevel);
     }
 
+    // Sorting
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "duration-asc":
@@ -119,6 +135,19 @@ export default function CoursePage() {
     setFilteredCourses(filtered);
   }, [courses, searchQuery, selectedLevel, sortBy]);
 
+  // Open Modal
+  const handleOpenModal = (course: Course) => {
+    setSelectedCourse(course);
+    setIsModalOpen(true);
+  };
+
+  // Close Modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedCourse(null);
+  };
+
+  // Loading state
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -127,6 +156,7 @@ export default function CoursePage() {
     );
   }
 
+  // Error state
   if (error) {
     return (
       <div className="flex flex-col justify-center items-center min-h-screen">
@@ -149,13 +179,48 @@ export default function CoursePage() {
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h1 className="text-4xl font-bold mb-4">Explore Our Courses</h1>
+        <h1 className="text-4xl font-semibold text-gray-900 mb-6">
+          Explore Our Courses
+        </h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
           Discover a wide range of courses designed to help you achieve your
           goals and advance your career.
         </p>
       </motion.div>
 
+      {/* Course filter controls */}
+      <div className="flex justify-between mb-8">
+        <div className="flex gap-4">
+          <input
+            type="text"
+            placeholder="Search for a course..."
+            className="px-4 py-2 border rounded-md focus:outline-none"
+            onChange={(e) => debouncedSearch(e.target.value)}
+          />
+          <select
+            value={selectedLevel}
+            onChange={(e) => setSelectedLevel(e.target.value)}
+            className="px-4 py-2 border rounded-md focus:outline-none"
+          >
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as SortOption)}
+            className="px-4 py-2 border rounded-md focus:outline-none"
+          >
+            <option value="duration-asc">Duration (Asc)</option>
+            <option value="duration-desc">Duration (Desc)</option>
+            <option value="lessons-asc">Lessons (Asc)</option>
+            <option value="lessons-desc">Lessons (Desc)</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Course Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredCourses.map((course, index) => (
           <motion.div
@@ -164,18 +229,20 @@ export default function CoursePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Card className="h-full flex flex-col">
+            <Card className="h-full flex flex-col shadow-lg rounded-lg border">
               <CardHeader className="relative">
                 <div className="aspect-video relative mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src={course.thumbnail}
+                    src={urlFor(course.thumbnail).toString()}
                     alt={course.title}
                     fill
                     className="object-cover"
                   />
                 </div>
-                <CardTitle className="text-xl">{course.title}</CardTitle>
-                <CardDescription className="line-clamp-2">
+                <CardTitle className="text-2xl font-semibold">
+                  {course.title}
+                </CardTitle>
+                <CardDescription className="line-clamp-2 text-sm text-gray-600">
                   {course.shortDescription}
                 </CardDescription>
               </CardHeader>
@@ -197,11 +264,15 @@ export default function CoursePage() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="flex justify-between items-center">
+              <CardFooter className="flex justify-between items-center mt-auto">
                 <div className="text-lg font-semibold text-primary">
                   ${course.price.toFixed(2)}
                 </div>
-                <Button variant="default">
+                <Button
+                  variant="default"
+                  onClick={() => handleOpenModal(course)}
+                  aria-label={`Learn more about ${course.title}`}
+                >
                   Learn More <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </CardFooter>
@@ -209,6 +280,41 @@ export default function CoursePage() {
           </motion.div>
         ))}
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedCourse && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-8 rounded-lg max-w-lg w-full">
+            <h2 className="text-2xl font-semibold mb-4">
+              {selectedCourse.title}
+            </h2>
+            <div className="aspect-video mb-4">
+              {selectedCourse.videos && selectedCourse.videos.length > 0 && (
+                <iframe
+                  width="100%"
+                  height="315"
+                  // Assuming each video has a 'url' field that holds the video URL
+                  src={selectedCourse.videos[0]?.url} // Access the 'url' field of the first video
+                  title="Course Video"
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+              )}
+            </div>
+            <div className="mb-4">
+              <h3 className="font-semibold text-lg">Description</h3>
+              <p>{selectedCourse.description}</p>
+            </div>
+            <div className="mb-4">
+              <h3 className="font-semibold text-lg">Technologies</h3>
+              <p>{selectedCourse.requirements}</p>
+            </div>
+            <Button variant="destructive" onClick={handleCloseModal}>
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
