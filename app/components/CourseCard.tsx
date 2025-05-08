@@ -22,7 +22,7 @@ export function CourseCard({
       whileHover={{ scale: 1.02 }}
       className="bg-white rounded-lg shadow-md overflow-hidden"
     >
-      <Link href={href}>
+      <Link href={href} legacyBehavior>
         <div className="p-6">
           <h3 className="text-xl font-semibold mb-2">{title}</h3>
           <p className="text-gray-600 mb-4">{description}</p>

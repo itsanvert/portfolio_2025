@@ -34,37 +34,29 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://web.facebook.com/profile.php?id=61574843070322"
-  ),
-  title: { default: "Vert San", template: "%s | My Site" },
-  description: "Welcome to Vert San - Developer, Designer, and Tech Enthusiast",
+  metadataBase: new URL("https://vertsan.com"), // ✅ Use your real site URL
+  title: { default: "Vert San", template: "%s | Vert San" },
+  description:
+    "Hi, I'm Vert San — a full-stack developer and IT professional. Explore my work and connect!",
   keywords: [
     "Vert San",
-    "Developer",
+    "Full Stack Developer",
     "Portfolio",
-    "Web Development",
-    "Software Engineer",
+    "Tech",
+    "IT Professional",
   ],
-  alternates: {
-    canonical: "https://example.com",
-    languages: {
-      "km-KH":
-        "https://static.vecteezy.com/system/resources/previews/010/251/203/original/cambodia-flag-icon-sign-png.png",
-      "en-US":
-        "https://icon-library.com/images/english-icon-png/english-icon-png-2.jpg",
-      "zh-CN": "https://images.icon-icons.com/107/PNG/512/china_18230.png",
-    },
-  },
   openGraph: {
     title: "Vert San",
     description:
-      "Welcome to Vert San - Developer, Designer, and Tech Enthusiast",
-    url: "https://web.facebook.com/profile.php?id=61574843070322",
+      "Portfolio of Vert San – Developer, Designer & IT Professional.",
+    url: "https://vertsan.com",
     siteName: "Vert San",
     images: [
       {
-        url: "https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png",
+        url: "https://vertsan.com/og-image.png", // ✅ Host your image properly
+        width: 1200,
+        height: 630,
+        alt: "Vert San Portfolio Preview",
       },
     ],
   },
@@ -72,10 +64,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vert San",
     description:
-      "Welcome to Vert San - Developer, Designer, and Tech Enthusiast",
-    images: [
-      "https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png",
-    ],
+      "Portfolio of Vert San – Developer, Designer & IT Professional.",
+    images: ["https://vertsan.com/og-image.png"],
   },
   robots: {
     index: true,
@@ -90,8 +80,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "your-google-site-verification",
-    yandex: "your-yandex-verification",
-    yahoo: "your-yahoo-verification",
   },
   icons: {
     icon: "/favicon.ico",

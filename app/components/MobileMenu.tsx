@@ -47,7 +47,7 @@ export function MobileMenu() {
                   : "hover:bg-muted hover:bg-opacity-75",
                 "group flex items-center px-2 py-2 text-md font-medium rounded-md"
               )}
-            >
+              legacyBehavior>
               {t(`nav.${item.name.toLowerCase()}`)}
             </Link>
           ))}

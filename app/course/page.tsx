@@ -31,18 +31,9 @@ import {
 } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 
-// Initialize the image URL builder
 const builder = imageUrlBuilder(client);
-
 function urlFor(source: any) {
   return builder.image(source);
-}
-
-interface Video {
-  title: string;
-  url: string;
-  duration?: string;
-  description?: string;
 }
 
 type SortOption =
@@ -60,7 +51,6 @@ export default function CoursePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
   const [sortBy, setSortBy] = useState<SortOption>("duration-asc");
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -87,6 +77,7 @@ export default function CoursePage() {
         setFilteredCourses(data);
       } catch (error) {
         console.error("Error fetching courses:", error);
+        setError("Failed to fetch courses. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -98,7 +89,6 @@ export default function CoursePage() {
   useEffect(() => {
     let filtered = [...courses];
 
-    // Apply search filter
     if (searchQuery) {
       filtered = filtered.filter(
         (course) =>
@@ -107,12 +97,10 @@ export default function CoursePage() {
       );
     }
 
-    // Apply level filter
     if (selectedLevel !== "all") {
       filtered = filtered.filter((course) => course.level === selectedLevel);
     }
 
-    // Apply sorting
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "duration-asc":
@@ -210,10 +198,11 @@ export default function CoursePage() {
                 </div>
               </CardContent>
               <CardFooter className="flex justify-between items-center">
-                <div className="text-2xl font-bold">${course.price}</div>
-                <Button>
-                  Enroll Now
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                <div className="text-lg font-semibold text-primary">
+                  ${course.price.toFixed(2)}
+                </div>
+                <Button variant="default">
+                  Learn More <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </CardFooter>
             </Card>

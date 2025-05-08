@@ -52,14 +52,13 @@ export default function Navbar() {
     <nav className="max-w-7xl mx-auto px-4 md:px-8 py-5 flex items-center justify-between">
       {/* Left Logo */}
       <div className="flex-shrink-0">
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <h1 className="text-2xl font-semibold">
             {t("nav.firstname")}{" "}
             <span className="text-blue-400">{t("nav.lastname")}</span>
           </h1>
         </Link>
       </div>
-
       {/* Navigation Menu - Large Screens */}
       <div className="hidden md:flex items-center justify-center flex-1 ml-10">
         <NavigationMenu>
@@ -89,7 +88,7 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         className="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-                      >
+                        legacyBehavior>
                         {t(`nav.${item.name}`)}
                       </Link>
                     </li>
@@ -100,13 +99,12 @@ export default function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-
       {/* Right Side: Language Switcher, Mode Toggle, Contact Button */}
       <div className="flex items-center gap-4">
         <div className="hidden md:flex items-center gap-4">
           <ModeToggle />
           <LanguageSwitcher />
-          <Link href="https://t.me/itsanvert">
+          <Link href="https://t.me/itsanvert" legacyBehavior>
             <Button>{t("nav.contact")}</Button>
           </Link>
         </div>
