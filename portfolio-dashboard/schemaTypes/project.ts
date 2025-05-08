@@ -31,5 +31,18 @@ export const projectsType = defineType({
       type: 'array',
       of: [{type: 'string'}],
     }),
+    defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Web', value: 'web'},
+          {title: 'Design', value: 'design'},
+          {title: 'Desktop', value: 'desktop'},
+        ],
+        layout: 'radio', // optional: can be 'dropdown' too
+      },
+    }),
   ],
 })

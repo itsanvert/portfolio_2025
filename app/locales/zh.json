@@ -1,4 +1,106 @@
 {
+  "nav": {
+    "firstname": "桑",
+    "lastname": "沃特",
+    "home": "首页",
+    "guestbook": "留言簿",
+    "projects": "项目",
+    "about": "关于",
+    "course": "课程",
+    "contact": "联系"
+  },
+  "hero": {
+    "greeting": "你好，我是奕辰峰",
+    "description": "充满热情的全栈开发者和IT专业人士",
+    "cta": "联系我",
+    "alt": "桑·沃特的照片"
+  },
+  "home": {
+    "title": "欢迎来到我的网站",
+    "description": "探索我的开发、设计和创新世界。"
+  },
+  "projects": {
+    "title": "我的项目",
+    "description": "这是我最近创建的一些精彩项目。"
+  },
+  "guestbook": {
+    "title": "留言簿",
+    "description": "在这里签名并留下您的评论。",
+    "logout": "退出",
+    "messageLabel": "消息",
+    "placeholder": "您的消息...",
+    "signForFree": "免费签名"
+  },
+  "about": {
+    "title": "关于我",
+    "description": "我是桑·沃特，一位对创建高效且用户友好的网络应用程序充满热情的软件工程师。我在使用现代技术和框架开发可扩展且可维护的网络应用程序方面拥有丰富的经验。我热衷于创建创新且用户友好的解决方案来解决现实世界的问题。",
+    "cta": "联系我！",
+    "education": {
+      "title": "教育背景",
+      "degree": "计算机科学学士",
+      "university": "桑德普雷马哈桑加拉吉布里克里大学",
+      "period": "2022 - 至今",
+      "specialization": "预计2026年毕业"
+    },
+    "experience": {
+      "title": "工作经验",
+      "current": {
+        "position": "网站开发和管理员",
+        "company": "桑德普雷马哈桑加拉吉布里克里大学",
+        "period": "2025 - 至今",
+        "description": "管理大学网站(sbku.edu.kh)并开发网络应用程序。"
+      },
+      "previous": {
+        "position": "ICT教师和计算机维护",
+        "company": "金边国际标准学院",
+        "period": "2023 - 2025",
+        "description": "作为兼职教师教授ICT课程并维护计算机系统。"
+      }
+    },
+    "skills": {
+      "title": "技能",
+      "list": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "C#",
+        "PHP",
+        "SQL",
+        "Next.js",
+        "Tailwind CSS",
+        "Laravel",
+        "SQL Server",
+        "MySQL",
+        "Supabase",
+        "网络配置",
+        "Windows Server",
+        "摄影",
+        "视频编辑",
+        "数字营销",
+        "IT故障排除",
+        "网络安全",
+        "AI工具"
+      ]
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} 桑·沃特，保留所有权利。",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "course": {
+    "title": "我的课程",
+    "description": "学习全面的课程，掌握现代网络开发技能。",
+    "duration": "时长",
+    "lessons": "课程",
+    "level": "级别",
+    "beginner": "初级",
+    "intermediate": "中级",
+    "advanced": "高级"
+  },
   "Course": {
     "title": "我们的课程",
     "viewCourse": "查看课程",
