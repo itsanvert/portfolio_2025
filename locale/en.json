@@ -7,7 +7,11 @@
     "projects": "Projects",
     "about": "About",
     "course": "Courses",
-    "contact": "Contact Me"
+    "contact": "Contact Me",
+    "project_all": "All",
+    "project_web": "Website",
+    "project_design": "Design",
+    "project_desktop": "Desktop"
   },
   "hero": {
     "greeting": "Hi, I'm Vert San",
@@ -24,12 +28,12 @@
     "description": "Here are some of the cool things I've built recently."
   },
   "guestbook": {
-    "title": "Guestbook",
+    "title": "Guest Comment",
     "description": "Feel free to leave your thoughts and feedback here.",
     "logout": "Logout",
     "messageLabel": "Message",
     "placeholder": "Your Message...",
-    "signForFree": "Sign for free"
+    "signForFree": "Summit"
   },
   "about": {
     "title": "About Me",

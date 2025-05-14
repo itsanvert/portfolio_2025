@@ -12,10 +12,13 @@ export const videoType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'url',
-      title: 'Video URL',
-      type: 'url',
+      name: 'videoFile',
+      title: 'Video File',
+      type: 'file',
       validation: (Rule) => Rule.required(),
+      options: {
+        accept: 'video/*', // Accept only video formats
+      },
     }),
     defineField({
       name: 'duration',

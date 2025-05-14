@@ -1,13 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   BookOpen,
   Clock,
-  Tag,
-  User,
-  DollarSign,
   ArrowRight,
+  X,
+  Search,
+  Filter,
+  ArrowUpDown,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState, useCallback } from "react";
@@ -20,21 +21,19 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 
-// Initialize Sanity Image Builder
 const builder = imageUrlBuilder(client);
 function urlFor(source: any) {
   return builder
     .image(source)
-    .width(400)
-    .height(250)
+    .width(600)
+    .height(400)
     .auto("format")
-    .quality(80); // Adjust image size and quality
+    .quality(90);
 }
 
 type SortOption =
@@ -50,46 +49,29 @@ export default function CoursePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedLevel, setSelectedLevel] = useState<string>("all");
+  const [selectedLevel, setSelectedLevel] = useState("all");
   const [sortBy, setSortBy] = useState<SortOption>("duration-asc");
-
-  // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
-  // Debounced search query handler
   const debouncedSearch = useCallback(
-    (query: string) => {
-      setSearchQuery(query);
-    },
-    [setSearchQuery]
+    (query: string) => setSearchQuery(query),
+    []
   );
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const query = `*[_type == "course" && isPublished == true] {
-          _id,
-          title,
-          description,
-          shortDescription,
-          duration,
-          level,
-          lessons,
-          "thumbnail": thumbnail.asset->url,
-          price,
-          instructor,
-          category,
-          tags,
-          videos,
-          requirements,
-          whatYouWillLearn
+          _id, title, description, shortDescription, duration, level, lessons,
+          "thumbnail": thumbnail.asset->url, price, instructor, category,
+          tags, videos, requirements, whatYouWillLearn
         }`;
         const data = await client.fetch(query);
         setCourses(data);
         setFilteredCourses(data);
-      } catch (error) {
-        console.error("Error fetching courses:", error);
+      } catch (err) {
+        console.error("Error fetching courses:", err);
         setError("Failed to fetch courses. Please try again later.");
       } finally {
         setLoading(false);
@@ -101,8 +83,6 @@ export default function CoursePage() {
 
   useEffect(() => {
     let filtered = [...courses];
-
-    // Search filter
     if (searchQuery) {
       filtered = filtered.filter(
         (course) =>
@@ -110,13 +90,9 @@ export default function CoursePage() {
           course.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-
-    // Level filter
     if (selectedLevel !== "all") {
       filtered = filtered.filter((course) => course.level === selectedLevel);
     }
-
-    // Sorting
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "duration-asc":
@@ -131,190 +107,276 @@ export default function CoursePage() {
           return 0;
       }
     });
-
     setFilteredCourses(filtered);
   }, [courses, searchQuery, selectedLevel, sortBy]);
 
-  // Open Modal
   const handleOpenModal = (course: Course) => {
     setSelectedCourse(course);
     setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
-  // Close Modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedCourse(null);
+    document.body.style.overflow = "auto";
   };
 
-  // Loading state
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="rounded-full h-12 w-12 border-4 border-t-blue-500 border-r-blue-500 border-b-transparent border-l-transparent"
+        />
       </div>
     );
   }
 
-  // Error state
   if (error) {
     return (
-      <div className="flex flex-col justify-center items-center min-h-screen">
-        <p className="text-red-500 mb-4">{error}</p>
-        <button
-          onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90"
-        >
-          Try Again
-        </button>
+      <div className="flex flex-col justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-md p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg text-center">
+          <p className="text-red-500 dark:text-red-400 text-lg mb-4">{error}</p>
+          <Button
+            onClick={() => window.location.reload()}
+            className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white"
+          >
+            Try Again
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-4xl font-semibold text-gray-900 mb-6">
-          Explore Our Courses
-        </h1>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Discover a wide range of courses designed to help you achieve your
-          goals and advance your career.
-        </p>
-      </motion.div>
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+      <div className="container mx-auto px-4 sm:px-6 py-16">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4">
+            {t("Explore Our Courses")}
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+            {t("Discover a wide range of courses designed to help you grow.")}
+          </p>
+        </motion.div>
 
-      {/* Course filter controls */}
-      <div className="flex justify-between mb-8">
-        <div className="flex gap-4">
-          <input
-            type="text"
-            placeholder="Search for a course..."
-            className="px-4 py-2 border rounded-md focus:outline-none"
-            onChange={(e) => debouncedSearch(e.target.value)}
-          />
-          <select
-            value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
-            className="px-4 py-2 border rounded-md focus:outline-none"
-          >
-            <option value="all">All Levels</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="px-4 py-2 border rounded-md focus:outline-none"
-          >
-            <option value="duration-asc">Duration (Asc)</option>
-            <option value="duration-desc">Duration (Desc)</option>
-            <option value="lessons-asc">Lessons (Asc)</option>
-            <option value="lessons-desc">Lessons (Desc)</option>
-          </select>
-        </div>
-      </div>
+        {/* Filters Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex flex-col sm:flex-row gap-4 mb-12 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700"
+        >
+          <div className="relative flex-1">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center">
+              <Search className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search courses..."
+              className="w-full pl-10 pr-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              onChange={(e) => debouncedSearch(e.target.value)}
+            />
+          </div>
 
-      {/* Course Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredCourses.map((course, index) => (
-          <motion.div
-            key={course._id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <Card className="h-full flex flex-col shadow-lg rounded-lg border">
-              <CardHeader className="relative">
-                <div className="aspect-video relative mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={urlFor(course.thumbnail).toString()}
-                    alt={course.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardTitle className="text-2xl font-semibold">
-                  {course.title}
-                </CardTitle>
-                <CardDescription className="line-clamp-2 text-sm text-gray-600">
-                  {course.shortDescription}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">{course.level}</Badge>
-                    <Badge variant="outline">{course.category}</Badge>
+          <div className="flex gap-4">
+            <div className="relative flex items-center">
+              <div className="absolute left-3">
+                <Filter className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+              </div>
+              <select
+                value={selectedLevel}
+                onChange={(e) => setSelectedLevel(e.target.value)}
+                className="pl-10 pr-8 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="all">All Levels</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+
+            <div className="relative flex items-center">
+              <div className="absolute left-3">
+                <ArrowUpDown className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+              </div>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as SortOption)}
+                className="pl-10 pr-8 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="duration-asc">Duration (Asc)</option>
+                <option value="duration-desc">Duration (Desc)</option>
+                <option value="lessons-asc">Lessons (Asc)</option>
+                <option value="lessons-desc">Lessons (Desc)</option>
+              </select>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Courses Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredCourses.map((course, index) => (
+            <motion.div
+              key={course._id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+            >
+              <Card className="h-full flex flex-col bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+                <CardHeader className="relative p-0 overflow-hidden">
+                  <div className="aspect-video relative">
+                    <Image
+                      src={urlFor(course.thumbnail).toString()}
+                      alt={course.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 dark:from-gray-900/50" />
+                    <div className="absolute bottom-4 left-4">
+                      <Badge className="bg-blue-100 dark:bg-blue-600 text-blue-800 dark:text-blue-100">
+                        {course.level}
+                      </Badge>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
+                  <div className="p-6">
+                    <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                      {course.title}
+                    </CardTitle>
+                    <CardDescription className="text-gray-600 dark:text-gray-400 line-clamp-2">
+                      {course.shortDescription}
+                    </CardDescription>
+                  </div>
+                </CardHeader>
+                <CardContent className="px-6 pb-2 flex-grow">
+                  <div className="flex gap-2 flex-wrap mb-4">
+                    <Badge
+                      variant="outline"
+                      className="border-purple-200 dark:border-purple-400 text-purple-700 dark:text-purple-300"
+                    >
+                      {course.category}
+                    </Badge>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-blue-500 dark:text-blue-400" />
                       <span>{course.duration}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <BookOpen className="w-4 h-4" />
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-blue-500 dark:text-blue-400" />
                       <span>{course.lessons} lessons</span>
                     </div>
                   </div>
+                </CardContent>
+                <div className="p-6 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                  <div className="flex items-center">
+                    <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                      ${course.price.toFixed(2)}
+                    </span>
+                  </div>
+                  <Button
+                    className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white"
+                    onClick={() => handleOpenModal(course)}
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
                 </div>
-              </CardContent>
-              <CardFooter className="flex justify-between items-center mt-auto">
-                <div className="text-lg font-semibold text-primary">
-                  ${course.price.toFixed(2)}
-                </div>
-                <Button
-                  variant="default"
-                  onClick={() => handleOpenModal(course)}
-                  aria-label={`Learn more about ${course.title}`}
-                >
-                  Learn More <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Modal */}
-      {isModalOpen && selectedCourse && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-8 rounded-lg max-w-lg w-full">
-            <h2 className="text-2xl font-semibold mb-4">
-              {selectedCourse.title}
-            </h2>
-            <div className="aspect-video mb-4">
-              {selectedCourse.videos && selectedCourse.videos.length > 0 && (
-                <iframe
-                  width="100%"
-                  height="315"
-                  // Assuming each video has a 'url' field that holds the video URL
-                  src={selectedCourse.videos[0]?.url} // Access the 'url' field of the first video
-                  title="Course Video"
-                  frameBorder="0"
-                  allowFullScreen
-                ></iframe>
-              )}
-            </div>
-            <div className="mb-4">
-              <h3 className="font-semibold text-lg">Description</h3>
-              <p>{selectedCourse.description}</p>
-            </div>
-            <div className="mb-4">
-              <h3 className="font-semibold text-lg">Technologies</h3>
-              <p>{selectedCourse.requirements}</p>
-            </div>
-            <Button variant="destructive" onClick={handleCloseModal}>
-              Close
-            </Button>
-          </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
-      )}
+
+        {/* Modal */}
+        <AnimatePresence>
+          {isModalOpen && selectedCourse && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/30 dark:bg-black/50 backdrop-blur-md flex items-center justify-center p-4"
+            >
+              <motion.div
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.95 }}
+                className="bg-white dark:bg-gray-800 rounded-xl max-w-2xl w-full border border-gray-200 dark:border-gray-700 shadow-xl"
+              >
+                <div className="p-6 space-y-6">
+                  <div className="flex justify-between items-start">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                      {selectedCourse.title}
+                    </h2>
+                    <button
+                      onClick={handleCloseModal}
+                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+                    >
+                      <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                    </button>
+                  </div>
+
+                  <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
+                    {selectedCourse.videos?.[0]?.videoFile?.asset?._ref && (
+                      <video
+                        controls
+                        className="w-full h-full object-cover"
+                        src={`https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${selectedCourse.videos[0].videoFile.asset._ref
+                          .replace("file-", "")
+                          .replace("-mp4", ".mp4")}`}
+                      />
+                    )}
+                  </div>
+
+                  <div className="space-y-4 text-gray-600 dark:text-gray-300">
+                    <p>{selectedCourse.description}</p>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center gap-3">
+                        <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+                        <span>{selectedCourse.duration}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <BookOpen className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+                        <span>{selectedCourse.lessons} Lessons</span>
+                      </div>
+                    </div>
+
+                    {selectedCourse.whatYouWillLearn && (
+                      <div className="space-y-2">
+                        <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                          What You'll Learn
+                        </h3>
+                        <ul className="list-disc pl-6 space-y-1">
+                          {selectedCourse.whatYouWillLearn.map(
+                            (item, index) => (
+                              <li key={index}>{item}</li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex justify-end">
+                    <Button
+                      className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white"
+                      onClick={handleCloseModal}
+                    >
+                      Close Preview
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

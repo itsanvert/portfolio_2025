@@ -14,12 +14,11 @@ export interface Video {
   description?: string;
 }
 
+// Example Course type in ../lib/interface.ts
+
 export interface Course {
   _id: string;
   title: string;
-  slug?: {
-    current: string;
-  };
   description: string;
   shortDescription: string;
   duration: string;
@@ -29,17 +28,16 @@ export interface Course {
   price: number;
   instructor: string;
   category: string;
-  tags?: string[];
-  isPublished: boolean;
-  isEligible?: boolean;
-  videos?: Video[];
-  requirements?: string[];
-  whatYouWillLearn?: string[];
-}
-
-export interface Video {
-  title: string;
-  url: string;
-  duration?: string;
-  description?: string;
+  tags: string[];
+  requirements: string[];
+  whatYouWillLearn: string[];
+  videos: {
+    videoFile: {
+      asset: {
+        _ref: string;
+        _type: string;
+        url?: string; // optional if already resolved
+      };
+    };
+  }[];
 }

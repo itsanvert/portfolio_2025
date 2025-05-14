@@ -10,6 +10,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
 import Navbar from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vertsan.com"), // ✅ Use your real site URL
+  metadataBase: new URL("https://vertsan.com"),
   title: { default: "Vert San", template: "%s | Vert San" },
   description:
     "Hi, I'm Vert San — a full-stack developer and IT professional. Explore my work and connect!",
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "Vert San",
     images: [
       {
-        url: "https://vertsan.com/og-image.png", // ✅ Host your image properly
+        url: "https://vertsan.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Vert San Portfolio Preview",
@@ -79,12 +80,12 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-site-verification",
+    google: "ABCDEFG12345-your-actual-code-here", // ⚠️ Replace with your code
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "https://vertsan.com/favicon.ico",
+    shortcut: "https://vertsan.com/favicon-16x16.png",
+    apple: "https://vertsan.com/apple-touch-icon.png",
   },
 };
 
@@ -112,6 +113,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ThemeProvider>
+        <Footer />
       </body>
     </html>
   );

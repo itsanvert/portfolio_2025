@@ -13,7 +13,7 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between space-y-4">
           <div className="flex items-center space-x-4">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/itsanvert"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
@@ -21,7 +21,7 @@ export function Footer() {
               {t("footer.social.github")}
             </a>
             <a
-              href="https://twitter.com/yourusername"
+              href="https://twitter.com/itsanvert"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
@@ -29,7 +29,8 @@ export function Footer() {
               {t("footer.social.twitter")}
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/itsanvert
+              "
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
