@@ -1,4 +1,5 @@
 {
+  "flipWords": ["Developer 🐼", "Instructor 😝"],
   "nav": {
     "firstname": "Vert",
     "lastname": "San",
@@ -15,7 +16,7 @@
   },
   "hero": {
     "greeting": "Hi, I'm Vert San",
-    "description": "A passionate full-stack developer and IT professional",
+    "description": "A passionate ",
     "cta": "Get in touch",
     "alt": "San Vert's profile picture"
   },

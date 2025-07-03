@@ -7,7 +7,8 @@ import {
   Roboto,
 } from "next/font/google"; // Import Roboto font
 import "./globals.css";
-
+// _app.tsx or layout.tsx
+import "@fontsource/nokora"; // this includes Nokora with normal weights
 import { ThemeProvider } from "next-themes";
 import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "Vert San",
     images: [
       {
-        url: "https://vertsan.com/og-image.png",
+        url: "https://vertsan.com/favicon.ico",
         width: 1200,
         height: 630,
         alt: "Vert San Portfolio Preview",
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
     title: "Vert San",
     description:
       "Portfolio of Vert San – Developer, Designer & IT Professional.",
-    images: ["https://vertsan.com/og-image.png"],
+    images: ["https://vertsan.com/favicon.ico"],
   },
   robots: {
     index: true,

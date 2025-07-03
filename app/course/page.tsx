@@ -42,6 +42,120 @@ type SortOption =
   | "lessons-asc"
   | "lessons-desc";
 
+const CourseModal = ({
+  course,
+  onClose,
+}: {
+  course: Course;
+  onClose: () => void;
+}) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("");
+
+  useEffect(() => {
+    setIsMounted(true);
+    if (course?.videos?.[0]?.videoFile?.asset?._ref) {
+      const src = `https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${
+        process.env.NEXT_PUBLIC_SANITY_DATASET
+      }/${course.videos[0].videoFile.asset._ref
+        .replace("file-", "")
+        .replace("-mp4", ".mp4")}`;
+      setVideoSrc(src);
+    }
+  }, [course]);
+
+  useEffect(() => {
+    if (isMounted) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "auto";
+      };
+    }
+  }, [isMounted]);
+
+  if (!isMounted) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/30 dark:bg-black/50 backdrop-blur-md flex items-center justify-center p-4"
+      >
+        <motion.div
+          initial={{ scale: 0.95 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0.95 }}
+          className="bg-white dark:bg-gray-800 rounded-xl max-w-2xl w-full border border-gray-200 dark:border-gray-700 shadow-xl"
+        >
+          <div className="p-6 space-y-6">
+            <div className="flex justify-between items-start">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                {course.title}
+              </h2>
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+              >
+                <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+              </button>
+            </div>
+
+            <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
+              {videoSrc && (
+                <video
+                  controls
+                  className="w-full h-full object-cover"
+                  src={videoSrc}
+                  poster={urlFor(course.thumbnail).toString()}
+                />
+              )}
+            </div>
+
+            <div className="space-y-4 text-gray-600 dark:text-gray-300">
+              <p>{course.description}</p>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+                  <span>{course.duration}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+                  <span>{course.lessons} Lessons</span>
+                </div>
+              </div>
+
+              {course.whatYouWillLearn && (
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                    What You'll Learn
+                  </h3>
+                  <ul className="list-disc pl-6 space-y-1">
+                    {course.whatYouWillLearn.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <div className="flex justify-end">
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white"
+                onClick={onClose}
+              >
+                Close Preview
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
 export default function CoursePage() {
   const { t } = useTranslation();
   const [courses, setCourses] = useState<Course[]>([]);
@@ -113,13 +227,11 @@ export default function CoursePage() {
   const handleOpenModal = (course: Course) => {
     setSelectedCourse(course);
     setIsModalOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedCourse(null);
-    document.body.style.overflow = "auto";
   };
 
   if (loading) {
@@ -153,7 +265,6 @@ export default function CoursePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <div className="container mx-auto px-4 sm:px-6 py-16">
-        {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -167,16 +278,13 @@ export default function CoursePage() {
           </p>
         </motion.div>
 
-        {/* Filters Section */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="flex flex-col sm:flex-row gap-4 mb-12 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700"
         >
           <div className="relative flex-1">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center">
-              <Search className="h-5 w-5 text-gray-400 dark:text-gray-500" />
-            </div>
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
             <input
               type="text"
               placeholder="Search courses..."
@@ -187,9 +295,7 @@ export default function CoursePage() {
 
           <div className="flex gap-4">
             <div className="relative flex items-center">
-              <div className="absolute left-3">
-                <Filter className="h-5 w-5 text-gray-400 dark:text-gray-500" />
-              </div>
+              <Filter className="absolute left-3 h-5 w-5 text-gray-400 dark:text-gray-500" />
               <select
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value)}
@@ -203,9 +309,7 @@ export default function CoursePage() {
             </div>
 
             <div className="relative flex items-center">
-              <div className="absolute left-3">
-                <ArrowUpDown className="h-5 w-5 text-gray-400 dark:text-gray-500" />
-              </div>
+              <ArrowUpDown className="absolute left-3 h-5 w-5 text-gray-400 dark:text-gray-500" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
@@ -220,7 +324,6 @@ export default function CoursePage() {
           </div>
         </motion.div>
 
-        {/* Courses Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourses.map((course, index) => (
             <motion.div
@@ -237,6 +340,7 @@ export default function CoursePage() {
                       alt={course.title}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 dark:from-gray-900/50" />
                     <div className="absolute bottom-4 left-4">
@@ -293,89 +397,9 @@ export default function CoursePage() {
           ))}
         </div>
 
-        {/* Modal */}
-        <AnimatePresence>
-          {isModalOpen && selectedCourse && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30 dark:bg-black/50 backdrop-blur-md flex items-center justify-center p-4"
-            >
-              <motion.div
-                initial={{ scale: 0.95 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.95 }}
-                className="bg-white dark:bg-gray-800 rounded-xl max-w-2xl w-full border border-gray-200 dark:border-gray-700 shadow-xl"
-              >
-                <div className="p-6 space-y-6">
-                  <div className="flex justify-between items-start">
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                      {selectedCourse.title}
-                    </h2>
-                    <button
-                      onClick={handleCloseModal}
-                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
-                    >
-                      <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                    </button>
-                  </div>
-
-                  <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
-                    {selectedCourse.videos?.[0]?.videoFile?.asset?._ref && (
-                      <video
-                        controls
-                        className="w-full h-full object-cover"
-                        src={`https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${selectedCourse.videos[0].videoFile.asset._ref
-                          .replace("file-", "")
-                          .replace("-mp4", ".mp4")}`}
-                      />
-                    )}
-                  </div>
-
-                  <div className="space-y-4 text-gray-600 dark:text-gray-300">
-                    <p>{selectedCourse.description}</p>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center gap-3">
-                        <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" />
-                        <span>{selectedCourse.duration}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <BookOpen className="w-5 h-5 text-blue-500 dark:text-blue-400" />
-                        <span>{selectedCourse.lessons} Lessons</span>
-                      </div>
-                    </div>
-
-                    {selectedCourse.whatYouWillLearn && (
-                      <div className="space-y-2">
-                        <h3 className="font-semibold text-gray-900 dark:text-gray-100">
-                          What You'll Learn
-                        </h3>
-                        <ul className="list-disc pl-6 space-y-1">
-                          {selectedCourse.whatYouWillLearn.map(
-                            (item, index) => (
-                              <li key={index}>{item}</li>
-                            )
-                          )}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex justify-end">
-                    <Button
-                      className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white"
-                      onClick={handleCloseModal}
-                    >
-                      Close Preview
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {isModalOpen && selectedCourse && (
+          <CourseModal course={selectedCourse} onClose={handleCloseModal} />
+        )}
       </div>
     </div>
   );

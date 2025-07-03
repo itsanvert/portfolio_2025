@@ -11,7 +11,6 @@ export default function Home() {
       <Hero />
       <SectionTwo />
       <GuestbookPage />
-      <Footer />
     </div>
   );
 }
