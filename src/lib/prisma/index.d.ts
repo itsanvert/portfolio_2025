@@ -28,6 +28,21 @@ export type GuestBookEntry = $Result.DefaultSelection<Prisma.$GuestBookEntryPayl
  * 
  */
 export type Course = $Result.DefaultSelection<Prisma.$CoursePayload>
+/**
+ * Model Week
+ * 
+ */
+export type Week = $Result.DefaultSelection<Prisma.$WeekPayload>
+/**
+ * Model Resource
+ * 
+ */
+export type Resource = $Result.DefaultSelection<Prisma.$ResourcePayload>
+/**
+ * Model Video
+ * 
+ */
+export type Video = $Result.DefaultSelection<Prisma.$VideoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +198,36 @@ export class PrismaClient<
     * ```
     */
   get course(): Prisma.CourseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.week`: Exposes CRUD operations for the **Week** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Weeks
+    * const weeks = await prisma.week.findMany()
+    * ```
+    */
+  get week(): Prisma.WeekDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.resource`: Exposes CRUD operations for the **Resource** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Resources
+    * const resources = await prisma.resource.findMany()
+    * ```
+    */
+  get resource(): Prisma.ResourceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.video`: Exposes CRUD operations for the **Video** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Videos
+    * const videos = await prisma.video.findMany()
+    * ```
+    */
+  get video(): Prisma.VideoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +670,10 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     GuestBookEntry: 'GuestBookEntry',
-    Course: 'Course'
+    Course: 'Course',
+    Week: 'Week',
+    Resource: 'Resource',
+    Video: 'Video'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +692,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "guestBookEntry" | "course"
+      modelProps: "user" | "guestBookEntry" | "course" | "week" | "resource" | "video"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +918,228 @@ export namespace Prisma {
           }
         }
       }
+      Week: {
+        payload: Prisma.$WeekPayload<ExtArgs>
+        fields: Prisma.WeekFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WeekFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WeekFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>
+          }
+          findFirst: {
+            args: Prisma.WeekFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WeekFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>
+          }
+          findMany: {
+            args: Prisma.WeekFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>[]
+          }
+          create: {
+            args: Prisma.WeekCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>
+          }
+          createMany: {
+            args: Prisma.WeekCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WeekCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>[]
+          }
+          delete: {
+            args: Prisma.WeekDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>
+          }
+          update: {
+            args: Prisma.WeekUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>
+          }
+          deleteMany: {
+            args: Prisma.WeekDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WeekUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WeekUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>[]
+          }
+          upsert: {
+            args: Prisma.WeekUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeekPayload>
+          }
+          aggregate: {
+            args: Prisma.WeekAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeek>
+          }
+          groupBy: {
+            args: Prisma.WeekGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WeekGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WeekCountArgs<ExtArgs>
+            result: $Utils.Optional<WeekCountAggregateOutputType> | number
+          }
+        }
+      }
+      Resource: {
+        payload: Prisma.$ResourcePayload<ExtArgs>
+        fields: Prisma.ResourceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ResourceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ResourceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>
+          }
+          findFirst: {
+            args: Prisma.ResourceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ResourceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>
+          }
+          findMany: {
+            args: Prisma.ResourceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>[]
+          }
+          create: {
+            args: Prisma.ResourceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>
+          }
+          createMany: {
+            args: Prisma.ResourceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ResourceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>[]
+          }
+          delete: {
+            args: Prisma.ResourceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>
+          }
+          update: {
+            args: Prisma.ResourceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>
+          }
+          deleteMany: {
+            args: Prisma.ResourceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ResourceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ResourceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>[]
+          }
+          upsert: {
+            args: Prisma.ResourceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourcePayload>
+          }
+          aggregate: {
+            args: Prisma.ResourceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateResource>
+          }
+          groupBy: {
+            args: Prisma.ResourceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ResourceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ResourceCountArgs<ExtArgs>
+            result: $Utils.Optional<ResourceCountAggregateOutputType> | number
+          }
+        }
+      }
+      Video: {
+        payload: Prisma.$VideoPayload<ExtArgs>
+        fields: Prisma.VideoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VideoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VideoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          findFirst: {
+            args: Prisma.VideoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VideoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          findMany: {
+            args: Prisma.VideoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>[]
+          }
+          create: {
+            args: Prisma.VideoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          createMany: {
+            args: Prisma.VideoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VideoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>[]
+          }
+          delete: {
+            args: Prisma.VideoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          update: {
+            args: Prisma.VideoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          deleteMany: {
+            args: Prisma.VideoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VideoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VideoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>[]
+          }
+          upsert: {
+            args: Prisma.VideoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          aggregate: {
+            args: Prisma.VideoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVideo>
+          }
+          groupBy: {
+            args: Prisma.VideoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VideoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VideoCountArgs<ExtArgs>
+            result: $Utils.Optional<VideoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1227,9 @@ export namespace Prisma {
     user?: UserOmit
     guestBookEntry?: GuestBookEntryOmit
     course?: CourseOmit
+    week?: WeekOmit
+    resource?: ResourceOmit
+    video?: VideoOmit
   }
 
   /* Types for Logging */
@@ -1074,6 +1347,108 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountGuestbookEntryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GuestBookEntryWhereInput
+  }
+
+
+  /**
+   * Count Type CourseCountOutputType
+   */
+
+  export type CourseCountOutputType = {
+    weeklySchedule: number
+    videos: number
+  }
+
+  export type CourseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    weeklySchedule?: boolean | CourseCountOutputTypeCountWeeklyScheduleArgs
+    videos?: boolean | CourseCountOutputTypeCountVideosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CourseCountOutputType without action
+   */
+  export type CourseCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourseCountOutputType
+     */
+    select?: CourseCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CourseCountOutputType without action
+   */
+  export type CourseCountOutputTypeCountWeeklyScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeekWhereInput
+  }
+
+  /**
+   * CourseCountOutputType without action
+   */
+  export type CourseCountOutputTypeCountVideosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoWhereInput
+  }
+
+
+  /**
+   * Count Type WeekCountOutputType
+   */
+
+  export type WeekCountOutputType = {
+    resources: number
+  }
+
+  export type WeekCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    resources?: boolean | WeekCountOutputTypeCountResourcesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WeekCountOutputType without action
+   */
+  export type WeekCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeekCountOutputType
+     */
+    select?: WeekCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WeekCountOutputType without action
+   */
+  export type WeekCountOutputTypeCountResourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResourceWhereInput
+  }
+
+
+  /**
+   * Count Type ResourceCountOutputType
+   */
+
+  export type ResourceCountOutputType = {
+    weeks: number
+  }
+
+  export type ResourceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    weeks?: boolean | ResourceCountOutputTypeCountWeeksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ResourceCountOutputType without action
+   */
+  export type ResourceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceCountOutputType
+     */
+    select?: ResourceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ResourceCountOutputType without action
+   */
+  export type ResourceCountOutputTypeCountWeeksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeekWhereInput
   }
 
 
@@ -3229,20 +3604,28 @@ export namespace Prisma {
 
   export type CourseAvgAggregateOutputType = {
     lessons: number | null
+    price: number | null
   }
 
   export type CourseSumAggregateOutputType = {
     lessons: number | null
+    price: number | null
   }
 
   export type CourseMinAggregateOutputType = {
     id: string | null
     title: string | null
+    slug: string | null
     description: string | null
+    shortDescription: string | null
     duration: string | null
     level: string | null
     lessons: number | null
     thumbnail: string | null
+    price: number | null
+    instructor: string | null
+    category: string | null
+    isPublished: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3250,11 +3633,17 @@ export namespace Prisma {
   export type CourseMaxAggregateOutputType = {
     id: string | null
     title: string | null
+    slug: string | null
     description: string | null
+    shortDescription: string | null
     duration: string | null
     level: string | null
     lessons: number | null
     thumbnail: string | null
+    price: number | null
+    instructor: string | null
+    category: string | null
+    isPublished: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3262,33 +3651,50 @@ export namespace Prisma {
   export type CourseCountAggregateOutputType = {
     id: number
     title: number
+    slug: number
     description: number
+    shortDescription: number
     duration: number
     level: number
     lessons: number
     thumbnail: number
+    price: number
+    instructor: number
+    category: number
+    tags: number
+    isPublished: number
     createdAt: number
     updatedAt: number
+    requirements: number
+    whatYouWillLearn: number
     _all: number
   }
 
 
   export type CourseAvgAggregateInputType = {
     lessons?: true
+    price?: true
   }
 
   export type CourseSumAggregateInputType = {
     lessons?: true
+    price?: true
   }
 
   export type CourseMinAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     description?: true
+    shortDescription?: true
     duration?: true
     level?: true
     lessons?: true
     thumbnail?: true
+    price?: true
+    instructor?: true
+    category?: true
+    isPublished?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3296,11 +3702,17 @@ export namespace Prisma {
   export type CourseMaxAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     description?: true
+    shortDescription?: true
     duration?: true
     level?: true
     lessons?: true
     thumbnail?: true
+    price?: true
+    instructor?: true
+    category?: true
+    isPublished?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3308,13 +3720,22 @@ export namespace Prisma {
   export type CourseCountAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     description?: true
+    shortDescription?: true
     duration?: true
     level?: true
     lessons?: true
     thumbnail?: true
+    price?: true
+    instructor?: true
+    category?: true
+    tags?: true
+    isPublished?: true
     createdAt?: true
     updatedAt?: true
+    requirements?: true
+    whatYouWillLearn?: true
     _all?: true
   }
 
@@ -3407,13 +3828,22 @@ export namespace Prisma {
   export type CourseGroupByOutputType = {
     id: string
     title: string
+    slug: string
     description: string
+    shortDescription: string
     duration: string
     level: string
     lessons: number
     thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonValue
+    isPublished: boolean
     createdAt: Date
     updatedAt: Date
+    requirements: JsonValue
+    whatYouWillLearn: JsonValue
     _count: CourseCountAggregateOutputType | null
     _avg: CourseAvgAggregateOutputType | null
     _sum: CourseSumAggregateOutputType | null
@@ -3438,66 +3868,124 @@ export namespace Prisma {
   export type CourseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
+    shortDescription?: boolean
     duration?: boolean
     level?: boolean
     lessons?: boolean
     thumbnail?: boolean
+    price?: boolean
+    instructor?: boolean
+    category?: boolean
+    tags?: boolean
+    isPublished?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    requirements?: boolean
+    whatYouWillLearn?: boolean
+    weeklySchedule?: boolean | Course$weeklyScheduleArgs<ExtArgs>
+    videos?: boolean | Course$videosArgs<ExtArgs>
+    _count?: boolean | CourseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
 
   export type CourseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
+    shortDescription?: boolean
     duration?: boolean
     level?: boolean
     lessons?: boolean
     thumbnail?: boolean
+    price?: boolean
+    instructor?: boolean
+    category?: boolean
+    tags?: boolean
+    isPublished?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    requirements?: boolean
+    whatYouWillLearn?: boolean
   }, ExtArgs["result"]["course"]>
 
   export type CourseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
+    shortDescription?: boolean
     duration?: boolean
     level?: boolean
     lessons?: boolean
     thumbnail?: boolean
+    price?: boolean
+    instructor?: boolean
+    category?: boolean
+    tags?: boolean
+    isPublished?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    requirements?: boolean
+    whatYouWillLearn?: boolean
   }, ExtArgs["result"]["course"]>
 
   export type CourseSelectScalar = {
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
+    shortDescription?: boolean
     duration?: boolean
     level?: boolean
     lessons?: boolean
     thumbnail?: boolean
+    price?: boolean
+    instructor?: boolean
+    category?: boolean
+    tags?: boolean
+    isPublished?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    requirements?: boolean
+    whatYouWillLearn?: boolean
   }
 
-  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "duration" | "level" | "lessons" | "thumbnail" | "createdAt" | "updatedAt", ExtArgs["result"]["course"]>
+  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "shortDescription" | "duration" | "level" | "lessons" | "thumbnail" | "price" | "instructor" | "category" | "tags" | "isPublished" | "createdAt" | "updatedAt" | "requirements" | "whatYouWillLearn", ExtArgs["result"]["course"]>
+  export type CourseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    weeklySchedule?: boolean | Course$weeklyScheduleArgs<ExtArgs>
+    videos?: boolean | Course$videosArgs<ExtArgs>
+    _count?: boolean | CourseCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CourseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CourseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $CoursePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Course"
-    objects: {}
+    objects: {
+      weeklySchedule: Prisma.$WeekPayload<ExtArgs>[]
+      videos: Prisma.$VideoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
+      slug: string
       description: string
+      shortDescription: string
       duration: string
       level: string
       lessons: number
       thumbnail: string
+      price: number
+      instructor: string
+      category: string
+      tags: Prisma.JsonValue
+      isPublished: boolean
       createdAt: Date
       updatedAt: Date
+      requirements: Prisma.JsonValue
+      whatYouWillLearn: Prisma.JsonValue
     }, ExtArgs["result"]["course"]>
     composites: {}
   }
@@ -3892,6 +4380,8 @@ export namespace Prisma {
    */
   export interface Prisma__CourseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    weeklySchedule<T extends Course$weeklyScheduleArgs<ExtArgs> = {}>(args?: Subset<T, Course$weeklyScheduleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    videos<T extends Course$videosArgs<ExtArgs> = {}>(args?: Subset<T, Course$videosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3923,13 +4413,22 @@ export namespace Prisma {
   interface CourseFieldRefs {
     readonly id: FieldRef<"Course", 'String'>
     readonly title: FieldRef<"Course", 'String'>
+    readonly slug: FieldRef<"Course", 'String'>
     readonly description: FieldRef<"Course", 'String'>
+    readonly shortDescription: FieldRef<"Course", 'String'>
     readonly duration: FieldRef<"Course", 'String'>
     readonly level: FieldRef<"Course", 'String'>
     readonly lessons: FieldRef<"Course", 'Int'>
     readonly thumbnail: FieldRef<"Course", 'String'>
+    readonly price: FieldRef<"Course", 'Float'>
+    readonly instructor: FieldRef<"Course", 'String'>
+    readonly category: FieldRef<"Course", 'String'>
+    readonly tags: FieldRef<"Course", 'Json'>
+    readonly isPublished: FieldRef<"Course", 'Boolean'>
     readonly createdAt: FieldRef<"Course", 'DateTime'>
     readonly updatedAt: FieldRef<"Course", 'DateTime'>
+    readonly requirements: FieldRef<"Course", 'Json'>
+    readonly whatYouWillLearn: FieldRef<"Course", 'Json'>
   }
     
 
@@ -3946,6 +4445,10 @@ export namespace Prisma {
      * Omit specific fields from the Course
      */
     omit?: CourseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
     /**
      * Filter, which Course to fetch.
      */
@@ -3965,6 +4468,10 @@ export namespace Prisma {
      */
     omit?: CourseOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
+    /**
      * Filter, which Course to fetch.
      */
     where: CourseWhereUniqueInput
@@ -3982,6 +4489,10 @@ export namespace Prisma {
      * Omit specific fields from the Course
      */
     omit?: CourseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
     /**
      * Filter, which Course to fetch.
      */
@@ -4031,6 +4542,10 @@ export namespace Prisma {
      */
     omit?: CourseOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
+    /**
      * Filter, which Course to fetch.
      */
     where?: CourseWhereInput
@@ -4079,6 +4594,10 @@ export namespace Prisma {
      */
     omit?: CourseOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
+    /**
      * Filter, which Courses to fetch.
      */
     where?: CourseWhereInput
@@ -4121,6 +4640,10 @@ export namespace Prisma {
      * Omit specific fields from the Course
      */
     omit?: CourseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
     /**
      * The data needed to create a Course.
      */
@@ -4169,6 +4692,10 @@ export namespace Prisma {
      * Omit specific fields from the Course
      */
     omit?: CourseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
     /**
      * The data needed to update a Course.
      */
@@ -4236,6 +4763,10 @@ export namespace Prisma {
      */
     omit?: CourseOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
+    /**
      * The filter to search for the Course to update in case it exists.
      */
     where: CourseWhereUniqueInput
@@ -4262,6 +4793,10 @@ export namespace Prisma {
      */
     omit?: CourseOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
+    /**
      * Filter which Course to delete.
      */
     where: CourseWhereUniqueInput
@@ -4282,6 +4817,54 @@ export namespace Prisma {
   }
 
   /**
+   * Course.weeklySchedule
+   */
+  export type Course$weeklyScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    where?: WeekWhereInput
+    orderBy?: WeekOrderByWithRelationInput | WeekOrderByWithRelationInput[]
+    cursor?: WeekWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WeekScalarFieldEnum | WeekScalarFieldEnum[]
+  }
+
+  /**
+   * Course.videos
+   */
+  export type Course$videosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    where?: VideoWhereInput
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    cursor?: VideoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
    * Course without action
    */
   export type CourseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4293,6 +4876,3265 @@ export namespace Prisma {
      * Omit specific fields from the Course
      */
     omit?: CourseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Week
+   */
+
+  export type AggregateWeek = {
+    _count: WeekCountAggregateOutputType | null
+    _avg: WeekAvgAggregateOutputType | null
+    _sum: WeekSumAggregateOutputType | null
+    _min: WeekMinAggregateOutputType | null
+    _max: WeekMaxAggregateOutputType | null
+  }
+
+  export type WeekAvgAggregateOutputType = {
+    weekNumber: number | null
+  }
+
+  export type WeekSumAggregateOutputType = {
+    weekNumber: number | null
+  }
+
+  export type WeekMinAggregateOutputType = {
+    id: string | null
+    courseId: string | null
+    weekNumber: number | null
+    title: string | null
+  }
+
+  export type WeekMaxAggregateOutputType = {
+    id: string | null
+    courseId: string | null
+    weekNumber: number | null
+    title: string | null
+  }
+
+  export type WeekCountAggregateOutputType = {
+    id: number
+    courseId: number
+    weekNumber: number
+    title: number
+    topics: number
+    activities: number
+    _all: number
+  }
+
+
+  export type WeekAvgAggregateInputType = {
+    weekNumber?: true
+  }
+
+  export type WeekSumAggregateInputType = {
+    weekNumber?: true
+  }
+
+  export type WeekMinAggregateInputType = {
+    id?: true
+    courseId?: true
+    weekNumber?: true
+    title?: true
+  }
+
+  export type WeekMaxAggregateInputType = {
+    id?: true
+    courseId?: true
+    weekNumber?: true
+    title?: true
+  }
+
+  export type WeekCountAggregateInputType = {
+    id?: true
+    courseId?: true
+    weekNumber?: true
+    title?: true
+    topics?: true
+    activities?: true
+    _all?: true
+  }
+
+  export type WeekAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Week to aggregate.
+     */
+    where?: WeekWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Weeks to fetch.
+     */
+    orderBy?: WeekOrderByWithRelationInput | WeekOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WeekWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Weeks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Weeks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Weeks
+    **/
+    _count?: true | WeekCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WeekAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WeekSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WeekMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WeekMaxAggregateInputType
+  }
+
+  export type GetWeekAggregateType<T extends WeekAggregateArgs> = {
+        [P in keyof T & keyof AggregateWeek]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeek[P]>
+      : GetScalarType<T[P], AggregateWeek[P]>
+  }
+
+
+
+
+  export type WeekGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeekWhereInput
+    orderBy?: WeekOrderByWithAggregationInput | WeekOrderByWithAggregationInput[]
+    by: WeekScalarFieldEnum[] | WeekScalarFieldEnum
+    having?: WeekScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WeekCountAggregateInputType | true
+    _avg?: WeekAvgAggregateInputType
+    _sum?: WeekSumAggregateInputType
+    _min?: WeekMinAggregateInputType
+    _max?: WeekMaxAggregateInputType
+  }
+
+  export type WeekGroupByOutputType = {
+    id: string
+    courseId: string
+    weekNumber: number
+    title: string
+    topics: JsonValue
+    activities: JsonValue
+    _count: WeekCountAggregateOutputType | null
+    _avg: WeekAvgAggregateOutputType | null
+    _sum: WeekSumAggregateOutputType | null
+    _min: WeekMinAggregateOutputType | null
+    _max: WeekMaxAggregateOutputType | null
+  }
+
+  type GetWeekGroupByPayload<T extends WeekGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WeekGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WeekGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WeekGroupByOutputType[P]>
+            : GetScalarType<T[P], WeekGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WeekSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    courseId?: boolean
+    weekNumber?: boolean
+    title?: boolean
+    topics?: boolean
+    activities?: boolean
+    resources?: boolean | Week$resourcesArgs<ExtArgs>
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+    _count?: boolean | WeekCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["week"]>
+
+  export type WeekSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    courseId?: boolean
+    weekNumber?: boolean
+    title?: boolean
+    topics?: boolean
+    activities?: boolean
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["week"]>
+
+  export type WeekSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    courseId?: boolean
+    weekNumber?: boolean
+    title?: boolean
+    topics?: boolean
+    activities?: boolean
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["week"]>
+
+  export type WeekSelectScalar = {
+    id?: boolean
+    courseId?: boolean
+    weekNumber?: boolean
+    title?: boolean
+    topics?: boolean
+    activities?: boolean
+  }
+
+  export type WeekOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "courseId" | "weekNumber" | "title" | "topics" | "activities", ExtArgs["result"]["week"]>
+  export type WeekInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    resources?: boolean | Week$resourcesArgs<ExtArgs>
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+    _count?: boolean | WeekCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WeekIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }
+  export type WeekIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }
+
+  export type $WeekPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Week"
+    objects: {
+      resources: Prisma.$ResourcePayload<ExtArgs>[]
+      course: Prisma.$CoursePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      courseId: string
+      weekNumber: number
+      title: string
+      topics: Prisma.JsonValue
+      activities: Prisma.JsonValue
+    }, ExtArgs["result"]["week"]>
+    composites: {}
+  }
+
+  type WeekGetPayload<S extends boolean | null | undefined | WeekDefaultArgs> = $Result.GetResult<Prisma.$WeekPayload, S>
+
+  type WeekCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WeekFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WeekCountAggregateInputType | true
+    }
+
+  export interface WeekDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Week'], meta: { name: 'Week' } }
+    /**
+     * Find zero or one Week that matches the filter.
+     * @param {WeekFindUniqueArgs} args - Arguments to find a Week
+     * @example
+     * // Get one Week
+     * const week = await prisma.week.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WeekFindUniqueArgs>(args: SelectSubset<T, WeekFindUniqueArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Week that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WeekFindUniqueOrThrowArgs} args - Arguments to find a Week
+     * @example
+     * // Get one Week
+     * const week = await prisma.week.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WeekFindUniqueOrThrowArgs>(args: SelectSubset<T, WeekFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Week that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeekFindFirstArgs} args - Arguments to find a Week
+     * @example
+     * // Get one Week
+     * const week = await prisma.week.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WeekFindFirstArgs>(args?: SelectSubset<T, WeekFindFirstArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Week that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeekFindFirstOrThrowArgs} args - Arguments to find a Week
+     * @example
+     * // Get one Week
+     * const week = await prisma.week.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WeekFindFirstOrThrowArgs>(args?: SelectSubset<T, WeekFindFirstOrThrowArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Weeks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeekFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Weeks
+     * const weeks = await prisma.week.findMany()
+     * 
+     * // Get first 10 Weeks
+     * const weeks = await prisma.week.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const weekWithIdOnly = await prisma.week.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WeekFindManyArgs>(args?: SelectSubset<T, WeekFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Week.
+     * @param {WeekCreateArgs} args - Arguments to create a Week.
+     * @example
+     * // Create one Week
+     * const Week = await prisma.week.create({
+     *   data: {
+     *     // ... data to create a Week
+     *   }
+     * })
+     * 
+     */
+    create<T extends WeekCreateArgs>(args: SelectSubset<T, WeekCreateArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Weeks.
+     * @param {WeekCreateManyArgs} args - Arguments to create many Weeks.
+     * @example
+     * // Create many Weeks
+     * const week = await prisma.week.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WeekCreateManyArgs>(args?: SelectSubset<T, WeekCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Weeks and returns the data saved in the database.
+     * @param {WeekCreateManyAndReturnArgs} args - Arguments to create many Weeks.
+     * @example
+     * // Create many Weeks
+     * const week = await prisma.week.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Weeks and only return the `id`
+     * const weekWithIdOnly = await prisma.week.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WeekCreateManyAndReturnArgs>(args?: SelectSubset<T, WeekCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Week.
+     * @param {WeekDeleteArgs} args - Arguments to delete one Week.
+     * @example
+     * // Delete one Week
+     * const Week = await prisma.week.delete({
+     *   where: {
+     *     // ... filter to delete one Week
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WeekDeleteArgs>(args: SelectSubset<T, WeekDeleteArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Week.
+     * @param {WeekUpdateArgs} args - Arguments to update one Week.
+     * @example
+     * // Update one Week
+     * const week = await prisma.week.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WeekUpdateArgs>(args: SelectSubset<T, WeekUpdateArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Weeks.
+     * @param {WeekDeleteManyArgs} args - Arguments to filter Weeks to delete.
+     * @example
+     * // Delete a few Weeks
+     * const { count } = await prisma.week.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WeekDeleteManyArgs>(args?: SelectSubset<T, WeekDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Weeks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeekUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Weeks
+     * const week = await prisma.week.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WeekUpdateManyArgs>(args: SelectSubset<T, WeekUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Weeks and returns the data updated in the database.
+     * @param {WeekUpdateManyAndReturnArgs} args - Arguments to update many Weeks.
+     * @example
+     * // Update many Weeks
+     * const week = await prisma.week.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Weeks and only return the `id`
+     * const weekWithIdOnly = await prisma.week.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WeekUpdateManyAndReturnArgs>(args: SelectSubset<T, WeekUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Week.
+     * @param {WeekUpsertArgs} args - Arguments to update or create a Week.
+     * @example
+     * // Update or create a Week
+     * const week = await prisma.week.upsert({
+     *   create: {
+     *     // ... data to create a Week
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Week we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WeekUpsertArgs>(args: SelectSubset<T, WeekUpsertArgs<ExtArgs>>): Prisma__WeekClient<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Weeks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeekCountArgs} args - Arguments to filter Weeks to count.
+     * @example
+     * // Count the number of Weeks
+     * const count = await prisma.week.count({
+     *   where: {
+     *     // ... the filter for the Weeks we want to count
+     *   }
+     * })
+    **/
+    count<T extends WeekCountArgs>(
+      args?: Subset<T, WeekCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WeekCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Week.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeekAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WeekAggregateArgs>(args: Subset<T, WeekAggregateArgs>): Prisma.PrismaPromise<GetWeekAggregateType<T>>
+
+    /**
+     * Group by Week.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeekGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WeekGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WeekGroupByArgs['orderBy'] }
+        : { orderBy?: WeekGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WeekGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeekGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Week model
+   */
+  readonly fields: WeekFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Week.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WeekClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    resources<T extends Week$resourcesArgs<ExtArgs> = {}>(args?: Subset<T, Week$resourcesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    course<T extends CourseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CourseDefaultArgs<ExtArgs>>): Prisma__CourseClient<$Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Week model
+   */
+  interface WeekFieldRefs {
+    readonly id: FieldRef<"Week", 'String'>
+    readonly courseId: FieldRef<"Week", 'String'>
+    readonly weekNumber: FieldRef<"Week", 'Int'>
+    readonly title: FieldRef<"Week", 'String'>
+    readonly topics: FieldRef<"Week", 'Json'>
+    readonly activities: FieldRef<"Week", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Week findUnique
+   */
+  export type WeekFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * Filter, which Week to fetch.
+     */
+    where: WeekWhereUniqueInput
+  }
+
+  /**
+   * Week findUniqueOrThrow
+   */
+  export type WeekFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * Filter, which Week to fetch.
+     */
+    where: WeekWhereUniqueInput
+  }
+
+  /**
+   * Week findFirst
+   */
+  export type WeekFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * Filter, which Week to fetch.
+     */
+    where?: WeekWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Weeks to fetch.
+     */
+    orderBy?: WeekOrderByWithRelationInput | WeekOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Weeks.
+     */
+    cursor?: WeekWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Weeks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Weeks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Weeks.
+     */
+    distinct?: WeekScalarFieldEnum | WeekScalarFieldEnum[]
+  }
+
+  /**
+   * Week findFirstOrThrow
+   */
+  export type WeekFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * Filter, which Week to fetch.
+     */
+    where?: WeekWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Weeks to fetch.
+     */
+    orderBy?: WeekOrderByWithRelationInput | WeekOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Weeks.
+     */
+    cursor?: WeekWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Weeks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Weeks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Weeks.
+     */
+    distinct?: WeekScalarFieldEnum | WeekScalarFieldEnum[]
+  }
+
+  /**
+   * Week findMany
+   */
+  export type WeekFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * Filter, which Weeks to fetch.
+     */
+    where?: WeekWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Weeks to fetch.
+     */
+    orderBy?: WeekOrderByWithRelationInput | WeekOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Weeks.
+     */
+    cursor?: WeekWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Weeks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Weeks.
+     */
+    skip?: number
+    distinct?: WeekScalarFieldEnum | WeekScalarFieldEnum[]
+  }
+
+  /**
+   * Week create
+   */
+  export type WeekCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Week.
+     */
+    data: XOR<WeekCreateInput, WeekUncheckedCreateInput>
+  }
+
+  /**
+   * Week createMany
+   */
+  export type WeekCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Weeks.
+     */
+    data: WeekCreateManyInput | WeekCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Week createManyAndReturn
+   */
+  export type WeekCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * The data used to create many Weeks.
+     */
+    data: WeekCreateManyInput | WeekCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Week update
+   */
+  export type WeekUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Week.
+     */
+    data: XOR<WeekUpdateInput, WeekUncheckedUpdateInput>
+    /**
+     * Choose, which Week to update.
+     */
+    where: WeekWhereUniqueInput
+  }
+
+  /**
+   * Week updateMany
+   */
+  export type WeekUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Weeks.
+     */
+    data: XOR<WeekUpdateManyMutationInput, WeekUncheckedUpdateManyInput>
+    /**
+     * Filter which Weeks to update
+     */
+    where?: WeekWhereInput
+    /**
+     * Limit how many Weeks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Week updateManyAndReturn
+   */
+  export type WeekUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * The data used to update Weeks.
+     */
+    data: XOR<WeekUpdateManyMutationInput, WeekUncheckedUpdateManyInput>
+    /**
+     * Filter which Weeks to update
+     */
+    where?: WeekWhereInput
+    /**
+     * Limit how many Weeks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Week upsert
+   */
+  export type WeekUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Week to update in case it exists.
+     */
+    where: WeekWhereUniqueInput
+    /**
+     * In case the Week found by the `where` argument doesn't exist, create a new Week with this data.
+     */
+    create: XOR<WeekCreateInput, WeekUncheckedCreateInput>
+    /**
+     * In case the Week was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WeekUpdateInput, WeekUncheckedUpdateInput>
+  }
+
+  /**
+   * Week delete
+   */
+  export type WeekDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    /**
+     * Filter which Week to delete.
+     */
+    where: WeekWhereUniqueInput
+  }
+
+  /**
+   * Week deleteMany
+   */
+  export type WeekDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Weeks to delete
+     */
+    where?: WeekWhereInput
+    /**
+     * Limit how many Weeks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Week.resources
+   */
+  export type Week$resourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    where?: ResourceWhereInput
+    orderBy?: ResourceOrderByWithRelationInput | ResourceOrderByWithRelationInput[]
+    cursor?: ResourceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ResourceScalarFieldEnum | ResourceScalarFieldEnum[]
+  }
+
+  /**
+   * Week without action
+   */
+  export type WeekDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Resource
+   */
+
+  export type AggregateResource = {
+    _count: ResourceCountAggregateOutputType | null
+    _min: ResourceMinAggregateOutputType | null
+    _max: ResourceMaxAggregateOutputType | null
+  }
+
+  export type ResourceMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    url: string | null
+    type: string | null
+    description: string | null
+  }
+
+  export type ResourceMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    url: string | null
+    type: string | null
+    description: string | null
+  }
+
+  export type ResourceCountAggregateOutputType = {
+    id: number
+    title: number
+    url: number
+    type: number
+    description: number
+    _all: number
+  }
+
+
+  export type ResourceMinAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    type?: true
+    description?: true
+  }
+
+  export type ResourceMaxAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    type?: true
+    description?: true
+  }
+
+  export type ResourceCountAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    type?: true
+    description?: true
+    _all?: true
+  }
+
+  export type ResourceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Resource to aggregate.
+     */
+    where?: ResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resources to fetch.
+     */
+    orderBy?: ResourceOrderByWithRelationInput | ResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resources.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Resources
+    **/
+    _count?: true | ResourceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ResourceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ResourceMaxAggregateInputType
+  }
+
+  export type GetResourceAggregateType<T extends ResourceAggregateArgs> = {
+        [P in keyof T & keyof AggregateResource]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateResource[P]>
+      : GetScalarType<T[P], AggregateResource[P]>
+  }
+
+
+
+
+  export type ResourceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResourceWhereInput
+    orderBy?: ResourceOrderByWithAggregationInput | ResourceOrderByWithAggregationInput[]
+    by: ResourceScalarFieldEnum[] | ResourceScalarFieldEnum
+    having?: ResourceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ResourceCountAggregateInputType | true
+    _min?: ResourceMinAggregateInputType
+    _max?: ResourceMaxAggregateInputType
+  }
+
+  export type ResourceGroupByOutputType = {
+    id: string
+    title: string
+    url: string
+    type: string
+    description: string | null
+    _count: ResourceCountAggregateOutputType | null
+    _min: ResourceMinAggregateOutputType | null
+    _max: ResourceMaxAggregateOutputType | null
+  }
+
+  type GetResourceGroupByPayload<T extends ResourceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ResourceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ResourceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ResourceGroupByOutputType[P]>
+            : GetScalarType<T[P], ResourceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ResourceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    type?: boolean
+    description?: boolean
+    weeks?: boolean | Resource$weeksArgs<ExtArgs>
+    _count?: boolean | ResourceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["resource"]>
+
+  export type ResourceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    type?: boolean
+    description?: boolean
+  }, ExtArgs["result"]["resource"]>
+
+  export type ResourceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    type?: boolean
+    description?: boolean
+  }, ExtArgs["result"]["resource"]>
+
+  export type ResourceSelectScalar = {
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    type?: boolean
+    description?: boolean
+  }
+
+  export type ResourceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "type" | "description", ExtArgs["result"]["resource"]>
+  export type ResourceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    weeks?: boolean | Resource$weeksArgs<ExtArgs>
+    _count?: boolean | ResourceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ResourceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ResourceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ResourcePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Resource"
+    objects: {
+      weeks: Prisma.$WeekPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      url: string
+      type: string
+      description: string | null
+    }, ExtArgs["result"]["resource"]>
+    composites: {}
+  }
+
+  type ResourceGetPayload<S extends boolean | null | undefined | ResourceDefaultArgs> = $Result.GetResult<Prisma.$ResourcePayload, S>
+
+  type ResourceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ResourceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ResourceCountAggregateInputType | true
+    }
+
+  export interface ResourceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Resource'], meta: { name: 'Resource' } }
+    /**
+     * Find zero or one Resource that matches the filter.
+     * @param {ResourceFindUniqueArgs} args - Arguments to find a Resource
+     * @example
+     * // Get one Resource
+     * const resource = await prisma.resource.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ResourceFindUniqueArgs>(args: SelectSubset<T, ResourceFindUniqueArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Resource that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ResourceFindUniqueOrThrowArgs} args - Arguments to find a Resource
+     * @example
+     * // Get one Resource
+     * const resource = await prisma.resource.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ResourceFindUniqueOrThrowArgs>(args: SelectSubset<T, ResourceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Resource that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceFindFirstArgs} args - Arguments to find a Resource
+     * @example
+     * // Get one Resource
+     * const resource = await prisma.resource.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ResourceFindFirstArgs>(args?: SelectSubset<T, ResourceFindFirstArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Resource that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceFindFirstOrThrowArgs} args - Arguments to find a Resource
+     * @example
+     * // Get one Resource
+     * const resource = await prisma.resource.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ResourceFindFirstOrThrowArgs>(args?: SelectSubset<T, ResourceFindFirstOrThrowArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Resources that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Resources
+     * const resources = await prisma.resource.findMany()
+     * 
+     * // Get first 10 Resources
+     * const resources = await prisma.resource.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const resourceWithIdOnly = await prisma.resource.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ResourceFindManyArgs>(args?: SelectSubset<T, ResourceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Resource.
+     * @param {ResourceCreateArgs} args - Arguments to create a Resource.
+     * @example
+     * // Create one Resource
+     * const Resource = await prisma.resource.create({
+     *   data: {
+     *     // ... data to create a Resource
+     *   }
+     * })
+     * 
+     */
+    create<T extends ResourceCreateArgs>(args: SelectSubset<T, ResourceCreateArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Resources.
+     * @param {ResourceCreateManyArgs} args - Arguments to create many Resources.
+     * @example
+     * // Create many Resources
+     * const resource = await prisma.resource.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ResourceCreateManyArgs>(args?: SelectSubset<T, ResourceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Resources and returns the data saved in the database.
+     * @param {ResourceCreateManyAndReturnArgs} args - Arguments to create many Resources.
+     * @example
+     * // Create many Resources
+     * const resource = await prisma.resource.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Resources and only return the `id`
+     * const resourceWithIdOnly = await prisma.resource.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ResourceCreateManyAndReturnArgs>(args?: SelectSubset<T, ResourceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Resource.
+     * @param {ResourceDeleteArgs} args - Arguments to delete one Resource.
+     * @example
+     * // Delete one Resource
+     * const Resource = await prisma.resource.delete({
+     *   where: {
+     *     // ... filter to delete one Resource
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ResourceDeleteArgs>(args: SelectSubset<T, ResourceDeleteArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Resource.
+     * @param {ResourceUpdateArgs} args - Arguments to update one Resource.
+     * @example
+     * // Update one Resource
+     * const resource = await prisma.resource.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ResourceUpdateArgs>(args: SelectSubset<T, ResourceUpdateArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Resources.
+     * @param {ResourceDeleteManyArgs} args - Arguments to filter Resources to delete.
+     * @example
+     * // Delete a few Resources
+     * const { count } = await prisma.resource.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ResourceDeleteManyArgs>(args?: SelectSubset<T, ResourceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Resources.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Resources
+     * const resource = await prisma.resource.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ResourceUpdateManyArgs>(args: SelectSubset<T, ResourceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Resources and returns the data updated in the database.
+     * @param {ResourceUpdateManyAndReturnArgs} args - Arguments to update many Resources.
+     * @example
+     * // Update many Resources
+     * const resource = await prisma.resource.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Resources and only return the `id`
+     * const resourceWithIdOnly = await prisma.resource.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ResourceUpdateManyAndReturnArgs>(args: SelectSubset<T, ResourceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Resource.
+     * @param {ResourceUpsertArgs} args - Arguments to update or create a Resource.
+     * @example
+     * // Update or create a Resource
+     * const resource = await prisma.resource.upsert({
+     *   create: {
+     *     // ... data to create a Resource
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Resource we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ResourceUpsertArgs>(args: SelectSubset<T, ResourceUpsertArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Resources.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceCountArgs} args - Arguments to filter Resources to count.
+     * @example
+     * // Count the number of Resources
+     * const count = await prisma.resource.count({
+     *   where: {
+     *     // ... the filter for the Resources we want to count
+     *   }
+     * })
+    **/
+    count<T extends ResourceCountArgs>(
+      args?: Subset<T, ResourceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ResourceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Resource.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ResourceAggregateArgs>(args: Subset<T, ResourceAggregateArgs>): Prisma.PrismaPromise<GetResourceAggregateType<T>>
+
+    /**
+     * Group by Resource.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ResourceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ResourceGroupByArgs['orderBy'] }
+        : { orderBy?: ResourceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ResourceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetResourceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Resource model
+   */
+  readonly fields: ResourceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Resource.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ResourceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    weeks<T extends Resource$weeksArgs<ExtArgs> = {}>(args?: Subset<T, Resource$weeksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeekPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Resource model
+   */
+  interface ResourceFieldRefs {
+    readonly id: FieldRef<"Resource", 'String'>
+    readonly title: FieldRef<"Resource", 'String'>
+    readonly url: FieldRef<"Resource", 'String'>
+    readonly type: FieldRef<"Resource", 'String'>
+    readonly description: FieldRef<"Resource", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Resource findUnique
+   */
+  export type ResourceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * Filter, which Resource to fetch.
+     */
+    where: ResourceWhereUniqueInput
+  }
+
+  /**
+   * Resource findUniqueOrThrow
+   */
+  export type ResourceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * Filter, which Resource to fetch.
+     */
+    where: ResourceWhereUniqueInput
+  }
+
+  /**
+   * Resource findFirst
+   */
+  export type ResourceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * Filter, which Resource to fetch.
+     */
+    where?: ResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resources to fetch.
+     */
+    orderBy?: ResourceOrderByWithRelationInput | ResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Resources.
+     */
+    cursor?: ResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resources.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Resources.
+     */
+    distinct?: ResourceScalarFieldEnum | ResourceScalarFieldEnum[]
+  }
+
+  /**
+   * Resource findFirstOrThrow
+   */
+  export type ResourceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * Filter, which Resource to fetch.
+     */
+    where?: ResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resources to fetch.
+     */
+    orderBy?: ResourceOrderByWithRelationInput | ResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Resources.
+     */
+    cursor?: ResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resources.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Resources.
+     */
+    distinct?: ResourceScalarFieldEnum | ResourceScalarFieldEnum[]
+  }
+
+  /**
+   * Resource findMany
+   */
+  export type ResourceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * Filter, which Resources to fetch.
+     */
+    where?: ResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resources to fetch.
+     */
+    orderBy?: ResourceOrderByWithRelationInput | ResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Resources.
+     */
+    cursor?: ResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resources.
+     */
+    skip?: number
+    distinct?: ResourceScalarFieldEnum | ResourceScalarFieldEnum[]
+  }
+
+  /**
+   * Resource create
+   */
+  export type ResourceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Resource.
+     */
+    data: XOR<ResourceCreateInput, ResourceUncheckedCreateInput>
+  }
+
+  /**
+   * Resource createMany
+   */
+  export type ResourceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Resources.
+     */
+    data: ResourceCreateManyInput | ResourceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Resource createManyAndReturn
+   */
+  export type ResourceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * The data used to create many Resources.
+     */
+    data: ResourceCreateManyInput | ResourceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Resource update
+   */
+  export type ResourceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Resource.
+     */
+    data: XOR<ResourceUpdateInput, ResourceUncheckedUpdateInput>
+    /**
+     * Choose, which Resource to update.
+     */
+    where: ResourceWhereUniqueInput
+  }
+
+  /**
+   * Resource updateMany
+   */
+  export type ResourceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Resources.
+     */
+    data: XOR<ResourceUpdateManyMutationInput, ResourceUncheckedUpdateManyInput>
+    /**
+     * Filter which Resources to update
+     */
+    where?: ResourceWhereInput
+    /**
+     * Limit how many Resources to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Resource updateManyAndReturn
+   */
+  export type ResourceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * The data used to update Resources.
+     */
+    data: XOR<ResourceUpdateManyMutationInput, ResourceUncheckedUpdateManyInput>
+    /**
+     * Filter which Resources to update
+     */
+    where?: ResourceWhereInput
+    /**
+     * Limit how many Resources to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Resource upsert
+   */
+  export type ResourceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Resource to update in case it exists.
+     */
+    where: ResourceWhereUniqueInput
+    /**
+     * In case the Resource found by the `where` argument doesn't exist, create a new Resource with this data.
+     */
+    create: XOR<ResourceCreateInput, ResourceUncheckedCreateInput>
+    /**
+     * In case the Resource was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ResourceUpdateInput, ResourceUncheckedUpdateInput>
+  }
+
+  /**
+   * Resource delete
+   */
+  export type ResourceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    /**
+     * Filter which Resource to delete.
+     */
+    where: ResourceWhereUniqueInput
+  }
+
+  /**
+   * Resource deleteMany
+   */
+  export type ResourceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Resources to delete
+     */
+    where?: ResourceWhereInput
+    /**
+     * Limit how many Resources to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Resource.weeks
+   */
+  export type Resource$weeksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week
+     */
+    select?: WeekSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week
+     */
+    omit?: WeekOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeekInclude<ExtArgs> | null
+    where?: WeekWhereInput
+    orderBy?: WeekOrderByWithRelationInput | WeekOrderByWithRelationInput[]
+    cursor?: WeekWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WeekScalarFieldEnum | WeekScalarFieldEnum[]
+  }
+
+  /**
+   * Resource without action
+   */
+  export type ResourceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Video
+   */
+
+  export type AggregateVideo = {
+    _count: VideoCountAggregateOutputType | null
+    _min: VideoMinAggregateOutputType | null
+    _max: VideoMaxAggregateOutputType | null
+  }
+
+  export type VideoMinAggregateOutputType = {
+    id: string | null
+    courseId: string | null
+    title: string | null
+    url: string | null
+    duration: string | null
+  }
+
+  export type VideoMaxAggregateOutputType = {
+    id: string | null
+    courseId: string | null
+    title: string | null
+    url: string | null
+    duration: string | null
+  }
+
+  export type VideoCountAggregateOutputType = {
+    id: number
+    courseId: number
+    title: number
+    url: number
+    duration: number
+    _all: number
+  }
+
+
+  export type VideoMinAggregateInputType = {
+    id?: true
+    courseId?: true
+    title?: true
+    url?: true
+    duration?: true
+  }
+
+  export type VideoMaxAggregateInputType = {
+    id?: true
+    courseId?: true
+    title?: true
+    url?: true
+    duration?: true
+  }
+
+  export type VideoCountAggregateInputType = {
+    id?: true
+    courseId?: true
+    title?: true
+    url?: true
+    duration?: true
+    _all?: true
+  }
+
+  export type VideoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Video to aggregate.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Videos
+    **/
+    _count?: true | VideoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VideoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VideoMaxAggregateInputType
+  }
+
+  export type GetVideoAggregateType<T extends VideoAggregateArgs> = {
+        [P in keyof T & keyof AggregateVideo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVideo[P]>
+      : GetScalarType<T[P], AggregateVideo[P]>
+  }
+
+
+
+
+  export type VideoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoWhereInput
+    orderBy?: VideoOrderByWithAggregationInput | VideoOrderByWithAggregationInput[]
+    by: VideoScalarFieldEnum[] | VideoScalarFieldEnum
+    having?: VideoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VideoCountAggregateInputType | true
+    _min?: VideoMinAggregateInputType
+    _max?: VideoMaxAggregateInputType
+  }
+
+  export type VideoGroupByOutputType = {
+    id: string
+    courseId: string
+    title: string
+    url: string
+    duration: string | null
+    _count: VideoCountAggregateOutputType | null
+    _min: VideoMinAggregateOutputType | null
+    _max: VideoMaxAggregateOutputType | null
+  }
+
+  type GetVideoGroupByPayload<T extends VideoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VideoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VideoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VideoGroupByOutputType[P]>
+            : GetScalarType<T[P], VideoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VideoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    courseId?: boolean
+    title?: boolean
+    url?: boolean
+    duration?: boolean
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["video"]>
+
+  export type VideoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    courseId?: boolean
+    title?: boolean
+    url?: boolean
+    duration?: boolean
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["video"]>
+
+  export type VideoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    courseId?: boolean
+    title?: boolean
+    url?: boolean
+    duration?: boolean
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["video"]>
+
+  export type VideoSelectScalar = {
+    id?: boolean
+    courseId?: boolean
+    title?: boolean
+    url?: boolean
+    duration?: boolean
+  }
+
+  export type VideoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "courseId" | "title" | "url" | "duration", ExtArgs["result"]["video"]>
+  export type VideoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }
+  export type VideoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }
+  export type VideoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    course?: boolean | CourseDefaultArgs<ExtArgs>
+  }
+
+  export type $VideoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Video"
+    objects: {
+      course: Prisma.$CoursePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      courseId: string
+      title: string
+      url: string
+      duration: string | null
+    }, ExtArgs["result"]["video"]>
+    composites: {}
+  }
+
+  type VideoGetPayload<S extends boolean | null | undefined | VideoDefaultArgs> = $Result.GetResult<Prisma.$VideoPayload, S>
+
+  type VideoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VideoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VideoCountAggregateInputType | true
+    }
+
+  export interface VideoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Video'], meta: { name: 'Video' } }
+    /**
+     * Find zero or one Video that matches the filter.
+     * @param {VideoFindUniqueArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VideoFindUniqueArgs>(args: SelectSubset<T, VideoFindUniqueArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Video that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VideoFindUniqueOrThrowArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VideoFindUniqueOrThrowArgs>(args: SelectSubset<T, VideoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Video that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoFindFirstArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VideoFindFirstArgs>(args?: SelectSubset<T, VideoFindFirstArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Video that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoFindFirstOrThrowArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VideoFindFirstOrThrowArgs>(args?: SelectSubset<T, VideoFindFirstOrThrowArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Videos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Videos
+     * const videos = await prisma.video.findMany()
+     * 
+     * // Get first 10 Videos
+     * const videos = await prisma.video.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const videoWithIdOnly = await prisma.video.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VideoFindManyArgs>(args?: SelectSubset<T, VideoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Video.
+     * @param {VideoCreateArgs} args - Arguments to create a Video.
+     * @example
+     * // Create one Video
+     * const Video = await prisma.video.create({
+     *   data: {
+     *     // ... data to create a Video
+     *   }
+     * })
+     * 
+     */
+    create<T extends VideoCreateArgs>(args: SelectSubset<T, VideoCreateArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Videos.
+     * @param {VideoCreateManyArgs} args - Arguments to create many Videos.
+     * @example
+     * // Create many Videos
+     * const video = await prisma.video.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VideoCreateManyArgs>(args?: SelectSubset<T, VideoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Videos and returns the data saved in the database.
+     * @param {VideoCreateManyAndReturnArgs} args - Arguments to create many Videos.
+     * @example
+     * // Create many Videos
+     * const video = await prisma.video.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Videos and only return the `id`
+     * const videoWithIdOnly = await prisma.video.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VideoCreateManyAndReturnArgs>(args?: SelectSubset<T, VideoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Video.
+     * @param {VideoDeleteArgs} args - Arguments to delete one Video.
+     * @example
+     * // Delete one Video
+     * const Video = await prisma.video.delete({
+     *   where: {
+     *     // ... filter to delete one Video
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VideoDeleteArgs>(args: SelectSubset<T, VideoDeleteArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Video.
+     * @param {VideoUpdateArgs} args - Arguments to update one Video.
+     * @example
+     * // Update one Video
+     * const video = await prisma.video.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VideoUpdateArgs>(args: SelectSubset<T, VideoUpdateArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Videos.
+     * @param {VideoDeleteManyArgs} args - Arguments to filter Videos to delete.
+     * @example
+     * // Delete a few Videos
+     * const { count } = await prisma.video.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VideoDeleteManyArgs>(args?: SelectSubset<T, VideoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Videos
+     * const video = await prisma.video.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VideoUpdateManyArgs>(args: SelectSubset<T, VideoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Videos and returns the data updated in the database.
+     * @param {VideoUpdateManyAndReturnArgs} args - Arguments to update many Videos.
+     * @example
+     * // Update many Videos
+     * const video = await prisma.video.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Videos and only return the `id`
+     * const videoWithIdOnly = await prisma.video.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VideoUpdateManyAndReturnArgs>(args: SelectSubset<T, VideoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Video.
+     * @param {VideoUpsertArgs} args - Arguments to update or create a Video.
+     * @example
+     * // Update or create a Video
+     * const video = await prisma.video.upsert({
+     *   create: {
+     *     // ... data to create a Video
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Video we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VideoUpsertArgs>(args: SelectSubset<T, VideoUpsertArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoCountArgs} args - Arguments to filter Videos to count.
+     * @example
+     * // Count the number of Videos
+     * const count = await prisma.video.count({
+     *   where: {
+     *     // ... the filter for the Videos we want to count
+     *   }
+     * })
+    **/
+    count<T extends VideoCountArgs>(
+      args?: Subset<T, VideoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VideoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Video.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VideoAggregateArgs>(args: Subset<T, VideoAggregateArgs>): Prisma.PrismaPromise<GetVideoAggregateType<T>>
+
+    /**
+     * Group by Video.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VideoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VideoGroupByArgs['orderBy'] }
+        : { orderBy?: VideoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VideoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVideoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Video model
+   */
+  readonly fields: VideoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Video.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VideoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    course<T extends CourseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CourseDefaultArgs<ExtArgs>>): Prisma__CourseClient<$Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Video model
+   */
+  interface VideoFieldRefs {
+    readonly id: FieldRef<"Video", 'String'>
+    readonly courseId: FieldRef<"Video", 'String'>
+    readonly title: FieldRef<"Video", 'String'>
+    readonly url: FieldRef<"Video", 'String'>
+    readonly duration: FieldRef<"Video", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Video findUnique
+   */
+  export type VideoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video findUniqueOrThrow
+   */
+  export type VideoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video findFirst
+   */
+  export type VideoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Videos.
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Videos.
+     */
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * Video findFirstOrThrow
+   */
+  export type VideoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Videos.
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Videos.
+     */
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * Video findMany
+   */
+  export type VideoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Videos to fetch.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Videos.
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * Video create
+   */
+  export type VideoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Video.
+     */
+    data: XOR<VideoCreateInput, VideoUncheckedCreateInput>
+  }
+
+  /**
+   * Video createMany
+   */
+  export type VideoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Videos.
+     */
+    data: VideoCreateManyInput | VideoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Video createManyAndReturn
+   */
+  export type VideoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Videos.
+     */
+    data: VideoCreateManyInput | VideoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Video update
+   */
+  export type VideoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Video.
+     */
+    data: XOR<VideoUpdateInput, VideoUncheckedUpdateInput>
+    /**
+     * Choose, which Video to update.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video updateMany
+   */
+  export type VideoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Videos.
+     */
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyInput>
+    /**
+     * Filter which Videos to update
+     */
+    where?: VideoWhereInput
+    /**
+     * Limit how many Videos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Video updateManyAndReturn
+   */
+  export type VideoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * The data used to update Videos.
+     */
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyInput>
+    /**
+     * Filter which Videos to update
+     */
+    where?: VideoWhereInput
+    /**
+     * Limit how many Videos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Video upsert
+   */
+  export type VideoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Video to update in case it exists.
+     */
+    where: VideoWhereUniqueInput
+    /**
+     * In case the Video found by the `where` argument doesn't exist, create a new Video with this data.
+     */
+    create: XOR<VideoCreateInput, VideoUncheckedCreateInput>
+    /**
+     * In case the Video was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VideoUpdateInput, VideoUncheckedUpdateInput>
+  }
+
+  /**
+   * Video delete
+   */
+  export type VideoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter which Video to delete.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video deleteMany
+   */
+  export type VideoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Videos to delete
+     */
+    where?: VideoWhereInput
+    /**
+     * Limit how many Videos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Video without action
+   */
+  export type VideoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
   }
 
 
@@ -4334,16 +8176,59 @@ export namespace Prisma {
   export const CourseScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    slug: 'slug',
     description: 'description',
+    shortDescription: 'shortDescription',
     duration: 'duration',
     level: 'level',
     lessons: 'lessons',
     thumbnail: 'thumbnail',
+    price: 'price',
+    instructor: 'instructor',
+    category: 'category',
+    tags: 'tags',
+    isPublished: 'isPublished',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    requirements: 'requirements',
+    whatYouWillLearn: 'whatYouWillLearn'
   };
 
   export type CourseScalarFieldEnum = (typeof CourseScalarFieldEnum)[keyof typeof CourseScalarFieldEnum]
+
+
+  export const WeekScalarFieldEnum: {
+    id: 'id',
+    courseId: 'courseId',
+    weekNumber: 'weekNumber',
+    title: 'title',
+    topics: 'topics',
+    activities: 'activities'
+  };
+
+  export type WeekScalarFieldEnum = (typeof WeekScalarFieldEnum)[keyof typeof WeekScalarFieldEnum]
+
+
+  export const ResourceScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    url: 'url',
+    type: 'type',
+    description: 'description'
+  };
+
+  export type ResourceScalarFieldEnum = (typeof ResourceScalarFieldEnum)[keyof typeof ResourceScalarFieldEnum]
+
+
+  export const VideoScalarFieldEnum: {
+    id: 'id',
+    courseId: 'courseId',
+    title: 'title',
+    url: 'url',
+    duration: 'duration'
+  };
+
+  export type VideoScalarFieldEnum = (typeof VideoScalarFieldEnum)[keyof typeof VideoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4352,6 +8237,13 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -4368,6 +8260,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -4428,6 +8329,27 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -4545,52 +8467,94 @@ export namespace Prisma {
     NOT?: CourseWhereInput | CourseWhereInput[]
     id?: StringFilter<"Course"> | string
     title?: StringFilter<"Course"> | string
+    slug?: StringFilter<"Course"> | string
     description?: StringFilter<"Course"> | string
+    shortDescription?: StringFilter<"Course"> | string
     duration?: StringFilter<"Course"> | string
     level?: StringFilter<"Course"> | string
     lessons?: IntFilter<"Course"> | number
     thumbnail?: StringFilter<"Course"> | string
+    price?: FloatFilter<"Course"> | number
+    instructor?: StringFilter<"Course"> | string
+    category?: StringFilter<"Course"> | string
+    tags?: JsonFilter<"Course">
+    isPublished?: BoolFilter<"Course"> | boolean
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
+    requirements?: JsonFilter<"Course">
+    whatYouWillLearn?: JsonFilter<"Course">
+    weeklySchedule?: WeekListRelationFilter
+    videos?: VideoListRelationFilter
   }
 
   export type CourseOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     duration?: SortOrder
     level?: SortOrder
     lessons?: SortOrder
     thumbnail?: SortOrder
+    price?: SortOrder
+    instructor?: SortOrder
+    category?: SortOrder
+    tags?: SortOrder
+    isPublished?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    requirements?: SortOrder
+    whatYouWillLearn?: SortOrder
+    weeklySchedule?: WeekOrderByRelationAggregateInput
+    videos?: VideoOrderByRelationAggregateInput
   }
 
   export type CourseWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     title?: string
+    slug?: string
     AND?: CourseWhereInput | CourseWhereInput[]
     OR?: CourseWhereInput[]
     NOT?: CourseWhereInput | CourseWhereInput[]
     description?: StringFilter<"Course"> | string
+    shortDescription?: StringFilter<"Course"> | string
     duration?: StringFilter<"Course"> | string
     level?: StringFilter<"Course"> | string
     lessons?: IntFilter<"Course"> | number
     thumbnail?: StringFilter<"Course"> | string
+    price?: FloatFilter<"Course"> | number
+    instructor?: StringFilter<"Course"> | string
+    category?: StringFilter<"Course"> | string
+    tags?: JsonFilter<"Course">
+    isPublished?: BoolFilter<"Course"> | boolean
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
-  }, "id" | "title">
+    requirements?: JsonFilter<"Course">
+    whatYouWillLearn?: JsonFilter<"Course">
+    weeklySchedule?: WeekListRelationFilter
+    videos?: VideoListRelationFilter
+  }, "id" | "title" | "slug">
 
   export type CourseOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     duration?: SortOrder
     level?: SortOrder
     lessons?: SortOrder
     thumbnail?: SortOrder
+    price?: SortOrder
+    instructor?: SortOrder
+    category?: SortOrder
+    tags?: SortOrder
+    isPublished?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    requirements?: SortOrder
+    whatYouWillLearn?: SortOrder
     _count?: CourseCountOrderByAggregateInput
     _avg?: CourseAvgOrderByAggregateInput
     _max?: CourseMaxOrderByAggregateInput
@@ -4604,13 +8568,197 @@ export namespace Prisma {
     NOT?: CourseScalarWhereWithAggregatesInput | CourseScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Course"> | string
     title?: StringWithAggregatesFilter<"Course"> | string
+    slug?: StringWithAggregatesFilter<"Course"> | string
     description?: StringWithAggregatesFilter<"Course"> | string
+    shortDescription?: StringWithAggregatesFilter<"Course"> | string
     duration?: StringWithAggregatesFilter<"Course"> | string
     level?: StringWithAggregatesFilter<"Course"> | string
     lessons?: IntWithAggregatesFilter<"Course"> | number
     thumbnail?: StringWithAggregatesFilter<"Course"> | string
+    price?: FloatWithAggregatesFilter<"Course"> | number
+    instructor?: StringWithAggregatesFilter<"Course"> | string
+    category?: StringWithAggregatesFilter<"Course"> | string
+    tags?: JsonWithAggregatesFilter<"Course">
+    isPublished?: BoolWithAggregatesFilter<"Course"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
+    requirements?: JsonWithAggregatesFilter<"Course">
+    whatYouWillLearn?: JsonWithAggregatesFilter<"Course">
+  }
+
+  export type WeekWhereInput = {
+    AND?: WeekWhereInput | WeekWhereInput[]
+    OR?: WeekWhereInput[]
+    NOT?: WeekWhereInput | WeekWhereInput[]
+    id?: StringFilter<"Week"> | string
+    courseId?: StringFilter<"Week"> | string
+    weekNumber?: IntFilter<"Week"> | number
+    title?: StringFilter<"Week"> | string
+    topics?: JsonFilter<"Week">
+    activities?: JsonFilter<"Week">
+    resources?: ResourceListRelationFilter
+    course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
+  }
+
+  export type WeekOrderByWithRelationInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    weekNumber?: SortOrder
+    title?: SortOrder
+    topics?: SortOrder
+    activities?: SortOrder
+    resources?: ResourceOrderByRelationAggregateInput
+    course?: CourseOrderByWithRelationInput
+  }
+
+  export type WeekWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    weekNumber?: number
+    AND?: WeekWhereInput | WeekWhereInput[]
+    OR?: WeekWhereInput[]
+    NOT?: WeekWhereInput | WeekWhereInput[]
+    courseId?: StringFilter<"Week"> | string
+    title?: StringFilter<"Week"> | string
+    topics?: JsonFilter<"Week">
+    activities?: JsonFilter<"Week">
+    resources?: ResourceListRelationFilter
+    course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
+  }, "id" | "weekNumber">
+
+  export type WeekOrderByWithAggregationInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    weekNumber?: SortOrder
+    title?: SortOrder
+    topics?: SortOrder
+    activities?: SortOrder
+    _count?: WeekCountOrderByAggregateInput
+    _avg?: WeekAvgOrderByAggregateInput
+    _max?: WeekMaxOrderByAggregateInput
+    _min?: WeekMinOrderByAggregateInput
+    _sum?: WeekSumOrderByAggregateInput
+  }
+
+  export type WeekScalarWhereWithAggregatesInput = {
+    AND?: WeekScalarWhereWithAggregatesInput | WeekScalarWhereWithAggregatesInput[]
+    OR?: WeekScalarWhereWithAggregatesInput[]
+    NOT?: WeekScalarWhereWithAggregatesInput | WeekScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Week"> | string
+    courseId?: StringWithAggregatesFilter<"Week"> | string
+    weekNumber?: IntWithAggregatesFilter<"Week"> | number
+    title?: StringWithAggregatesFilter<"Week"> | string
+    topics?: JsonWithAggregatesFilter<"Week">
+    activities?: JsonWithAggregatesFilter<"Week">
+  }
+
+  export type ResourceWhereInput = {
+    AND?: ResourceWhereInput | ResourceWhereInput[]
+    OR?: ResourceWhereInput[]
+    NOT?: ResourceWhereInput | ResourceWhereInput[]
+    id?: StringFilter<"Resource"> | string
+    title?: StringFilter<"Resource"> | string
+    url?: StringFilter<"Resource"> | string
+    type?: StringFilter<"Resource"> | string
+    description?: StringNullableFilter<"Resource"> | string | null
+    weeks?: WeekListRelationFilter
+  }
+
+  export type ResourceOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    type?: SortOrder
+    description?: SortOrderInput | SortOrder
+    weeks?: WeekOrderByRelationAggregateInput
+  }
+
+  export type ResourceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    url?: string
+    AND?: ResourceWhereInput | ResourceWhereInput[]
+    OR?: ResourceWhereInput[]
+    NOT?: ResourceWhereInput | ResourceWhereInput[]
+    title?: StringFilter<"Resource"> | string
+    type?: StringFilter<"Resource"> | string
+    description?: StringNullableFilter<"Resource"> | string | null
+    weeks?: WeekListRelationFilter
+  }, "id" | "url">
+
+  export type ResourceOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    type?: SortOrder
+    description?: SortOrderInput | SortOrder
+    _count?: ResourceCountOrderByAggregateInput
+    _max?: ResourceMaxOrderByAggregateInput
+    _min?: ResourceMinOrderByAggregateInput
+  }
+
+  export type ResourceScalarWhereWithAggregatesInput = {
+    AND?: ResourceScalarWhereWithAggregatesInput | ResourceScalarWhereWithAggregatesInput[]
+    OR?: ResourceScalarWhereWithAggregatesInput[]
+    NOT?: ResourceScalarWhereWithAggregatesInput | ResourceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Resource"> | string
+    title?: StringWithAggregatesFilter<"Resource"> | string
+    url?: StringWithAggregatesFilter<"Resource"> | string
+    type?: StringWithAggregatesFilter<"Resource"> | string
+    description?: StringNullableWithAggregatesFilter<"Resource"> | string | null
+  }
+
+  export type VideoWhereInput = {
+    AND?: VideoWhereInput | VideoWhereInput[]
+    OR?: VideoWhereInput[]
+    NOT?: VideoWhereInput | VideoWhereInput[]
+    id?: StringFilter<"Video"> | string
+    courseId?: StringFilter<"Video"> | string
+    title?: StringFilter<"Video"> | string
+    url?: StringFilter<"Video"> | string
+    duration?: StringNullableFilter<"Video"> | string | null
+    course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
+  }
+
+  export type VideoOrderByWithRelationInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    duration?: SortOrderInput | SortOrder
+    course?: CourseOrderByWithRelationInput
+  }
+
+  export type VideoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    url?: string
+    AND?: VideoWhereInput | VideoWhereInput[]
+    OR?: VideoWhereInput[]
+    NOT?: VideoWhereInput | VideoWhereInput[]
+    courseId?: StringFilter<"Video"> | string
+    title?: StringFilter<"Video"> | string
+    duration?: StringNullableFilter<"Video"> | string | null
+    course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
+  }, "id" | "url">
+
+  export type VideoOrderByWithAggregationInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    duration?: SortOrderInput | SortOrder
+    _count?: VideoCountOrderByAggregateInput
+    _max?: VideoMaxOrderByAggregateInput
+    _min?: VideoMinOrderByAggregateInput
+  }
+
+  export type VideoScalarWhereWithAggregatesInput = {
+    AND?: VideoScalarWhereWithAggregatesInput | VideoScalarWhereWithAggregatesInput[]
+    OR?: VideoScalarWhereWithAggregatesInput[]
+    NOT?: VideoScalarWhereWithAggregatesInput | VideoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Video"> | string
+    courseId?: StringWithAggregatesFilter<"Video"> | string
+    title?: StringWithAggregatesFilter<"Video"> | string
+    url?: StringWithAggregatesFilter<"Video"> | string
+    duration?: StringNullableWithAggregatesFilter<"Video"> | string | null
   }
 
   export type UserCreateInput = {
@@ -4724,85 +8872,337 @@ export namespace Prisma {
   export type CourseCreateInput = {
     id?: string
     title: string
+    slug: string
     description: string
+    shortDescription: string
     duration: string
     level: string
     lessons: number
     thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonNullValueInput | InputJsonValue
+    isPublished?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    requirements: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekCreateNestedManyWithoutCourseInput
+    videos?: VideoCreateNestedManyWithoutCourseInput
   }
 
   export type CourseUncheckedCreateInput = {
     id?: string
     title: string
+    slug: string
     description: string
+    shortDescription: string
     duration: string
     level: string
     lessons: number
     thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonNullValueInput | InputJsonValue
+    isPublished?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    requirements: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekUncheckedCreateNestedManyWithoutCourseInput
+    videos?: VideoUncheckedCreateNestedManyWithoutCourseInput
   }
 
   export type CourseUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     lessons?: IntFieldUpdateOperationsInput | number
     thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekUpdateManyWithoutCourseNestedInput
+    videos?: VideoUpdateManyWithoutCourseNestedInput
   }
 
   export type CourseUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     lessons?: IntFieldUpdateOperationsInput | number
     thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekUncheckedUpdateManyWithoutCourseNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutCourseNestedInput
   }
 
   export type CourseCreateManyInput = {
     id?: string
     title: string
+    slug: string
     description: string
+    shortDescription: string
     duration: string
     level: string
     lessons: number
     thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonNullValueInput | InputJsonValue
+    isPublished?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    requirements: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn: JsonNullValueInput | InputJsonValue
   }
 
   export type CourseUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     lessons?: IntFieldUpdateOperationsInput | number
     thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
   }
 
   export type CourseUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     lessons?: IntFieldUpdateOperationsInput | number
     thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type WeekCreateInput = {
+    id?: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+    resources?: ResourceCreateNestedManyWithoutWeeksInput
+    course: CourseCreateNestedOneWithoutWeeklyScheduleInput
+  }
+
+  export type WeekUncheckedCreateInput = {
+    id?: string
+    courseId: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+    resources?: ResourceUncheckedCreateNestedManyWithoutWeeksInput
+  }
+
+  export type WeekUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+    resources?: ResourceUpdateManyWithoutWeeksNestedInput
+    course?: CourseUpdateOneRequiredWithoutWeeklyScheduleNestedInput
+  }
+
+  export type WeekUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+    resources?: ResourceUncheckedUpdateManyWithoutWeeksNestedInput
+  }
+
+  export type WeekCreateManyInput = {
+    id?: string
+    courseId: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+  }
+
+  export type WeekUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type WeekUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type ResourceCreateInput = {
+    id?: string
+    title: string
+    url: string
+    type: string
+    description?: string | null
+    weeks?: WeekCreateNestedManyWithoutResourcesInput
+  }
+
+  export type ResourceUncheckedCreateInput = {
+    id?: string
+    title: string
+    url: string
+    type: string
+    description?: string | null
+    weeks?: WeekUncheckedCreateNestedManyWithoutResourcesInput
+  }
+
+  export type ResourceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weeks?: WeekUpdateManyWithoutResourcesNestedInput
+  }
+
+  export type ResourceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weeks?: WeekUncheckedUpdateManyWithoutResourcesNestedInput
+  }
+
+  export type ResourceCreateManyInput = {
+    id?: string
+    title: string
+    url: string
+    type: string
+    description?: string | null
+  }
+
+  export type ResourceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ResourceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoCreateInput = {
+    id?: string
+    title: string
+    url: string
+    duration?: string | null
+    course: CourseCreateNestedOneWithoutVideosInput
+  }
+
+  export type VideoUncheckedCreateInput = {
+    id?: string
+    courseId: string
+    title: string
+    url: string
+    duration?: string | null
+  }
+
+  export type VideoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    course?: CourseUpdateOneRequiredWithoutVideosNestedInput
+  }
+
+  export type VideoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoCreateManyInput = {
+    id?: string
+    courseId: string
+    title: string
+    url: string
+    duration?: string | null
+  }
+
+  export type VideoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4972,30 +9372,105 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type WeekListRelationFilter = {
+    every?: WeekWhereInput
+    some?: WeekWhereInput
+    none?: WeekWhereInput
+  }
+
+  export type VideoListRelationFilter = {
+    every?: VideoWhereInput
+    some?: VideoWhereInput
+    none?: VideoWhereInput
+  }
+
+  export type WeekOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VideoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type CourseCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     duration?: SortOrder
     level?: SortOrder
     lessons?: SortOrder
     thumbnail?: SortOrder
+    price?: SortOrder
+    instructor?: SortOrder
+    category?: SortOrder
+    tags?: SortOrder
+    isPublished?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    requirements?: SortOrder
+    whatYouWillLearn?: SortOrder
   }
 
   export type CourseAvgOrderByAggregateInput = {
     lessons?: SortOrder
+    price?: SortOrder
   }
 
   export type CourseMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     duration?: SortOrder
     level?: SortOrder
     lessons?: SortOrder
     thumbnail?: SortOrder
+    price?: SortOrder
+    instructor?: SortOrder
+    category?: SortOrder
+    isPublished?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5003,17 +9478,24 @@ export namespace Prisma {
   export type CourseMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     duration?: SortOrder
     level?: SortOrder
     lessons?: SortOrder
     thumbnail?: SortOrder
+    price?: SortOrder
+    instructor?: SortOrder
+    category?: SortOrder
+    isPublished?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type CourseSumOrderByAggregateInput = {
     lessons?: SortOrder
+    price?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5030,6 +9512,150 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type ResourceListRelationFilter = {
+    every?: ResourceWhereInput
+    some?: ResourceWhereInput
+    none?: ResourceWhereInput
+  }
+
+  export type CourseScalarRelationFilter = {
+    is?: CourseWhereInput
+    isNot?: CourseWhereInput
+  }
+
+  export type ResourceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WeekCountOrderByAggregateInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    weekNumber?: SortOrder
+    title?: SortOrder
+    topics?: SortOrder
+    activities?: SortOrder
+  }
+
+  export type WeekAvgOrderByAggregateInput = {
+    weekNumber?: SortOrder
+  }
+
+  export type WeekMaxOrderByAggregateInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    weekNumber?: SortOrder
+    title?: SortOrder
+  }
+
+  export type WeekMinOrderByAggregateInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    weekNumber?: SortOrder
+    title?: SortOrder
+  }
+
+  export type WeekSumOrderByAggregateInput = {
+    weekNumber?: SortOrder
+  }
+
+  export type ResourceCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    type?: SortOrder
+    description?: SortOrder
+  }
+
+  export type ResourceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    type?: SortOrder
+    description?: SortOrder
+  }
+
+  export type ResourceMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    type?: SortOrder
+    description?: SortOrder
+  }
+
+  export type VideoCountOrderByAggregateInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
+  }
+
+  export type VideoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
+  }
+
+  export type VideoMinOrderByAggregateInput = {
+    id?: SortOrder
+    courseId?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
   }
 
   export type GuestBookEntryCreateNestedManyWithoutUserInput = {
@@ -5102,12 +9728,212 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGuestbookEntryInput, UserUpdateWithoutGuestbookEntryInput>, UserUncheckedUpdateWithoutGuestbookEntryInput>
   }
 
+  export type WeekCreateNestedManyWithoutCourseInput = {
+    create?: XOR<WeekCreateWithoutCourseInput, WeekUncheckedCreateWithoutCourseInput> | WeekCreateWithoutCourseInput[] | WeekUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutCourseInput | WeekCreateOrConnectWithoutCourseInput[]
+    createMany?: WeekCreateManyCourseInputEnvelope
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+  }
+
+  export type VideoCreateNestedManyWithoutCourseInput = {
+    create?: XOR<VideoCreateWithoutCourseInput, VideoUncheckedCreateWithoutCourseInput> | VideoCreateWithoutCourseInput[] | VideoUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutCourseInput | VideoCreateOrConnectWithoutCourseInput[]
+    createMany?: VideoCreateManyCourseInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type WeekUncheckedCreateNestedManyWithoutCourseInput = {
+    create?: XOR<WeekCreateWithoutCourseInput, WeekUncheckedCreateWithoutCourseInput> | WeekCreateWithoutCourseInput[] | WeekUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutCourseInput | WeekCreateOrConnectWithoutCourseInput[]
+    createMany?: WeekCreateManyCourseInputEnvelope
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+  }
+
+  export type VideoUncheckedCreateNestedManyWithoutCourseInput = {
+    create?: XOR<VideoCreateWithoutCourseInput, VideoUncheckedCreateWithoutCourseInput> | VideoCreateWithoutCourseInput[] | VideoUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutCourseInput | VideoCreateOrConnectWithoutCourseInput[]
+    createMany?: VideoCreateManyCourseInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type WeekUpdateManyWithoutCourseNestedInput = {
+    create?: XOR<WeekCreateWithoutCourseInput, WeekUncheckedCreateWithoutCourseInput> | WeekCreateWithoutCourseInput[] | WeekUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutCourseInput | WeekCreateOrConnectWithoutCourseInput[]
+    upsert?: WeekUpsertWithWhereUniqueWithoutCourseInput | WeekUpsertWithWhereUniqueWithoutCourseInput[]
+    createMany?: WeekCreateManyCourseInputEnvelope
+    set?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    disconnect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    delete?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    update?: WeekUpdateWithWhereUniqueWithoutCourseInput | WeekUpdateWithWhereUniqueWithoutCourseInput[]
+    updateMany?: WeekUpdateManyWithWhereWithoutCourseInput | WeekUpdateManyWithWhereWithoutCourseInput[]
+    deleteMany?: WeekScalarWhereInput | WeekScalarWhereInput[]
+  }
+
+  export type VideoUpdateManyWithoutCourseNestedInput = {
+    create?: XOR<VideoCreateWithoutCourseInput, VideoUncheckedCreateWithoutCourseInput> | VideoCreateWithoutCourseInput[] | VideoUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutCourseInput | VideoCreateOrConnectWithoutCourseInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutCourseInput | VideoUpsertWithWhereUniqueWithoutCourseInput[]
+    createMany?: VideoCreateManyCourseInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutCourseInput | VideoUpdateWithWhereUniqueWithoutCourseInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutCourseInput | VideoUpdateManyWithWhereWithoutCourseInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type WeekUncheckedUpdateManyWithoutCourseNestedInput = {
+    create?: XOR<WeekCreateWithoutCourseInput, WeekUncheckedCreateWithoutCourseInput> | WeekCreateWithoutCourseInput[] | WeekUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutCourseInput | WeekCreateOrConnectWithoutCourseInput[]
+    upsert?: WeekUpsertWithWhereUniqueWithoutCourseInput | WeekUpsertWithWhereUniqueWithoutCourseInput[]
+    createMany?: WeekCreateManyCourseInputEnvelope
+    set?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    disconnect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    delete?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    update?: WeekUpdateWithWhereUniqueWithoutCourseInput | WeekUpdateWithWhereUniqueWithoutCourseInput[]
+    updateMany?: WeekUpdateManyWithWhereWithoutCourseInput | WeekUpdateManyWithWhereWithoutCourseInput[]
+    deleteMany?: WeekScalarWhereInput | WeekScalarWhereInput[]
+  }
+
+  export type VideoUncheckedUpdateManyWithoutCourseNestedInput = {
+    create?: XOR<VideoCreateWithoutCourseInput, VideoUncheckedCreateWithoutCourseInput> | VideoCreateWithoutCourseInput[] | VideoUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutCourseInput | VideoCreateOrConnectWithoutCourseInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutCourseInput | VideoUpsertWithWhereUniqueWithoutCourseInput[]
+    createMany?: VideoCreateManyCourseInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutCourseInput | VideoUpdateWithWhereUniqueWithoutCourseInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutCourseInput | VideoUpdateManyWithWhereWithoutCourseInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type ResourceCreateNestedManyWithoutWeeksInput = {
+    create?: XOR<ResourceCreateWithoutWeeksInput, ResourceUncheckedCreateWithoutWeeksInput> | ResourceCreateWithoutWeeksInput[] | ResourceUncheckedCreateWithoutWeeksInput[]
+    connectOrCreate?: ResourceCreateOrConnectWithoutWeeksInput | ResourceCreateOrConnectWithoutWeeksInput[]
+    connect?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+  }
+
+  export type CourseCreateNestedOneWithoutWeeklyScheduleInput = {
+    create?: XOR<CourseCreateWithoutWeeklyScheduleInput, CourseUncheckedCreateWithoutWeeklyScheduleInput>
+    connectOrCreate?: CourseCreateOrConnectWithoutWeeklyScheduleInput
+    connect?: CourseWhereUniqueInput
+  }
+
+  export type ResourceUncheckedCreateNestedManyWithoutWeeksInput = {
+    create?: XOR<ResourceCreateWithoutWeeksInput, ResourceUncheckedCreateWithoutWeeksInput> | ResourceCreateWithoutWeeksInput[] | ResourceUncheckedCreateWithoutWeeksInput[]
+    connectOrCreate?: ResourceCreateOrConnectWithoutWeeksInput | ResourceCreateOrConnectWithoutWeeksInput[]
+    connect?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+  }
+
+  export type ResourceUpdateManyWithoutWeeksNestedInput = {
+    create?: XOR<ResourceCreateWithoutWeeksInput, ResourceUncheckedCreateWithoutWeeksInput> | ResourceCreateWithoutWeeksInput[] | ResourceUncheckedCreateWithoutWeeksInput[]
+    connectOrCreate?: ResourceCreateOrConnectWithoutWeeksInput | ResourceCreateOrConnectWithoutWeeksInput[]
+    upsert?: ResourceUpsertWithWhereUniqueWithoutWeeksInput | ResourceUpsertWithWhereUniqueWithoutWeeksInput[]
+    set?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    disconnect?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    delete?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    connect?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    update?: ResourceUpdateWithWhereUniqueWithoutWeeksInput | ResourceUpdateWithWhereUniqueWithoutWeeksInput[]
+    updateMany?: ResourceUpdateManyWithWhereWithoutWeeksInput | ResourceUpdateManyWithWhereWithoutWeeksInput[]
+    deleteMany?: ResourceScalarWhereInput | ResourceScalarWhereInput[]
+  }
+
+  export type CourseUpdateOneRequiredWithoutWeeklyScheduleNestedInput = {
+    create?: XOR<CourseCreateWithoutWeeklyScheduleInput, CourseUncheckedCreateWithoutWeeklyScheduleInput>
+    connectOrCreate?: CourseCreateOrConnectWithoutWeeklyScheduleInput
+    upsert?: CourseUpsertWithoutWeeklyScheduleInput
+    connect?: CourseWhereUniqueInput
+    update?: XOR<XOR<CourseUpdateToOneWithWhereWithoutWeeklyScheduleInput, CourseUpdateWithoutWeeklyScheduleInput>, CourseUncheckedUpdateWithoutWeeklyScheduleInput>
+  }
+
+  export type ResourceUncheckedUpdateManyWithoutWeeksNestedInput = {
+    create?: XOR<ResourceCreateWithoutWeeksInput, ResourceUncheckedCreateWithoutWeeksInput> | ResourceCreateWithoutWeeksInput[] | ResourceUncheckedCreateWithoutWeeksInput[]
+    connectOrCreate?: ResourceCreateOrConnectWithoutWeeksInput | ResourceCreateOrConnectWithoutWeeksInput[]
+    upsert?: ResourceUpsertWithWhereUniqueWithoutWeeksInput | ResourceUpsertWithWhereUniqueWithoutWeeksInput[]
+    set?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    disconnect?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    delete?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    connect?: ResourceWhereUniqueInput | ResourceWhereUniqueInput[]
+    update?: ResourceUpdateWithWhereUniqueWithoutWeeksInput | ResourceUpdateWithWhereUniqueWithoutWeeksInput[]
+    updateMany?: ResourceUpdateManyWithWhereWithoutWeeksInput | ResourceUpdateManyWithWhereWithoutWeeksInput[]
+    deleteMany?: ResourceScalarWhereInput | ResourceScalarWhereInput[]
+  }
+
+  export type WeekCreateNestedManyWithoutResourcesInput = {
+    create?: XOR<WeekCreateWithoutResourcesInput, WeekUncheckedCreateWithoutResourcesInput> | WeekCreateWithoutResourcesInput[] | WeekUncheckedCreateWithoutResourcesInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutResourcesInput | WeekCreateOrConnectWithoutResourcesInput[]
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+  }
+
+  export type WeekUncheckedCreateNestedManyWithoutResourcesInput = {
+    create?: XOR<WeekCreateWithoutResourcesInput, WeekUncheckedCreateWithoutResourcesInput> | WeekCreateWithoutResourcesInput[] | WeekUncheckedCreateWithoutResourcesInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutResourcesInput | WeekCreateOrConnectWithoutResourcesInput[]
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+  }
+
+  export type WeekUpdateManyWithoutResourcesNestedInput = {
+    create?: XOR<WeekCreateWithoutResourcesInput, WeekUncheckedCreateWithoutResourcesInput> | WeekCreateWithoutResourcesInput[] | WeekUncheckedCreateWithoutResourcesInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutResourcesInput | WeekCreateOrConnectWithoutResourcesInput[]
+    upsert?: WeekUpsertWithWhereUniqueWithoutResourcesInput | WeekUpsertWithWhereUniqueWithoutResourcesInput[]
+    set?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    disconnect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    delete?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    update?: WeekUpdateWithWhereUniqueWithoutResourcesInput | WeekUpdateWithWhereUniqueWithoutResourcesInput[]
+    updateMany?: WeekUpdateManyWithWhereWithoutResourcesInput | WeekUpdateManyWithWhereWithoutResourcesInput[]
+    deleteMany?: WeekScalarWhereInput | WeekScalarWhereInput[]
+  }
+
+  export type WeekUncheckedUpdateManyWithoutResourcesNestedInput = {
+    create?: XOR<WeekCreateWithoutResourcesInput, WeekUncheckedCreateWithoutResourcesInput> | WeekCreateWithoutResourcesInput[] | WeekUncheckedCreateWithoutResourcesInput[]
+    connectOrCreate?: WeekCreateOrConnectWithoutResourcesInput | WeekCreateOrConnectWithoutResourcesInput[]
+    upsert?: WeekUpsertWithWhereUniqueWithoutResourcesInput | WeekUpsertWithWhereUniqueWithoutResourcesInput[]
+    set?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    disconnect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    delete?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    connect?: WeekWhereUniqueInput | WeekWhereUniqueInput[]
+    update?: WeekUpdateWithWhereUniqueWithoutResourcesInput | WeekUpdateWithWhereUniqueWithoutResourcesInput[]
+    updateMany?: WeekUpdateManyWithWhereWithoutResourcesInput | WeekUpdateManyWithWhereWithoutResourcesInput[]
+    deleteMany?: WeekScalarWhereInput | WeekScalarWhereInput[]
+  }
+
+  export type CourseCreateNestedOneWithoutVideosInput = {
+    create?: XOR<CourseCreateWithoutVideosInput, CourseUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: CourseCreateOrConnectWithoutVideosInput
+    connect?: CourseWhereUniqueInput
+  }
+
+  export type CourseUpdateOneRequiredWithoutVideosNestedInput = {
+    create?: XOR<CourseCreateWithoutVideosInput, CourseUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: CourseCreateOrConnectWithoutVideosInput
+    upsert?: CourseUpsertWithoutVideosInput
+    connect?: CourseWhereUniqueInput
+    update?: XOR<XOR<CourseUpdateToOneWithWhereWithoutVideosInput, CourseUpdateWithoutVideosInput>, CourseUncheckedUpdateWithoutVideosInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5219,6 +10045,22 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5235,7 +10077,7 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -5243,7 +10085,43 @@ export namespace Prisma {
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type GuestBookEntryCreateWithoutUserInput = {
@@ -5342,6 +10220,408 @@ export namespace Prisma {
     profileimage?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type WeekCreateWithoutCourseInput = {
+    id?: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+    resources?: ResourceCreateNestedManyWithoutWeeksInput
+  }
+
+  export type WeekUncheckedCreateWithoutCourseInput = {
+    id?: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+    resources?: ResourceUncheckedCreateNestedManyWithoutWeeksInput
+  }
+
+  export type WeekCreateOrConnectWithoutCourseInput = {
+    where: WeekWhereUniqueInput
+    create: XOR<WeekCreateWithoutCourseInput, WeekUncheckedCreateWithoutCourseInput>
+  }
+
+  export type WeekCreateManyCourseInputEnvelope = {
+    data: WeekCreateManyCourseInput | WeekCreateManyCourseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VideoCreateWithoutCourseInput = {
+    id?: string
+    title: string
+    url: string
+    duration?: string | null
+  }
+
+  export type VideoUncheckedCreateWithoutCourseInput = {
+    id?: string
+    title: string
+    url: string
+    duration?: string | null
+  }
+
+  export type VideoCreateOrConnectWithoutCourseInput = {
+    where: VideoWhereUniqueInput
+    create: XOR<VideoCreateWithoutCourseInput, VideoUncheckedCreateWithoutCourseInput>
+  }
+
+  export type VideoCreateManyCourseInputEnvelope = {
+    data: VideoCreateManyCourseInput | VideoCreateManyCourseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WeekUpsertWithWhereUniqueWithoutCourseInput = {
+    where: WeekWhereUniqueInput
+    update: XOR<WeekUpdateWithoutCourseInput, WeekUncheckedUpdateWithoutCourseInput>
+    create: XOR<WeekCreateWithoutCourseInput, WeekUncheckedCreateWithoutCourseInput>
+  }
+
+  export type WeekUpdateWithWhereUniqueWithoutCourseInput = {
+    where: WeekWhereUniqueInput
+    data: XOR<WeekUpdateWithoutCourseInput, WeekUncheckedUpdateWithoutCourseInput>
+  }
+
+  export type WeekUpdateManyWithWhereWithoutCourseInput = {
+    where: WeekScalarWhereInput
+    data: XOR<WeekUpdateManyMutationInput, WeekUncheckedUpdateManyWithoutCourseInput>
+  }
+
+  export type WeekScalarWhereInput = {
+    AND?: WeekScalarWhereInput | WeekScalarWhereInput[]
+    OR?: WeekScalarWhereInput[]
+    NOT?: WeekScalarWhereInput | WeekScalarWhereInput[]
+    id?: StringFilter<"Week"> | string
+    courseId?: StringFilter<"Week"> | string
+    weekNumber?: IntFilter<"Week"> | number
+    title?: StringFilter<"Week"> | string
+    topics?: JsonFilter<"Week">
+    activities?: JsonFilter<"Week">
+  }
+
+  export type VideoUpsertWithWhereUniqueWithoutCourseInput = {
+    where: VideoWhereUniqueInput
+    update: XOR<VideoUpdateWithoutCourseInput, VideoUncheckedUpdateWithoutCourseInput>
+    create: XOR<VideoCreateWithoutCourseInput, VideoUncheckedCreateWithoutCourseInput>
+  }
+
+  export type VideoUpdateWithWhereUniqueWithoutCourseInput = {
+    where: VideoWhereUniqueInput
+    data: XOR<VideoUpdateWithoutCourseInput, VideoUncheckedUpdateWithoutCourseInput>
+  }
+
+  export type VideoUpdateManyWithWhereWithoutCourseInput = {
+    where: VideoScalarWhereInput
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyWithoutCourseInput>
+  }
+
+  export type VideoScalarWhereInput = {
+    AND?: VideoScalarWhereInput | VideoScalarWhereInput[]
+    OR?: VideoScalarWhereInput[]
+    NOT?: VideoScalarWhereInput | VideoScalarWhereInput[]
+    id?: StringFilter<"Video"> | string
+    courseId?: StringFilter<"Video"> | string
+    title?: StringFilter<"Video"> | string
+    url?: StringFilter<"Video"> | string
+    duration?: StringNullableFilter<"Video"> | string | null
+  }
+
+  export type ResourceCreateWithoutWeeksInput = {
+    id?: string
+    title: string
+    url: string
+    type: string
+    description?: string | null
+  }
+
+  export type ResourceUncheckedCreateWithoutWeeksInput = {
+    id?: string
+    title: string
+    url: string
+    type: string
+    description?: string | null
+  }
+
+  export type ResourceCreateOrConnectWithoutWeeksInput = {
+    where: ResourceWhereUniqueInput
+    create: XOR<ResourceCreateWithoutWeeksInput, ResourceUncheckedCreateWithoutWeeksInput>
+  }
+
+  export type CourseCreateWithoutWeeklyScheduleInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    shortDescription: string
+    duration: string
+    level: string
+    lessons: number
+    thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requirements: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn: JsonNullValueInput | InputJsonValue
+    videos?: VideoCreateNestedManyWithoutCourseInput
+  }
+
+  export type CourseUncheckedCreateWithoutWeeklyScheduleInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    shortDescription: string
+    duration: string
+    level: string
+    lessons: number
+    thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requirements: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn: JsonNullValueInput | InputJsonValue
+    videos?: VideoUncheckedCreateNestedManyWithoutCourseInput
+  }
+
+  export type CourseCreateOrConnectWithoutWeeklyScheduleInput = {
+    where: CourseWhereUniqueInput
+    create: XOR<CourseCreateWithoutWeeklyScheduleInput, CourseUncheckedCreateWithoutWeeklyScheduleInput>
+  }
+
+  export type ResourceUpsertWithWhereUniqueWithoutWeeksInput = {
+    where: ResourceWhereUniqueInput
+    update: XOR<ResourceUpdateWithoutWeeksInput, ResourceUncheckedUpdateWithoutWeeksInput>
+    create: XOR<ResourceCreateWithoutWeeksInput, ResourceUncheckedCreateWithoutWeeksInput>
+  }
+
+  export type ResourceUpdateWithWhereUniqueWithoutWeeksInput = {
+    where: ResourceWhereUniqueInput
+    data: XOR<ResourceUpdateWithoutWeeksInput, ResourceUncheckedUpdateWithoutWeeksInput>
+  }
+
+  export type ResourceUpdateManyWithWhereWithoutWeeksInput = {
+    where: ResourceScalarWhereInput
+    data: XOR<ResourceUpdateManyMutationInput, ResourceUncheckedUpdateManyWithoutWeeksInput>
+  }
+
+  export type ResourceScalarWhereInput = {
+    AND?: ResourceScalarWhereInput | ResourceScalarWhereInput[]
+    OR?: ResourceScalarWhereInput[]
+    NOT?: ResourceScalarWhereInput | ResourceScalarWhereInput[]
+    id?: StringFilter<"Resource"> | string
+    title?: StringFilter<"Resource"> | string
+    url?: StringFilter<"Resource"> | string
+    type?: StringFilter<"Resource"> | string
+    description?: StringNullableFilter<"Resource"> | string | null
+  }
+
+  export type CourseUpsertWithoutWeeklyScheduleInput = {
+    update: XOR<CourseUpdateWithoutWeeklyScheduleInput, CourseUncheckedUpdateWithoutWeeklyScheduleInput>
+    create: XOR<CourseCreateWithoutWeeklyScheduleInput, CourseUncheckedCreateWithoutWeeklyScheduleInput>
+    where?: CourseWhereInput
+  }
+
+  export type CourseUpdateToOneWithWhereWithoutWeeklyScheduleInput = {
+    where?: CourseWhereInput
+    data: XOR<CourseUpdateWithoutWeeklyScheduleInput, CourseUncheckedUpdateWithoutWeeklyScheduleInput>
+  }
+
+  export type CourseUpdateWithoutWeeklyScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    lessons?: IntFieldUpdateOperationsInput | number
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
+    videos?: VideoUpdateManyWithoutCourseNestedInput
+  }
+
+  export type CourseUncheckedUpdateWithoutWeeklyScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    lessons?: IntFieldUpdateOperationsInput | number
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
+    videos?: VideoUncheckedUpdateManyWithoutCourseNestedInput
+  }
+
+  export type WeekCreateWithoutResourcesInput = {
+    id?: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+    course: CourseCreateNestedOneWithoutWeeklyScheduleInput
+  }
+
+  export type WeekUncheckedCreateWithoutResourcesInput = {
+    id?: string
+    courseId: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+  }
+
+  export type WeekCreateOrConnectWithoutResourcesInput = {
+    where: WeekWhereUniqueInput
+    create: XOR<WeekCreateWithoutResourcesInput, WeekUncheckedCreateWithoutResourcesInput>
+  }
+
+  export type WeekUpsertWithWhereUniqueWithoutResourcesInput = {
+    where: WeekWhereUniqueInput
+    update: XOR<WeekUpdateWithoutResourcesInput, WeekUncheckedUpdateWithoutResourcesInput>
+    create: XOR<WeekCreateWithoutResourcesInput, WeekUncheckedCreateWithoutResourcesInput>
+  }
+
+  export type WeekUpdateWithWhereUniqueWithoutResourcesInput = {
+    where: WeekWhereUniqueInput
+    data: XOR<WeekUpdateWithoutResourcesInput, WeekUncheckedUpdateWithoutResourcesInput>
+  }
+
+  export type WeekUpdateManyWithWhereWithoutResourcesInput = {
+    where: WeekScalarWhereInput
+    data: XOR<WeekUpdateManyMutationInput, WeekUncheckedUpdateManyWithoutResourcesInput>
+  }
+
+  export type CourseCreateWithoutVideosInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    shortDescription: string
+    duration: string
+    level: string
+    lessons: number
+    thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requirements: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekCreateNestedManyWithoutCourseInput
+  }
+
+  export type CourseUncheckedCreateWithoutVideosInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    shortDescription: string
+    duration: string
+    level: string
+    lessons: number
+    thumbnail: string
+    price: number
+    instructor: string
+    category: string
+    tags: JsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requirements: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekUncheckedCreateNestedManyWithoutCourseInput
+  }
+
+  export type CourseCreateOrConnectWithoutVideosInput = {
+    where: CourseWhereUniqueInput
+    create: XOR<CourseCreateWithoutVideosInput, CourseUncheckedCreateWithoutVideosInput>
+  }
+
+  export type CourseUpsertWithoutVideosInput = {
+    update: XOR<CourseUpdateWithoutVideosInput, CourseUncheckedUpdateWithoutVideosInput>
+    create: XOR<CourseCreateWithoutVideosInput, CourseUncheckedCreateWithoutVideosInput>
+    where?: CourseWhereInput
+  }
+
+  export type CourseUpdateToOneWithWhereWithoutVideosInput = {
+    where?: CourseWhereInput
+    data: XOR<CourseUpdateWithoutVideosInput, CourseUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type CourseUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    lessons?: IntFieldUpdateOperationsInput | number
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekUpdateManyWithoutCourseNestedInput
+  }
+
+  export type CourseUncheckedUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    shortDescription?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    lessons?: IntFieldUpdateOperationsInput | number
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    instructor?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    tags?: JsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requirements?: JsonNullValueInput | InputJsonValue
+    whatYouWillLearn?: JsonNullValueInput | InputJsonValue
+    weeklySchedule?: WeekUncheckedUpdateManyWithoutCourseNestedInput
+  }
+
   export type GuestBookEntryCreateManyUserInput = {
     id?: string
     message: string
@@ -5364,6 +10644,119 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WeekCreateManyCourseInput = {
+    id?: string
+    weekNumber: number
+    title: string
+    topics: JsonNullValueInput | InputJsonValue
+    activities: JsonNullValueInput | InputJsonValue
+  }
+
+  export type VideoCreateManyCourseInput = {
+    id?: string
+    title: string
+    url: string
+    duration?: string | null
+  }
+
+  export type WeekUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+    resources?: ResourceUpdateManyWithoutWeeksNestedInput
+  }
+
+  export type WeekUncheckedUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+    resources?: ResourceUncheckedUpdateManyWithoutWeeksNestedInput
+  }
+
+  export type WeekUncheckedUpdateManyWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type VideoUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUncheckedUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUncheckedUpdateManyWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ResourceUpdateWithoutWeeksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ResourceUncheckedUpdateWithoutWeeksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ResourceUncheckedUpdateManyWithoutWeeksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WeekUpdateWithoutResourcesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+    course?: CourseUpdateOneRequiredWithoutWeeklyScheduleNestedInput
+  }
+
+  export type WeekUncheckedUpdateWithoutResourcesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type WeekUncheckedUpdateManyWithoutResourcesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    weekNumber?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topics?: JsonNullValueInput | InputJsonValue
+    activities?: JsonNullValueInput | InputJsonValue
   }
 
 

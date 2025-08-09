@@ -19,22 +19,70 @@ model User {
 }
 
 model GuestBookEntry {
-  id      String @id @default(uuid())
-  message String
-
+  id        String   @id @default(uuid())
+  message   String
   createdAt DateTime @default(now())
   User      User?    @relation(fields: [userId], references: [id])
   userId    String?
 }
 
 model Course {
-  id          String   @id @default(uuid())
-  title       String   @unique
-  description String
-  duration    String
-  level       String
-  lessons     Int
-  thumbnail   String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id               String   @id @default(uuid())
+  title            String   @unique
+  slug             String   @unique // For URL-friendly identifiers
+  description      String
+  shortDescription String   @db.Text // Optional short summary
+  duration         String // e.g., "8 weeks"
+  level            String // e.g., "beginner", "intermediate", "advanced"
+  lessons          Int // Total number of lessons
+  thumbnail        String // URL or path to thumbnail image
+  price            Float // Price in currency units
+  instructor       String
+  category         String // e.g., "web-development", "data-science"
+  tags             Json     @db.Json // Changed to Json
+  isPublished      Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  // Relations
+  weeklySchedule   Week[]
+  videos           Video[]
+  requirements     Json     @db.Json // Changed to Json
+  whatYouWillLearn Json     @db.Json // Changed to Json
+
+  @@index([title]) // Optional index for faster title searches
+}
+
+model Week {
+  id         String     @id @default(uuid())
+  courseId   String
+  weekNumber Int        @unique
+  title      String
+  topics     Json       @db.Json // Changed to Json
+  activities Json       @db.Json // Changed to Json
+  resources  Resource[]
+  course     Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId]) // Index for relation lookup
+}
+
+model Resource {
+  id          String  @id @default(uuid())
+  title       String
+  url         String  @unique
+  type        String // e.g., "article", "video", "tutorial"
+  description String? @db.Text
+  weeks       Week[] // Relation to weeks using this resource
+
+  @@index([url]) // Index for unique URL lookups
+}
+
+model Video {
+  id       String  @id @default(uuid())
+  courseId String
+  title    String
+  url      String  @unique
+  duration String? // e.g., "10:30"
+  course   Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId]) // Index for relation lookup
 }

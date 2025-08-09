@@ -1,68 +1,65 @@
 {
+  "flipWords": ["开发者 🐼", "讲师 😝"],
   "nav": {
-    "firstname": "维尔特",
-    "lastname": "桑",
+    "firstname": "桑",
+    "lastname": "沃特",
     "home": "首页",
     "guestbook": "留言簿",
     "projects": "项目",
     "about": "关于",
     "course": "课程",
-    "contact": "联系我",
-    "project_all": "全部",
-    "project_web": "网站",
-    "project_design": "设计",
-    "project_desktop": "桌面应用"
+    "contact": "联系"
   },
   "hero": {
-    "greeting": "你好，我是维尔特·桑",
+    "greeting": "你好，我是奕辰峰",
     "description": "充满热情的全栈开发者和IT专业人士",
     "cta": "联系我",
-    "alt": "维尔特·桑的个人资料照片"
+    "alt": "桑·沃特的照片"
   },
   "home": {
-    "title": "欢迎来到我的作品集",
-    "description": "探索我的开发、设计和创意世界。"
+    "title": "欢迎来到我的网站",
+    "description": "探索我的开发、设计和创新世界。"
   },
   "projects": {
     "title": "我的项目",
-    "description": "以下是我最近构建的一些精彩项目。"
+    "description": "这是我最近创建的一些精彩项目。"
   },
   "guestbook": {
-    "title": "访客留言",
-    "description": "请在此留下您的想法和反馈。",
-    "logout": "退出登录",
-    "messageLabel": "留言内容",
-    "placeholder": "请输入您的留言...",
-    "signForFree": "提交"
+    "title": "留言簿",
+    "description": "在这里签名并留下您的评论。",
+    "logout": "退出",
+    "messageLabel": "消息",
+    "placeholder": "您的消息...",
+    "signForFree": "免费签名"
   },
   "about": {
     "title": "关于我",
-    "description": "我是维尔特·桑，一位充满激情的软件开发者和IT专业人士，精通前后端技术。在网页开发、IT支持和教学领域拥有丰富经验。目前正在攻读计算机科学学士学位，同时参与多个项目并兼职教授ICT课程。",
+    "description": "我是桑·沃特，一位对创建高效且用户友好的网络应用程序充满热情的软件工程师。我在使用现代技术和框架开发可扩展且可维护的网络应用程序方面拥有丰富的经验。我热衷于创建创新且用户友好的解决方案来解决现实世界的问题。",
     "cta": "联系我！",
     "education": {
       "title": "教育背景",
       "degree": "计算机科学学士",
-      "university": "Samdech Preah Mahasanghara Bour Kry大学",
-      "period": "2022年至今",
-      "specialization": "预计毕业时间：2026年"
+      "university": "桑德普雷马哈桑加拉吉布里克里大学",
+      "period": "2022 - 至今",
+      "specialization": "预计2026年毕业"
     },
     "experience": {
-      "title": "工作经历",
+      "title": "工作经验",
       "current": {
-        "position": "网站开发与行政经理",
-        "company": "Samdech Preah Mahasanghara Bour Kry大学",
-        "period": "2025年至今",
-        "description": "管理大学官网(sbku.edu.kh)并开发Web应用"
+        "position": "网站开发和管理员",
+        "company": "桑德普雷马哈桑加拉吉布里克里大学",
+        "period": "2025 - 至今",
+        "description": "管理大学网站(sbku.edu.kh)并开发网络应用程序。"
       },
       "previous": {
-        "position": "ICT教师与计算机维护",
+        "position": "ICT教师和计算机维护",
         "company": "金边国际标准学院",
-        "period": "2023-2025年",
-        "description": "兼职教授ICT课程并维护计算机系统"
+        "period": "2023 - 2025",
+        "description": "作为兼职教师教授ICT课程并维护计算机系统。"
       }
     },
     "skills": {
-      "title": "技能专长",
+      "title": "技能",
       "list": [
         "HTML",
         "CSS",
@@ -79,61 +76,61 @@
         "网络配置",
         "Windows Server",
         "摄影",
-        "视频剪辑",
+        "视频编辑",
         "数字营销",
-        "IT故障排查",
+        "IT故障排除",
         "网络安全",
         "AI工具"
       ]
     }
   },
   "footer": {
-    "copyright": "© {{year}} 维尔特·桑 版权所有",
+    "copyright": "© {{year}} 桑·沃特，保留所有权利。",
     "social": {
       "github": "GitHub",
-      "twitter": "推特",
-      "linkedin": "领英"
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
     }
   },
   "course": {
     "title": "我的课程",
-    "description": "通过系统化课程掌握现代Web开发技能",
+    "description": "学习全面的课程，掌握现代网络开发技能。",
     "duration": "时长",
-    "lessons": "节课",
-    "level": "难度",
+    "lessons": "课程",
+    "level": "级别",
     "beginner": "初级",
     "intermediate": "中级",
     "advanced": "高级"
   },
   "Course": {
-    "title": "课程列表",
+    "title": "我们的课程",
     "viewCourse": "查看课程",
     "enrollNow": "立即报名",
     "searchPlaceholder": "搜索课程...",
     "filters": {
-      "allLevels": "所有难度",
+      "allLevels": "所有级别",
       "beginner": "初级",
       "intermediate": "中级",
       "advanced": "高级",
       "sortBy": {
-        "durationAsc": "时长：由短到长",
-        "durationDesc": "时长：由长到短",
-        "lessonsAsc": "课时：少到多",
-        "lessonsDesc": "课时：多到少"
+        "durationAsc": "时长：短到长",
+        "durationDesc": "时长：长到短",
+        "lessonsAsc": "课程：少到多",
+        "lessonsDesc": "课程：多到少"
       }
     },
     "courseDetails": {
       "videos": "课程视频",
       "watch": "观看",
       "duration": "时长",
-      "lessons": "节课",
+      "lessons": "课时",
       "videosCount": "个视频"
     },
     "errors": {
-      "fetchFailed": "课程获取失败",
-      "timeout": "请求超时，请检查网络连接",
-      "cors": "CORS错误，请检查Sanity配置",
-      "auth": "认证错误，请检查Sanity令牌",
+      "fetchFailed": "获取课程失败",
+      "timeout": "请求超时。请检查您的网络连接。",
+      "cors": "CORS错误。请检查您的Sanity CORS设置。",
+      "auth": "认证错误。请检查您的Sanity令牌。",
       "tryAgain": "重试"
     }
   }

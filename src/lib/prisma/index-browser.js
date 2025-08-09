@@ -138,18 +138,56 @@ exports.Prisma.GuestBookEntryScalarFieldEnum = {
 exports.Prisma.CourseScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  slug: 'slug',
   description: 'description',
+  shortDescription: 'shortDescription',
   duration: 'duration',
   level: 'level',
   lessons: 'lessons',
   thumbnail: 'thumbnail',
+  price: 'price',
+  instructor: 'instructor',
+  category: 'category',
+  tags: 'tags',
+  isPublished: 'isPublished',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  requirements: 'requirements',
+  whatYouWillLearn: 'whatYouWillLearn'
+};
+
+exports.Prisma.WeekScalarFieldEnum = {
+  id: 'id',
+  courseId: 'courseId',
+  weekNumber: 'weekNumber',
+  title: 'title',
+  topics: 'topics',
+  activities: 'activities'
+};
+
+exports.Prisma.ResourceScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  url: 'url',
+  type: 'type',
+  description: 'description'
+};
+
+exports.Prisma.VideoScalarFieldEnum = {
+  id: 'id',
+  courseId: 'courseId',
+  title: 'title',
+  url: 'url',
+  duration: 'duration'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -162,11 +200,20 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
   GuestBookEntry: 'GuestBookEntry',
-  Course: 'Course'
+  Course: 'Course',
+  Week: 'Week',
+  Resource: 'Resource',
+  Video: 'Video'
 };
 
 /**

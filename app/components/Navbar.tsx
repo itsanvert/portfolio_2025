@@ -22,7 +22,7 @@ import "@/lib/181n";
 export const navigationItems = [
   { name: "home", href: "/" },
   { name: "about", href: "/about" },
-  { name: "course", href: "/course" },
+  // { name: "course", href: "/course" },
   { name: "projects", href: "/project" }, // rendered manually with submenu
 ];
 
