@@ -1,51 +1,42 @@
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-  Kantumruy_Pro,
-  Noto_Sans_Khmer,
-  Roboto,
-} from "next/font/google"; // Import Roboto font
+import { Geist, Geist_Mono, Kantumruy_Pro, Roboto } from "next/font/google";
 import "./globals.css";
-// _app.tsx or layout.tsx
-import "@fontsource/nokora"; // this includes Nokora with normal weights
+import "@fontsource/nokora";
 import { ThemeProvider } from "next-themes";
 import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 const notoKhmer = Kantumruy_Pro({
   variable: "--font-noto-khmer",
-  subsets: ["khmer"], // Specify Khmer subset
-  weight: ["400", "700"], // Optional: Specify font weights
+  subsets: ["khmer"],
+  weight: ["400", "700"],
 });
-
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
-  weight: ["400", "700"], // Specify font weights
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://vertsan.com"),
-  title: { default: "Vert San", template: "%s | Vert San" },
+  title: {
+    default: "Vert San",
+    template: "%s | Vert San",
+  },
   description:
-    "Hi, I'm Vert San — a full-stack developer and IT professional. Explore my work and connect!",
+    "Full-stack developer & IT professional – building modern apps, scalable backends & creative UI/UX.",
   keywords: [
     "Vert San",
     "Full Stack Developer",
-    "Portfolio",
-    "Tech",
+    "Web Development",
     "IT Professional",
+    "Next.js",
+    "React",
   ],
   openGraph: {
     title: "Vert San",
@@ -55,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Vert San",
     images: [
       {
-        url: "https://vertsan.com/favicon.ico",
+        url: "https://vertsan.com/me.svg",
         width: 1200,
         height: 630,
         alt: "Vert San Portfolio Preview",
@@ -64,45 +55,50 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vert San",
+    title: "Vert San – Developer & IT Professional",
     description:
-      "Portfolio of Vert San – Developer, Designer & IT Professional.",
-    images: ["https://vertsan.com/favicon.ico"],
+      "Explore Vert San’s portfolio – building high-performance web solutions.",
+    images: ["https://vertsan.com/me.svg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "ABCDEFG12345-your-actual-code-here", // ⚠️ Replace with your code
-  },
+  robots: { index: true, follow: true },
+  verification: { google: "ABCDEFG12345-your-actual-code-here" },
   icons: {
-    icon: "https://vertsan.com/favicon.ico",
-    shortcut: "https://vertsan.com/favicon-16x16.png",
-    apple: "https://vertsan.com/apple-touch-icon.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${notoKhmer.variable} ${roboto.variable}`}
+      suppressHydrationWarning
     >
       <head>
-        <link rel="shortcut icon" href="/public/me.jpg" type="image/x-icon" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Vert San",
+              url: "https://vertsan.com",
+              jobTitle: "Full-Stack Developer & IT Professional",
+              image: "https://vertsan.com/me.svg",
+              sameAs: [
+                "https://github.com/yourusername",
+                "https://linkedin.com/in/yourusername",
+                "https://twitter.com/yourusername",
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         <ThemeProvider
@@ -113,8 +109,8 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
-        <Footer />
       </body>
     </html>
   );
