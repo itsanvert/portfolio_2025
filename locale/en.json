@@ -16,39 +16,42 @@
   },
   "hero": {
     "greeting": "Hi, I'm Vert San",
-    "description": "A passionate on ",
-    "cta": "Get in touch",
+    "description": "A passionate full-stack developer and IT professional",
+    "cta": "Get in Touch",
     "alt": "San Vert's profile picture"
   },
   "home": {
-    "title": "Welcome to my portfolio",
+    "title": "Welcome to My Portfolio",
     "description": "Explore my world of development, design, and creativity."
   },
   "projects": {
     "title": "My Projects",
-    "description": "Here are some of the cool things I've built recently."
+    "description": "Here are some of the cool projects I've built recently."
   },
   "guestbook": {
-    "title": "Guest Comment",
+    "title": "Guest Comments",
     "description": "Feel free to leave your thoughts and feedback here.",
     "logout": "Logout",
     "messageLabel": "Message",
     "placeholder": "Your Message...",
-    "signForFree": "Summit"
+    "signForFree": "Submit"
   },
   "about": {
     "title": "About Me",
-    "description": "I am San Vert, a passionate software developer and IT professional with expertise in both frontend and backend technologies. I have experience in web development, IT support, and teaching. I am currently pursuing a Bachelor's degree in Computer Science while working on various projects and teaching ICT part-time.",
+    "description": "I am Vert San, a passionate software developer and IT professional with expertise in both frontend and backend technologies. I have experience in web development, IT support, and teaching. I am currently pursuing a Bachelor's degree in Computer Science while working on various projects and teaching ICT part-time.",
     "cta": "Get in Touch!",
     "education": {
       "title": "Education",
       "degree": "Bachelor of Computer Science",
       "university": "Samdech Preah Mahasanghara Bour Kry University",
       "period": "2022 - Present",
-      "specialization": "Expected Graduation: 2026"
+      "specialization": "Expected Graduation: 2026",
+      "highSchool": "High School Diploma",
+      "highSchoolPeriod": "2021 - 2022",
+      "highSchoolGrad": "Graduated November 2022"
     },
     "experience": {
-      "title": "Experience",
+      "title": "Professional Experience",
       "current": {
         "position": "Web Developer and Admin Manager",
         "company": "Samdech Preah Mahasanghara Bour Kry University",
@@ -56,40 +59,64 @@
         "description": "Managing the university's website (sbku.edu.kh) and developing web applications."
       },
       "previous": {
-        "position": "ICT Teacher and Computer Maintenance",
-        "company": "Phnom Penh International Standard Academy",
-        "period": "2023 - 2025",
-        "description": "Teaching ICT and maintaining computer systems as a part-time instructor."
+        "freelance": "Freelance Graphic Designer",
+        "freelanceCompany": "Kampufreelancer",
+        "freelancePeriod": "2024 - 2025",
+        "freelanceDescription": "Designed kid cards and various digital assets for clients.",
+        "ictTeacher": "ICT Teacher and Computer Maintenance",
+        "ictCompany": "Phnom Penh International Standard Academy",
+        "ictPeriod": "2023 - 2025 (Part-time)",
+        "ictDescription": "Teaching ICT courses and providing computer maintenance services.",
+        "itSupport": "IT Support",
+        "itCompany": "Bright Kids School",
+        "itPeriod": "2023 - 2024",
+        "itDescription": "Provided comprehensive IT support and technical assistance.",
+        "salesDesigner": "Sales & Graphic Designer",
+        "salesCompany": "AddMii.com",
+        "salesPeriod": "2022 - 2023",
+        "salesDescription": "Combined sales responsibilities with graphic design projects."
       }
     },
     "skills": {
       "title": "Skills",
-      "list": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "C#",
-        "PHP",
-        "SQL",
-        "Next.js",
-        "Tailwind CSS",
-        "Laravel",
-        "SQL Server",
-        "MySQL",
-        "Supabase",
-        "Network Configuration",
-        "Windows Server",
-        "Photography",
-        "Video Editing",
-        "Digital Marketing",
-        "IT Troubleshooting",
-        "Cybersecurity",
-        "AI Tools"
-      ]
+      "development": "Development",
+      "itNetworking": "IT & Networking"
+    },
+    "certifications": {
+      "title": "Certifications & Languages",
+      "certTitle": "Certifications",
+      "ccna1": "CCNA Level 1 (Completed, 2024)",
+      "ccna2": "CCNA Level 2 (In Progress)",
+      "toefl": "TOEFL ITP: 407 (CEFR A2)",
+      "ielts": "IELTS Academic: Band 4.5 (CEFR B1)"
+    },
+    "languages": {
+      "title": "Languages",
+      "khmer": "Khmer",
+      "khmerLevel": "Native",
+      "english": "English",
+      "englishLevel": "Intermediate",
+      "chinese": "Chinese",
+      "chineseLevel": "Fair"
+    },
+    "projects": {
+      "title": "Notable Projects",
+      "universityWebsite": "University Website Development",
+      "universityWebsiteUrl": "sbku.edu.kh",
+      "universityWebsiteYear": "2025",
+      "universityWebsiteDesc": "Developed and maintain the official university website with modern web technologies.",
+      "barcodePOS": "Barcode POS System",
+      "barcodePOSProject": "University Event Project",
+      "barcodePOSYear": "2024",
+      "barcodePOSDesc": "Built using C#, SQL Server, and Crystal Reports for university event management.",
+      "ums": "University Management System",
+      "umsProject": "Research Project",
+      "umsStatus": "In Development",
+      "umsDesc": "Comprehensive management system for university operations and research activities."
     }
   },
   "footer": {
-    "copyright": "© {{year}} San Vert. All rights reserved.",
+    "copyright": "© {{year}} Vert San. All rights reserved.",
     "social": {
       "github": "GitHub",
       "twitter": "Twitter",
@@ -100,7 +127,7 @@
     "title": "My Courses",
     "description": "Learn from comprehensive courses designed to help you master modern web development.",
     "duration": "Duration",
-    "lessons": "lessons",
+    "lessons": "Lessons",
     "level": "Level",
     "beginner": "Beginner",
     "intermediate": "Intermediate",
@@ -127,8 +154,8 @@
       "videos": "Course Videos",
       "watch": "Watch",
       "duration": "Duration",
-      "lessons": "lessons",
-      "videosCount": "videos"
+      "lessons": "Lessons",
+      "videosCount": "Videos"
     },
     "errors": {
       "fetchFailed": "Failed to fetch courses",
