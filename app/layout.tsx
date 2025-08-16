@@ -25,11 +25,11 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   metadataBase: new URL("https://vertsan.com"),
   title: {
-    default: "Vert San",
+    default: "Vert San - Full-Stack Developer & IT Professional",
     template: "%s | Vert San",
   },
   description:
-    "Full-stack developer & IT professional – building modern apps, scalable backends & creative UI/UX.",
+    "Explore the portfolio of Vert San, a passionate Full-Stack Developer and IT Professional specializing in creating modern web applications, scalable backend systems, and intuitive user experiences. Discover projects in Next.js, React, Laravel, and more.",
   keywords: [
     "Vert San",
     "Full Stack Developer",
@@ -37,36 +37,69 @@ export const metadata: Metadata = {
     "IT Professional",
     "Next.js",
     "React",
+    "Laravel",
+    "Node.js",
+    "Express.js",
+    "Prisma ORM",
+    "PostgreSQL",
+    "SQL Server",
+    "MySQL",
+    "Supabase",
+    "Docker",
+    "REST APIs",
+    "C#",
+    "Windows Server",
+    "Linux Server",
+    "Network Configuration",
+    "Cybersecurity",
+    "Portfolio",
+    "Cambodia",
+    "Phnom Penh",
   ],
+  creator: "Vert San",
+  publisher: "Vert San",
   openGraph: {
-    title: "Vert San",
+    title: "Vert San - Full-Stack Developer & IT Professional",
     description:
-      "Portfolio of Vert San – Developer, Designer & IT Professional.",
+      "Portfolio of Vert San, showcasing expertise in web development, IT solutions, and design.",
     url: "https://vertsan.com",
     siteName: "Vert San",
     images: [
       {
-        url: "https://vertsan.com/me.svg",
-        width: 1200,
-        height: 630,
-        alt: "Vert San Portfolio Preview",
+        url: "/me.jpg",
+        width: 800,
+        height: 600,
+        alt: "Vert San - Portfolio",
       },
     ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Vert San – Developer & IT Professional",
     description:
-      "Explore Vert San’s portfolio – building high-performance web solutions.",
-    images: ["https://vertsan.com/me.svg"],
+      "Explore Vert San’s portfolio – building high-performance web solutions with Next.js, React, and more.",
+    creator: "@itsanvert",
+    images: ["/me.jpg"],
   },
-  robots: { index: true, follow: true },
-  verification: { google: "ABCDEFG12345-your-actual-code-here" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -90,11 +123,23 @@ export default function RootLayout({
               name: "Vert San",
               url: "https://vertsan.com",
               jobTitle: "Full-Stack Developer & IT Professional",
-              image: "https://vertsan.com/me.svg",
+              image: "https://vertsan.com/me.jpg",
               sameAs: [
-                "https://github.com/yourusername",
-                "https://linkedin.com/in/yourusername",
-                "https://twitter.com/yourusername",
+                "https://github.com/itsanvert",
+                "https://linkedin.com/in/itsanvert",
+                "https://twitter.com/itsanvert",
+                "https://web.facebook.com/profile.php?id=61574843070322",
+              ],
+              alumniOf: "Samdech Preah Mahasangharajah Bour Kry University",
+              knowsAbout: [
+                "Web Development",
+                "IT Support",
+                "Network Administration",
+                "Next.js",
+                "React",
+                "Laravel",
+                "Node.js",
+                "Cybersecurity",
               ],
             }),
           }}
@@ -108,7 +153,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
+          <main>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
