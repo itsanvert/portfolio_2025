@@ -3,8 +3,8 @@ import { Geist, Geist_Mono, Kantumruy_Pro, Roboto } from "next/font/google";
 import "./globals.css";
 import "@fontsource/nokora";
 import { ThemeProvider } from "next-themes";
-import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import CardNav, { CardNavItem } from "./components/CardNav";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vert San – Developer & IT Professional",
     description:
-      "Explore Vert San’s portfolio – building high-performance web solutions with Next.js, React, and more.",
+      "Explore Vert San's portfolio – building high-performance web solutions with Next.js, React, and more.",
     creator: "@itsanvert",
     images: ["/me.jpg"],
   },
@@ -101,6 +101,98 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
 };
+
+// Navigation data for CardNav
+const navigationItems: CardNavItem[] = [
+  {
+    label: "Projects",
+    bgColor: "#3B82F6",
+    textColor: "#FFFFFF",
+    links: [
+      {
+        label: "Portfolio Website",
+        href: "/projects/portfolio",
+        ariaLabel: "View portfolio project",
+      },
+      {
+        label: "E-commerce App",
+        href: "/projects/ecommerce",
+        ariaLabel: "View e-commerce project",
+      },
+      {
+        label: "Task Manager",
+        href: "/projects/task-manager",
+        ariaLabel: "View task manager project",
+      },
+    ],
+  },
+  {
+    label: "About",
+    bgColor: "#10B981",
+    textColor: "#FFFFFF",
+    links: [
+      {
+        label: "My Story",
+        href: "/about",
+        ariaLabel: "Learn about my background",
+      },
+      {
+        label: "Skills",
+        href: "/about#skills",
+        ariaLabel: "View my technical skills",
+      },
+      {
+        label: "Experience",
+        href: "/about#experience",
+        ariaLabel: "View my work experience",
+      },
+    ],
+  },
+  {
+    label: "Services",
+    bgColor: "#8B5CF6",
+    textColor: "#FFFFFF",
+    links: [
+      {
+        label: "Web Development",
+        href: "/services/web-dev",
+        ariaLabel: "Web development services",
+      },
+      {
+        label: "IT Support",
+        href: "/services/it-support",
+        ariaLabel: "IT support services",
+      },
+      {
+        label: "Consulting",
+        href: "/services/consulting",
+        ariaLabel: "Technology consulting",
+      },
+    ],
+  },
+  {
+    label: "Blog",
+    bgColor: "#F59E0B",
+    textColor: "#FFFFFF",
+    links: [
+      {
+        label: "Latest Posts",
+        href: "/blog",
+        ariaLabel: "View latest blog posts",
+      },
+      {
+        label: "Tech Tutorials",
+        href: "/blog/tutorials",
+        ariaLabel: "View technology tutorials",
+      },
+      {
+        label: "Industry News",
+        href: "/blog/news",
+        ariaLabel: "View industry news",
+      },
+    ],
+  },
+];
 
 export default function RootLayout({
   children,
@@ -152,11 +244,22 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <CardNav
+            logoText="Vert San"
+            items={navigationItems}
+            homeHref="/"
+            contactHref="https://t.me/itsanvert"
+            showControls={true}
+            className="fixed"
+          />
+
+          <div className="pt-16 md:pt-20 lg:pt-24">
+            <div className="container mx-auto px-4 md:px-8">{children}</div>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+h

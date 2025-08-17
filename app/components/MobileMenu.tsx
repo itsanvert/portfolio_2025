@@ -12,7 +12,7 @@ import {
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Menu } from "lucide-react";
 import React from "react";
-import { navigationItems } from "./Navbar";
+import { navigationItems } from "./CardNav";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -47,7 +47,8 @@ export function MobileMenu() {
                   : "hover:bg-muted hover:bg-opacity-75",
                 "group flex items-center px-2 py-2 text-md font-medium rounded-md"
               )}
-              legacyBehavior>
+              legacyBehavior
+            >
               {t(`nav.${item.name.toLowerCase()}`)}
             </Link>
           ))}

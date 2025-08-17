@@ -93,7 +93,7 @@ export const GifLoaderWithText = ({
         transition={{
           duration: 2,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: [0.42, 0, 0.58, 1], // cubic-bezier for ease-in-out
         }}
         className="text-sm font-medium text-neutral-600 dark:text-neutral-400"
       >
