@@ -76,6 +76,7 @@ const mobileNavItems = [
 ];
 
 const CardNav: React.FC<CardNavProps> = ({
+  
   logoText = "Portfolio",
   logoAlt = "Logo",
   items = [],

@@ -63,7 +63,7 @@ const navItems: CardNavItem[] = [
     links: [
       {
         label: "Resume",
-        href: "/resume.pdf",
+        href: "/resume/resume.pdf",
         ariaLabel: "Download resume",
         download: true,
       },
