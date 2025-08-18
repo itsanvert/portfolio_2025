@@ -17,8 +17,8 @@
   "hero": {
     "greeting": "Hi, I'm Vert San",
     "description": "A passionate full-stack developer and IT professional",
-    "cta": "Get in Touch",
-    "alt": "San Vert's profile picture"
+    "resume": "Resume",
+    "cta": "Get in Touch!"
   },
   "home": {
     "title": "Welcome to My Portfolio",
@@ -90,6 +90,7 @@
       "toefl": "TOEFL ITP: 407 (CEFR A2)",
       "ielts": "IELTS Academic: Band 4.5 (CEFR B1)"
     },
+
     "languages": {
       "title": "Languages",
       "khmer": "Khmer",
@@ -164,5 +165,9 @@
       "auth": "Authentication error. Please check your Sanity token.",
       "tryAgain": "Try Again"
     }
+  },
+  "processing": {
+    "title": "Processing",
+    "description": "Processing, please wait..."
   }
 }

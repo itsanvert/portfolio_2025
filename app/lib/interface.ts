@@ -56,6 +56,7 @@ export interface Course {
   featured: boolean;
 }
 export interface ProjectsCard {
+  category: string;
   sourceLink: any;
   demoLink: string;
   _id: string;

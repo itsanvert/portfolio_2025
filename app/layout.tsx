@@ -244,14 +244,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <CardNav
-            logoText="Vert San"
-            items={navigationItems}
-            homeHref="/"
-            contactHref="https://t.me/itsanvert"
-            showControls={true}
-            className="fixed"
-          />
+          <CardNav />
 
           <div className="pt-16 md:pt-20 lg:pt-24">
             <div className="container mx-auto px-4 md:px-8">{children}</div>
@@ -262,4 +255,3 @@ export default function RootLayout({
     </html>
   );
 }
-h

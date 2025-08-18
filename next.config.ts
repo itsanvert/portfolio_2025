@@ -1,17 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   images: {
-//     remotePatterns: [
-//       {
-//         hostname: "cdn.sanity.io",
-//         protocol: "https",
-//         port: "",
-//       },
-//     ],
-//   },
-// };
-
-// export default nextConfig;
 module.exports = {
   images: {
     remotePatterns: [
@@ -20,6 +6,12 @@ module.exports = {
         hostname: "cdn.sanity.io",
         port: "",
         pathname: "/images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.aceternity.com",
+        port: "",
+        pathname: "/pro/**",
       },
     ],
   },

@@ -63,6 +63,7 @@ export default async function ProjectsPage() {
             key={item._id}
             className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 hover:shadow-xl hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50 overflow-hidden"
           >
+            
             {/* Project Image */}
             <div className="relative aspect-video overflow-hidden">
               <Image
