@@ -12,10 +12,27 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-sm">
-              {t("footer.copyright", "© 2025 Vert San. All rights reserved.")}
+              © 2025 {t("nav.firstname") + " " + t("nav.lastname")}. All rights
+              reserved.
             </p>
           </div>
           {/* Add other footer content here */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/itsanvert"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/itsanvert"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
     </footer>
