@@ -5,7 +5,7 @@ import { HydrationBoundary } from "./components/HydrationBoundary";
 
 import SectionTwo from "./components/SectionTwo";
 
-import ProjectsPage from "./project/page";
+import ProjectsPage from "./projects/page";
 
 export default function Home() {
   return (

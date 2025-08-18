@@ -5,7 +5,7 @@ import { motion, easeOut } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
-import { FlipWords } from "@/components/ui/flip-words";
+import FlipWords from "@/components/ui/flip-words";
 
 interface HeroSectionProps {
   className?: string;

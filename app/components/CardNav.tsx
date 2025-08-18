@@ -26,7 +26,6 @@ export type CardNavItem = {
 };
 
 export interface CardNavProps {
-  
   logoText: string;
   logoAlt?: string;
   items: CardNavItem[];
@@ -108,17 +107,23 @@ const CardNav: React.FC<CardNavProps> = ({
   }, []);
 
   const toggleMenu = () => {
-    setIsHamburgerOpen((prev) => !prev);
     if (!isExpanded) {
+      // Opening menu
       setIsHamburgerOpen(true);
       setIsExpanded(true);
-      tlRef.current?.play(0);
+      if (tlRef.current) {
+        tlRef.current.eventCallback("onComplete", null);
+        tlRef.current.play();
+      }
     } else {
+      // Closing menu
       setIsHamburgerOpen(false);
-      tlRef.current?.eventCallback("onReverseComplete", () =>
-        setIsExpanded(false)
-      );
-      tlRef.current?.reverse();
+      if (tlRef.current) {
+        tlRef.current.eventCallback("onReverseComplete", () => {
+          setIsExpanded(false);
+        });
+        tlRef.current.reverse();
+      }
     }
   };
 
@@ -126,9 +131,10 @@ const CardNav: React.FC<CardNavProps> = ({
     if (!isMounted) return 60;
 
     const navEl = navRef.current;
-    if (!navEl) return 260;
+    if (!navEl) return 350;
 
     const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+
     if (isMobile) {
       const contentEl = navEl.querySelector(".card-nav-content") as HTMLElement;
       const controlsEl = navEl.querySelector(".mobile-controls") as HTMLElement;
@@ -147,7 +153,7 @@ const CardNav: React.FC<CardNavProps> = ({
         contentEl.style.height = "auto";
 
         const topBar = 60;
-        const padding = 16;
+        const padding = 24;
         const contentHeight = contentEl.scrollHeight;
         const controlsHeight =
           controlsEl && showControls ? controlsEl.scrollHeight + 12 : 0;
@@ -157,7 +163,25 @@ const CardNav: React.FC<CardNavProps> = ({
         return topBar + contentHeight + controlsHeight + padding;
       }
     }
-    return 300;
+
+    // Desktop calculation - ensure enough space for cards
+    const itemCount = items.length || 4; // Default to 4 if no items
+    const rows = Math.ceil(itemCount / 2);
+    const cardHeight = 140;
+    const gap = 16;
+    const padding = 32;
+    const topBar = 60;
+    const controlsHeight = 0; // Controls are in top bar on desktop
+
+    const calculatedHeight =
+      topBar +
+      rows * cardHeight +
+      Math.max(0, rows - 1) * gap +
+      padding +
+      controlsHeight;
+
+    // Minimum height to ensure visibility
+    return Math.max(calculatedHeight, 300);
   };
 
   const createTimeline = () => {
@@ -166,31 +190,48 @@ const CardNav: React.FC<CardNavProps> = ({
     const navEl = navRef.current;
     if (!navEl) return null;
 
+    // Reset initial states
     gsap.set(navEl, { height: 60, overflow: "hidden" });
-    gsap.set(cardsRef.current, { y: 50, opacity: 0 });
+    gsap.set(".card-nav-content", { opacity: 0, visibility: "hidden" });
+    gsap.set(cardsRef.current.filter(Boolean), { y: 30, opacity: 0 });
     if (controlsRef.current && showControls) {
-      gsap.set(controlsRef.current, { y: 30, opacity: 0 });
+      gsap.set(controlsRef.current, { y: 20, opacity: 0 });
     }
 
     const tl = gsap.timeline({ paused: true });
 
+    // Expand height and show content
     tl.to(navEl, {
       height: calculateHeight,
-      duration: 0.4,
-      ease,
-    });
-
-    tl.to(
-      cardsRef.current.filter(Boolean),
-      { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 },
-      "-=0.1"
-    );
+      duration: 0.5,
+      ease: "power3.out",
+    })
+      .to(
+        ".card-nav-content",
+        {
+          opacity: 1,
+          visibility: "visible",
+          duration: 0.2,
+        },
+        "-=0.3"
+      )
+      .to(
+        cardsRef.current.filter(Boolean),
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out",
+          stagger: 0.1,
+        },
+        "-=0.2"
+      );
 
     if (controlsRef.current && showControls) {
       tl.to(
         controlsRef.current,
-        { y: 0, opacity: 1, duration: 0.3, ease },
-        "-=0.2"
+        { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
+        "-=0.3"
       );
     }
 
@@ -207,7 +248,7 @@ const CardNav: React.FC<CardNavProps> = ({
       tl?.kill();
       tlRef.current = null;
     };
-  }, [ease, items, isMounted, showControls]);
+  }, [ease, , isMounted, showControls]);
 
   useLayoutEffect(() => {
     if (!isMounted) return;
@@ -294,8 +335,8 @@ const CardNav: React.FC<CardNavProps> = ({
           ref={navRef}
           className={`card-nav ${
             isExpanded ? "open" : ""
-          } block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height] backdrop-blur-md bg-white/90 dark:bg-black/90 border border-white/20 dark:border-gray-800/30`}
-          style={{ backgroundColor: baseColor }}
+          } block h-[60px] p-0 rounded-xl shadow-lg relative will-change-[height] backdrop-blur-md bg-white/90 dark:bg-black/90 border border-white/20 dark:border-gray-800/30`}
+          style={{ backgroundColor: baseColor, overflow: "hidden" }}
         >
           <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] pr-4 z-[2]">
             <div
@@ -355,19 +396,20 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           <div
-            className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-[1] ${
-              isExpanded
-                ? "visible pointer-events-auto"
-                : "invisible pointer-events-none"
-            }`}
-            aria-hidden={!isExpanded}
+            className={`card-nav-content absolute left-0 right-0 top-[60px] p-4 flex flex-col items-stretch gap-4 justify-start z-[1] opacity-0 invisible`}
+            style={{
+              visibility: isExpanded ? "visible" : "hidden",
+              pointerEvents: isExpanded ? "auto" : "none",
+            }}
           >
-            <div className="nav-cards-container grid grid-cols-2 gap-2">
+            <div className="nav-cards-container grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
               {items?.map((item, idx) => (
                 <div
                   key={`${item.label}-${idx}`}
-                  className={`nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 h-[120px] transition-all duration-300 hover:scale-[1.02] ${
-                    activeCard === idx ? "ring-2 ring-offset-2" : ""
+                  className={`nav-card select-none relative flex flex-col gap-3 p-4 rounded-lg min-w-0 h-[140px] transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
+                    activeCard === idx
+                      ? "ring-2 ring-offset-2 shadow-lg"
+                      : "shadow-sm"
                   }`}
                   ref={setCardRef(idx)}
                   style={
@@ -380,20 +422,20 @@ const CardNav: React.FC<CardNavProps> = ({
                   onMouseEnter={() => setActiveCard(idx)}
                   onMouseLeave={() => setActiveCard(null)}
                 >
-                  <div className="nav-card-label font-medium tracking-[-0.5px] text-[16px]">
+                  <div className="nav-card-label font-semibold tracking-[-0.5px] text-[18px] flex-shrink-0">
                     {item.label}
                   </div>
-                  <div className="nav-card-links mt-auto flex flex-col gap-[2px]">
+                  <div className="nav-card-links mt-auto flex flex-col gap-2">
                     {item.links?.map((lnk, i) => (
                       <Link
                         key={`${lnk.label}-${i}`}
                         href={lnk.href}
                         download={lnk.download}
-                        className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[13px] text-current"
+                        className="nav-card-link inline-flex items-center gap-2 no-underline cursor-pointer transition-all duration-300 hover:opacity-75 hover:translate-x-1 text-[14px] text-current font-medium"
                         aria-label={lnk.ariaLabel}
                       >
                         <GoArrowUpRight
-                          className="nav-card-link-icon shrink-0 w-3 h-3"
+                          className="nav-card-link-icon shrink-0 w-4 h-4"
                           aria-hidden="true"
                         />
                         {lnk.label}
@@ -403,6 +445,28 @@ const CardNav: React.FC<CardNavProps> = ({
                 </div>
               ))}
             </div>
+
+            {showControls && (
+              <div
+                ref={controlsRef}
+                className="mobile-controls lg:hidden flex items-center justify-center gap-3 mt-4 pt-3 border-t border-white/20 dark:border-gray-800/30"
+              >
+                <div className="p-1 rounded-lg">
+                  <ModeToggle />
+                </div>
+                <div className="p-1 rounded-lg">
+                  <LanguageSwitcher />
+                </div>
+                <Link href={contactHref}>
+                  <Button
+                    size="sm"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  >
+                    {t ? t("nav.contact") : "Contact"}
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         </nav>
       </div>

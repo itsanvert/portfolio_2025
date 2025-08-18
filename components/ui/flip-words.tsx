@@ -1,101 +1,141 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, Transition } from "framer-motion";
-import { cn } from "@/lib/utils";
 
-export const FlipWords = ({
-  words,
-  duration = 3000,
-  className,
-  pauseOnHover = true,
-}: {
+import React, { useState, useEffect, useCallback, useMemo } from "react";
+
+interface FlipWordProps {
   words: string[];
   duration?: number;
   className?: string;
-  pauseOnHover?: boolean;
-}) => {
-  const [currentWord, setCurrentWord] = useState(() => words[0] || "");
-  const [isAnimating, setIsAnimating] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  style?: React.CSSProperties;
+}
 
-  const startAnimation = useCallback(() => {
-    if (words.length <= 1 || isAnimating) return;
-    const currentIndex = words.indexOf(currentWord);
-    const nextIndex = (currentIndex + 1) % words.length;
-    setCurrentWord(words[nextIndex]);
-    setIsAnimating(true);
-  }, [currentWord, words, isAnimating]);
+const FlipWord: React.FC<FlipWordProps> = ({
+  words,
+  duration = 3000,
+  className = "",
+  style = {},
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Ensure we have valid words array
+  const validWords = useMemo(() => {
+    if (!Array.isArray(words) || words.length === 0) {
+      return ["Word"];
+    }
+    return words.filter(
+      (word) => word && typeof word === "string" && word.trim() !== ""
+    );
+  }, [words]);
+
+  // Calculate the maximum width to prevent layout shifts
+  const maxWidth = useMemo(() => {
+    if (typeof window === "undefined") return "auto";
+
+    // Create a temporary element to measure text width
+    const tempElement = document.createElement("span");
+    tempElement.style.visibility = "hidden";
+    tempElement.style.position = "absolute";
+    tempElement.style.fontSize = "inherit";
+    tempElement.style.fontFamily = "inherit";
+    tempElement.style.fontWeight = "inherit";
+    tempElement.style.whiteSpace = "nowrap";
+
+    document.body.appendChild(tempElement);
+
+    let maxWidthValue = 0;
+    validWords.forEach((word) => {
+      tempElement.textContent = word;
+      const width = tempElement.offsetWidth;
+      if (width > maxWidthValue) {
+        maxWidthValue = width;
+      }
+    });
+
+    document.body.removeChild(tempElement);
+    return `${maxWidthValue + 4}px`; // Add small buffer
+  }, [validWords]);
 
   useEffect(() => {
-    if (!isAnimating && words.length > 0) {
-      timeoutRef.current = setTimeout(() => {
-        startAnimation();
-      }, duration);
-    }
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, [isAnimating, duration, startAnimation, words.length]);
+    setIsMounted(true);
+  }, []);
 
-  const handleAnimationComplete = () => {
-    setIsAnimating(false);
-  };
+  const flipToNext = useCallback(() => {
+    if (validWords.length <= 1) return;
 
-  const handleMouseEnter = () => pauseOnHover && setIsAnimating(true);
-  const handleMouseLeave = () => !isAnimating && startAnimation();
+    setIsFlipping(true);
 
-  // Define transition with proper Framer Motion type
-  const transition: Transition = {
-    type: "spring", // Explicitly set to "spring" type
-    stiffness: 120,
-    damping: 14,
-    duration: 0.5, // Duration is optional for spring, but included for consistency
-  };
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % validWords.length);
+      setIsFlipping(false);
+    }, 200); // Half of the flip animation duration
+  }, [validWords.length]);
+
+  useEffect(() => {
+    if (!isMounted || validWords.length <= 1) return;
+
+    const interval = setInterval(flipToNext, duration);
+    return () => clearInterval(interval);
+  }, [flipToNext, duration, isMounted, validWords.length]);
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <span
+        className={`inline-block ${className}`}
+        style={{
+          minWidth: "100px",
+          textAlign: "center",
+          ...style,
+        }}
+      >
+        {validWords[0]}
+      </span>
+    );
+  }
 
   return (
-    <AnimatePresence onExitComplete={handleAnimationComplete}>
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{
-          opacity: 0,
-          y: -50,
-          x: 50,
-          filter: "blur(6px)",
-          scale: 1.8,
-          position: "absolute",
+    <span
+      className={`flip-word-container inline-block relative overflow-hidden ${className}`}
+      style={{
+        minWidth: maxWidth,
+        textAlign: "center",
+        ...style,
+      }}
+    >
+      <span
+        className={`flip-word-text inline-block transition-all duration-400 ease-in-out transform ${
+          isFlipping ? "scale-y-0 opacity-0" : "scale-y-100 opacity-100"
+        }`}
+        style={{
+          transformOrigin: "center",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
         }}
-        transition={transition}
-        className={cn(
-          "z-10 inline-block relative text-left px-2",
-          "font-khmer text-black dark:text-white",
-          className
-        )}
-        key={currentWord}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        aria-live="polite"
-        aria-label={`Current word: ${currentWord}`}
       >
-        {currentWord.split(" ").map((word, wordIndex) => (
-          <motion.span
-            key={`${word}-${wordIndex}`}
-            initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{
-              delay: wordIndex * 0.25,
-              duration: 0.35,
-              ease: "easeOut",
-            }}
-            className="inline-block whitespace-nowrap"
-          >
-            {word}
-            <span className="inline-block"> </span>
-          </motion.span>
-        ))}
-      </motion.div>
-    </AnimatePresence>
+        {validWords[currentIndex]}
+      </span>
+
+      <style jsx>{`
+        .flip-word-container {
+          perspective: 1000px;
+        }
+
+        .flip-word-text {
+          display: inline-block;
+          will-change: transform, opacity;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .flip-word-text {
+            transition: opacity 0.3s ease-in-out;
+            transform: none !important;
+          }
+        }
+      `}</style>
+    </span>
   );
 };
+
+export default FlipWord;
