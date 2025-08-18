@@ -33,10 +33,10 @@ export default async function ProjectsPage() {
       <section className="max-w-7xl w-full px-4 md:px-8 mx-auto">
         <div className="text-center py-20">
           <h1 className="text-4xl font-semibold lg:text-5xl pt-5 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-            {t("projects.title")}
+            {t("projects")}
           </h1>
           <p className="leading-7 text-muted-foreground mt-4 max-w-2xl mx-auto">
-            {t("projects.descriptionv")}
+            {t("projects.description")}
           </p>
         </div>
       </section>
@@ -63,7 +63,7 @@ export default async function ProjectsPage() {
             key={item._id}
             className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 hover:shadow-xl hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50 overflow-hidden"
           >
-            
+
             {/* Project Image */}
             <div className="relative aspect-video overflow-hidden">
               <Image

@@ -12,7 +12,7 @@ import {
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Menu } from "lucide-react";
 import React from "react";
-import { navigationItems } from "./CardNav";
+
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -20,6 +20,7 @@ import { ModeToggle } from "@/components/ui/toggle-light-black";
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import "@/lib/181n";
+import { navigationItems } from "@/components/ui/cardnav";
 
 export function MobileMenu() {
   const pathname = usePathname();
