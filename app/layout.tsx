@@ -1,11 +1,12 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kantumruy_Pro, Roboto } from "next/font/google";
 import "./globals.css";
 import "@fontsource/nokora";
 import { ThemeProvider } from "next-themes";
-
-import CardNav, { CardNavItem } from "./components/CardNav";
+import CardNav from "./components/CardNav";
 import { Footer } from "./components/Footer";
+import { HydrationBoundary } from "./components/HydrationBoundary";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -24,83 +25,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vertsan.com"),
-  title: {
-    default: "Vert San - Full-Stack Developer & IT Professional",
-    template: "%s | Vert San",
-  },
-  description:
-    "Explore the portfolio of Vert San, a passionate Full-Stack Developer and IT Professional specializing in creating modern web applications, scalable backend systems, and intuitive user experiences. Discover projects in Next.js, React, Laravel, and more.",
-  keywords: [
-    "Vert San",
-    "Full Stack Developer",
-    "Web Development",
-    "IT Professional",
-    "Next.js",
-    "React",
-    "Laravel",
-    "Node.js",
-    "Express.js",
-    "Prisma ORM",
-    "PostgreSQL",
-    "SQL Server",
-    "MySQL",
-    "Supabase",
-    "Docker",
-    "REST APIs",
-    "C#",
-    "Windows Server",
-    "Linux Server",
-    "Network Configuration",
-    "Cybersecurity",
-    "Portfolio",
-    "Cambodia",
-    "Phnom Penh",
-  ],
-  creator: "Vert San",
-  publisher: "Vert San",
-  openGraph: {
-    title: "Vert San - Full-Stack Developer & IT Professional",
-    description:
-      "Portfolio of Vert San, showcasing expertise in web development, IT solutions, and design.",
-    url: "https://vertsan.com",
-    siteName: "Vert San",
-    images: [
-      {
-        url: "/me.jpg",
-        width: 800,
-        height: 600,
-        alt: "Vert San - Portfolio",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Vert San – Developer & IT Professional",
-    description:
-      "Explore Vert San's portfolio – building high-performance web solutions with Next.js, React, and more.",
-    creator: "@itsanvert",
-    images: ["/me.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/manifest.webmanifest",
+  // ... keep your existing metadata
 };
 
 export default function RootLayout({
@@ -147,21 +72,20 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <CardNav
-            logoText="Vert San"
-            logoAlt="Vert San - Portfolio"
-            items={[]}
-          />
+        <ThemeProvider>
+          <HydrationBoundary>
+            <CardNav
+              logoText="Vert San"
+              logoAlt="Vert San - Portfolio"
+              items={[]}
+            />
+          </HydrationBoundary>
 
-          <div className="pt-16 md:pt-20 lg:pt-24">
-            <div className="container mx-auto px-4 md:px-8">{children}</div>
-            <Footer />
+          <div className="pt-16">
+            <div className="container">{children}</div>
+            <HydrationBoundary>
+              <Footer />
+            </HydrationBoundary>
           </div>
         </ThemeProvider>
       </body>

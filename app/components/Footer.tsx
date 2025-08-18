@@ -1,46 +1,21 @@
+// components/Footer.tsx
 "use client";
-
 
 import { useTranslation } from "react-i18next";
 
 export function Footer() {
   const { t } = useTranslation();
-  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className=" text-secondary-foreground py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-between space-y-4">
-          <div className="flex items-center space-x-4">
-            <a
-              href="https://github.com/itsanvert"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-            >
-              {t("footer.social.github")}
-            </a>
-            <a
-              href="https://twitter.com/itsanvert"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-            >
-              {t("footer.social.twitter")}
-            </a>
-            <a
-              href="https://linkedin.com/in/itsanvert
-              "
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-            >
-              {t("footer.social.linkedin")}
-            </a>
+    <footer className="text-sm text-muted-foreground py-8 border-t border-border/50">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="text-sm">
+              {t("footer.copyright", "© 2025 Vert San. All rights reserved.")}
+            </p>
           </div>
-          <p className="text-sm">
-            {t("footer.copyright", { year: currentYear })}
-          </p>
+          {/* Add other footer content here */}
         </div>
       </div>
     </footer>
