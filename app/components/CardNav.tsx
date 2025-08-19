@@ -65,7 +65,7 @@ const mobileNavItems = [
     key: "projects",
     label: "Projects",
     icon: FiCode,
-    href: "/project",
+    href: "/projects",
   },
   {
     key: "menu",
@@ -76,7 +76,6 @@ const mobileNavItems = [
 ];
 
 const CardNav: React.FC<CardNavProps> = ({
-  
   logoText = "Portfolio",
   logoAlt = "Logo",
   items = [],
