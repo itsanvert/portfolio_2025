@@ -101,7 +101,8 @@
       "chineseLevel": "Fair"
     },
     "projects": {
-      "title": "Notable Projects",
+      "title": "My Projects",
+      "description": "Explore a collection of projects I've built with passion and precision.",
       "universityWebsite": "University Website Development",
       "universityWebsiteUrl": "sbku.edu.kh",
       "universityWebsiteYear": "2025",

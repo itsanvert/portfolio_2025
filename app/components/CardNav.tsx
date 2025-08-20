@@ -83,8 +83,7 @@ const CardNav: React.FC<CardNavProps> = ({
   ease = "power3.out",
   baseColor,
   menuColor,
-  buttonBgColor,
-  buttonTextColor,
+
   homeHref = "/",
   showControls = true,
   contactHref = "https://t.me/itsanvert",

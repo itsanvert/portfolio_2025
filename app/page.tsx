@@ -2,7 +2,6 @@ import { AboutSection } from "./components/AboutSection";
 import { HeroSectionOne } from "./components/Hero";
 import { HydrationBoundary } from "./components/HydrationBoundary";
 
-
 import SectionTwo from "./components/SectionTwo";
 
 import ProjectsPage from "./projects/page";
