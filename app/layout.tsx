@@ -4,11 +4,10 @@ import { Geist, Geist_Mono, Kantumruy_Pro, Roboto } from "next/font/google";
 import "./globals.css";
 import "@fontsource/nokora";
 import { ThemeProvider } from "next-themes";
-import CardNav from "./components/CardNav.tsx";
+import CardNav from "./components/CardNav";
 import { Footer } from "./components/Footer";
 import { HydrationBoundary } from "./components/HydrationBoundary";
-import type { CardNavItem } from "./components/CardNav.tsx";
-
+import type { CardNavItem } from "./components/CardNav";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -75,7 +74,7 @@ const navItems: CardNavItem[] = [
     textColor: "white",
     links: [
       {
-        label: "Get In Touch",
+        label: "Contact",
         href: "/contact",
         ariaLabel: "Contact me",
       },
