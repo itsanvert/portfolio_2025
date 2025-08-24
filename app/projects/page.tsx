@@ -60,7 +60,6 @@ const ProjectCard = ({
   return (
     <motion.div
       className="group relative overflow-hidden bg-white dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-gray-900/20 transition-all duration-500 hover:-translate-y-2"
-      variants={cardVariants}
       initial="hidden"
       animate="visible"
       whileHover={{ scale: 1.02 }}
@@ -283,7 +282,6 @@ export default function ProjectsPage() {
         {/* Header */}
         <motion.div
           className="text-center mb-16"
-          variants={headerVariants}
           initial="hidden"
           animate="visible"
         >

@@ -1,80 +1,82 @@
 {
-  "flipWords": ["Software Developer 🐼", "Instructor 😝"],
+  "flipWords": ["Software Developer 🐼", "Mentor 😆"],
   "nav": {
-    "firstname": "Vert",
-    "lastname": "San",
+    "firstname": "San",
+    "lastname": "Voeurt",
     "home": "Home",
     "guestbook": "Guestbook",
     "projects": "Projects",
     "about": "About",
     "course": "Courses",
-    "contact": "Contact Me",
+    "contact": "Contact",
     "project_all": "All",
-    "project_web": "Website",
+    "project_web": "Web",
     "project_design": "Design",
-    "project_desktop": "Desktop"
+    "project_desktop": "Desktop App"
   },
   "hero": {
-    "greeting": "Hi, I'm Vert San",
-    "description": "Computer Science Professional that loves ",
+    "greeting": "Hello, I'm San Voeurt",
+    "description": "A passionate CS specialist with a keen interest in",
+    "cta": "Contact",
     "resume": "Resume",
-    "cta": "Get in Touch!"
+    "alt": "San Voeurt's Photo",
+    "techStack": "Technologies I use"
   },
   "home": {
-    "title": "Welcome to My Portfolio",
-    "description": "Explore my world of development, design, and creativity."
+    "title": "Welcome to my website",
+    "description": "Explore the world of my development, design, and creative innovations."
   },
   "projects": {
     "title": "My Projects",
-    "description": "Here are some of the cool projects I've built recently."
+    "description": "Here are some amazing projects I've created recently."
   },
   "guestbook": {
-    "title": "Guest Comments",
-    "description": "Feel free to leave your thoughts and feedback here.",
+    "title": "Feedback",
+    "description": "Please sign up and leave your feedback here.",
     "logout": "Logout",
     "messageLabel": "Message",
-    "placeholder": "Your Message...",
-    "signForFree": "Submit"
+    "placeholder": "Your message...",
+    "signForFree": "Sign In"
   },
   "about": {
     "title": "About Me",
-    "description": "I am Vert San, a passionate software developer and IT professional with expertise in both frontend and backend technologies. I have experience in web development, IT support, and teaching. I am currently pursuing a Bachelor's degree in Computer Science while working on various projects and teaching ICT part-time.",
-    "cta": "Get in Touch!",
+    "description": "I'm San Voeurt, a passionate software developer and IT specialist with expertise in both front-end and back-end development. I have experience in web development, IT support, and teaching. I'm currently pursuing a Bachelor's degree in Computer Science while working on various projects and teaching IT as a part-time job.",
+    "cta": "Contact!",
     "education": {
       "title": "Education",
-      "degree": "Bachelor of Computer Science",
-      "university": "Samdech Preah Mahasanghara Bour Kry University",
+      "degree": "Bachelor of Science in Computer Science",
+      "university": "Preah Reach Mohasangkrach Bourei University",
       "period": "2022 - Present",
-      "specialization": "Expected Graduation: 2026",
+      "specialization": "Expected to graduate in 2026",
       "highSchool": "High School Diploma",
       "highSchoolPeriod": "2021 - 2022",
       "highSchoolGrad": "Graduated November 2022"
     },
     "experience": {
-      "title": "Professional Experience",
+      "title": "Work Experience",
       "current": {
-        "position": "Web Developer and Admin Manager",
-        "company": "Samdech Preah Mahasanghara Bour Kry University",
+        "position": "Web Developer & Website Administrator",
+        "company": "Preah Reach Mohasangkrach Bourei University",
         "period": "2025 - Present",
-        "description": "Managing the university's website (sbku.edu.kh) and developing web applications."
+        "description": "Managing university website (sbku.edu.kh) and developing web applications."
       },
       "previous": {
         "freelance": "Freelance Graphic Designer",
         "freelanceCompany": "Kampufreelancer",
         "freelancePeriod": "2024 - 2025",
         "freelanceDescription": "Designed kid cards and various digital assets for clients.",
-        "ictTeacher": "ICT Teacher and Computer Maintenance",
-        "ictCompany": "Phnom Penh International Standard Academy",
+        "ictTeacher": "ICT Teacher & Computer Repair",
+        "ictCompany": "Phnom Penh International School",
         "ictPeriod": "2023 - 2025 (Part-time)",
-        "ictDescription": "Teaching ICT courses and providing computer maintenance services.",
-        "itSupport": "IT Support",
+        "ictDescription": "Teaching ICT subjects and providing computer maintenance services.",
+        "itSupport": "IT Support Assistant",
         "itCompany": "Bright Kids School",
         "itPeriod": "2023 - 2024",
-        "itDescription": "Provided comprehensive IT support and technical assistance.",
-        "salesDesigner": "Sales & Graphic Designer",
+        "itDescription": "Provided technical assistance and comprehensive IT support.",
+        "salesDesigner": "Sales & Designer",
         "salesCompany": "AddMii.com",
         "salesPeriod": "2022 - 2023",
-        "salesDescription": "Combined sales responsibilities with graphic design projects."
+        "salesDescription": "Handled product sales and worked on design projects."
       }
     },
     "skills": {
@@ -90,7 +92,6 @@
       "toefl": "TOEFL ITP: 407 (CEFR A2)",
       "ielts": "IELTS Academic: Band 4.5 (CEFR B1)"
     },
-
     "languages": {
       "title": "Languages",
       "khmer": "Khmer",
@@ -98,15 +99,14 @@
       "english": "English",
       "englishLevel": "Intermediate",
       "chinese": "Chinese",
-      "chineseLevel": "Fair"
+      "chineseLevel": "Basic"
     },
     "projects": {
-      "title": "My Projects",
-      "description": "Explore a collection of projects I've built with passion and precision.",
+      "title": "Notable Projects",
       "universityWebsite": "University Website Development",
       "universityWebsiteUrl": "sbku.edu.kh",
       "universityWebsiteYear": "2025",
-      "universityWebsiteDesc": "Developed and maintain the official university website with modern web technologies.",
+      "universityWebsiteDesc": "Developed and maintained the university's official website using modern web technologies.",
       "barcodePOS": "Barcode POS System",
       "barcodePOSProject": "University Event Project",
       "barcodePOSYear": "2024",
@@ -117,8 +117,31 @@
       "umsDesc": "Comprehensive management system for university operations and research activities."
     }
   },
+  "contact": {
+    "title": "Contact",
+    "description": "Get in touch and let's discuss how we can work together",
+    "contactInfo": "Get In Touch",
+    "sendMessage": "Send a Message",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "john@example.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Project Collaboration",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell me about your project or how I can help...",
+    "sendMessageButton": "Send Message",
+    "sending": "Sending...",
+    "successMessage": "✓ Message sent successfully! I'll get back to you soon.",
+    "footer": "Looking forward to hearing from you!",
+    "error": {
+      "requiredFields": "Please fill in all required fields",
+      "invalidEmail": "Please enter a valid email address",
+      "submitFailed": "Failed to send message: "
+    }
+  },
   "footer": {
-    "copyright": "© {{year}} Vert San. All rights reserved.",
+    "copyright": "© {{year}} San Voeurt, All rights reserved.",
     "social": {
       "github": "GitHub",
       "twitter": "Twitter",
@@ -161,14 +184,10 @@
     },
     "errors": {
       "fetchFailed": "Failed to fetch courses",
-      "timeout": "Request timed out. Please check your internet connection.",
+      "timeout": "Your request timed out. Please check your internet connection.",
       "cors": "CORS error. Please check your Sanity CORS settings.",
       "auth": "Authentication error. Please check your Sanity token.",
       "tryAgain": "Try Again"
     }
-  },
-  "processing": {
-    "title": "Processing",
-    "description": "Processing, please wait..."
   }
 }
