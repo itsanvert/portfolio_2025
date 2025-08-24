@@ -55,21 +55,21 @@ export function AboutSection() {
     {
       icon: <Trophy className="w-5 h-5 text-yellow-500" />,
       title: t(
-        "about.achievements.universityWebsite",
+        "about.projects.universityWebsite",
         "University Website Development"
       ),
       description: t(
-        "about.achievements.universityWebsiteDesc",
+        "about.projects.universityWebsiteDesc",
         "Developed & launched sbku.edu.kh serving 2000+ students"
       ),
-      year: "2025",
+      year: t("about.projects.universityWebsiteYear", "2025"),
       category: "Development",
     },
     {
       icon: <Award className="w-5 h-5 text-blue-500" />,
-      title: t("about.achievements.ccna", "CCNA Certification"),
+      title: t("about.certifications.ccna1", "CCNA Certification"),
       description: t(
-        "about.achievements.ccnaDesc",
+        "about.certifications.ccna2",
         "Completed Level 1 with distinction, Level 2 in progress"
       ),
       year: "2024",
@@ -77,40 +77,37 @@ export function AboutSection() {
     },
     {
       icon: <Users className="w-5 h-5 text-green-500" />,
-      title: t("about.achievements.teaching", "ICT Education Impact"),
+      title: t("about.experience.previous.ictTeacher", "ICT Education Impact"),
       description: t(
-        "about.achievements.teachingDesc",
-        "Taught 150+ students across multiple institutions"
+        "about.experience.previous.ictDescription",
+        "Teaching ICT courses and providing computer maintenance services"
       ),
       year: "2023-2025",
       category: "Education",
     },
     {
       icon: <Lightbulb className="w-5 h-5 text-purple-500" />,
-      title: t("about.achievements.ums", "University Management System"),
+      title: t("about.projects.ums", "University Management System"),
       description: t(
-        "about.achievements.umsDesc",
-        "Leading development of comprehensive research management platform"
+        "about.projects.umsDesc",
+        "Comprehensive management system for university operations and research activities"
       ),
       year: "2025",
       category: "Innovation",
     },
     {
       icon: <Globe className="w-5 h-5 text-indigo-500" />,
-      title: t("about.achievements.multilingual", "Multilingual Proficiency"),
-      description: t(
-        "about.achievements.multilingualDesc",
-        "IELTS 4.5, TOEFL 407, serving diverse communities"
-      ),
+      title: t("about.languages.title", "Multilingual Proficiency"),
+      description: `${t("about.certifications.ielts", "IELTS Academic: Band 4.5")} • ${t("about.certifications.toefl", "TOEFL ITP: 407")}`,
       year: "2024",
       category: "Language",
     },
     {
       icon: <Zap className="w-5 h-5 text-orange-500" />,
-      title: t("about.achievements.fullstack", "Full-Stack Expertise"),
+      title: t("about.skills.title", "Technical Skills"),
       description: t(
-        "about.achievements.fullstackDesc",
-        "Mastered 14+ technologies from frontend to database"
+        "about.skills.development",
+        "Full-stack development expertise with modern technologies"
       ),
       year: "2024",
       category: "Skills",
@@ -128,22 +125,22 @@ export function AboutSection() {
   const stats = [
     {
       number: "4+",
-      label: t("about.stats.experience", "Years Experience"),
+      label: t("about.experience.title", "Years Experience"),
       icon: <Calendar className="w-4 h-4" />,
     },
     {
       number: "15+",
-      label: t("about.stats.projects", "Projects Completed"),
+      label: t("about.projects.title", "Projects Completed"),
       icon: <Target className="w-4 h-4" />,
     },
     {
       number: "150+",
-      label: t("about.stats.students", "Students Taught"),
+      label: t("about.experience.previous.ictDescription", "Students Taught"),
       icon: <Users className="w-4 h-4" />,
     },
     {
       number: "2000+",
-      label: t("about.stats.users", "Website Users"),
+      label: t("about.projects.universityWebsiteDesc", "Website Users"),
       icon: <Globe className="w-4 h-4" />,
     },
   ];
@@ -184,7 +181,7 @@ export function AboutSection() {
                     transition={{ delay: 0.8 }}
                   >
                     <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                    {t("about.status", "Available")}
+                    {t("guestbook.signForFree", "Available")}
                   </motion.div>
                 </div>
 
@@ -195,7 +192,7 @@ export function AboutSection() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
                   >
-                    San Vert
+                    {t("nav.firstname", "Vert")} {t("nav.lastname", "San")}
                   </motion.h1>
                   <motion.p
                     className="text-lg font-semibold text-foreground/90 mb-3"
@@ -228,16 +225,16 @@ export function AboutSection() {
                       className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white font-semibold shadow-lg hover:bg-primary/90 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                     >
                       <Download className="w-4 h-4" />
-                      {t("about.resume", "Resume")}
+                      {t("hero.resume", "Resume")}
                     </a>
                     <a
-                      href="/resume/acheviements.pdf"
+                      href="/resume/achievements.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-secondary text-secondary-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-secondary/20"
                     >
                       <FileText className="w-4 h-4" />
-                      {t("about.achievements", "Achievements")}
+                      {t("about.certifications.title", "Achievements")}
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </motion.div>
@@ -249,12 +246,12 @@ export function AboutSection() {
             <motion.div className="lg:col-span-2 space-y-6" variants={fadeInUp}>
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-                  {t("about.intro.title", "Computer Science Student")}
+                  {t("about.title", "About Me")}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   {t(
-                    "about.intro.description",
-                    "Passionate developer with hands-on experience in web development, IT support, and network administration. Currently building the future of educational technology while pursuing my degree."
+                    "about.description",
+                    "I am Vert San, a passionate software developer and IT professional with expertise in both frontend and backend technologies. I have experience in web development, IT support, and teaching."
                   )}
                 </p>
               </div>
@@ -290,14 +287,14 @@ export function AboutSection() {
                 variants={fadeInUp}
               >
                 <Trophy className="inline w-8 h-8 text-yellow-500 mr-3" />
-                {t("about.achievements.title", "Key Achievements")}
+                {t("about.projects.title", "Key Achievements")}
               </motion.h2>
               <motion.p
                 className="text-muted-foreground text-lg max-w-2xl mx-auto"
                 variants={fadeInUp}
               >
                 {t(
-                  "about.achievements.subtitle",
+                  "about.projects.description",
                   "Highlighted accomplishments that showcase growth, impact, and technical excellence"
                 )}
               </motion.p>
@@ -569,21 +566,21 @@ export function AboutSection() {
                   <div className="space-y-3">
                     {[
                       {
-                        name: t("about.certifications.ccna1", "CCNA Level 1"),
-                        status: t(
-                          "about.certifications.completed",
-                          "Completed"
+                        name: t(
+                          "about.certifications.ccna1",
+                          "CCNA Level 1 (Completed, 2024)"
                         ),
+                        status: t("processing.title", "Completed"),
                         year: "2024",
                         icon: <Server className="w-4 h-4 text-green-500" />,
                         color: "green",
                       },
                       {
-                        name: t("about.certifications.ccna2", "CCNA Level 2"),
-                        status: t(
-                          "about.certifications.inProgress",
-                          "In Progress"
+                        name: t(
+                          "about.certifications.ccna2",
+                          "CCNA Level 2 (In Progress)"
                         ),
+                        status: t("about.projects.umsStatus", "In Progress"),
                         year: "2025",
                         icon: <Server className="w-4 h-4 text-yellow-500" />,
                         color: "yellow",
