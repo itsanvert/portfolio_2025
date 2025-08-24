@@ -13,6 +13,16 @@ import {
   Globe,
   Server,
   Download,
+  Trophy,
+  Star,
+  Zap,
+  Target,
+  FileText,
+  ExternalLink,
+  Calendar,
+  MapPin,
+  Users,
+  Lightbulb,
 } from "lucide-react";
 import { HydrationBoundary } from "./HydrationBoundary";
 
@@ -35,561 +45,649 @@ export function AboutSection() {
     },
   };
 
-  const technicalSkills: string[] = [
-    "Next.js",
-    "Laravel",
-    "Node.js",
-    "Express.js",
-    "React",
-    "Prisma ORM",
-    "PostgreSQL",
-    "SQL Server",
-    "MySQL",
-    "Supabase",
-    "Docker",
-    "REST APIs",
-    "C#",
-    "Crystal Reports",
+  const scaleIn = {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: { opacity: 1, scale: 1 },
+    transition: { duration: 0.5 },
+  };
+
+  const achievements = [
+    {
+      icon: <Trophy className="w-5 h-5 text-yellow-500" />,
+      title: t(
+        "about.achievements.universityWebsite",
+        "University Website Development"
+      ),
+      description: t(
+        "about.achievements.universityWebsiteDesc",
+        "Developed & launched sbku.edu.kh serving 2000+ students"
+      ),
+      year: "2025",
+      category: "Development",
+    },
+    {
+      icon: <Award className="w-5 h-5 text-blue-500" />,
+      title: t("about.achievements.ccna", "CCNA Certification"),
+      description: t(
+        "about.achievements.ccnaDesc",
+        "Completed Level 1 with distinction, Level 2 in progress"
+      ),
+      year: "2024",
+      category: "Certification",
+    },
+    {
+      icon: <Users className="w-5 h-5 text-green-500" />,
+      title: t("about.achievements.teaching", "ICT Education Impact"),
+      description: t(
+        "about.achievements.teachingDesc",
+        "Taught 150+ students across multiple institutions"
+      ),
+      year: "2023-2025",
+      category: "Education",
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5 text-purple-500" />,
+      title: t("about.achievements.ums", "University Management System"),
+      description: t(
+        "about.achievements.umsDesc",
+        "Leading development of comprehensive research management platform"
+      ),
+      year: "2025",
+      category: "Innovation",
+    },
+    {
+      icon: <Globe className="w-5 h-5 text-indigo-500" />,
+      title: t("about.achievements.multilingual", "Multilingual Proficiency"),
+      description: t(
+        "about.achievements.multilingualDesc",
+        "IELTS 4.5, TOEFL 407, serving diverse communities"
+      ),
+      year: "2024",
+      category: "Language",
+    },
+    {
+      icon: <Zap className="w-5 h-5 text-orange-500" />,
+      title: t("about.achievements.fullstack", "Full-Stack Expertise"),
+      description: t(
+        "about.achievements.fullstackDesc",
+        "Mastered 14+ technologies from frontend to database"
+      ),
+      year: "2024",
+      category: "Skills",
+    },
   ];
 
-  const itSkills: string[] = [
-    "Windows Server 2022",
-    "Linux Server",
-    "Network Configuration",
-    "Firewall Management",
-    "CCNA",
-    "IT Troubleshooting",
-    "Cybersecurity",
+  const technicalSkills = {
+    frontend: ["Next.js", "React", "Framer Motion", "Tailwind CSS"],
+    backend: ["Laravel", "Node.js", "Express.js", "Prisma ORM"],
+    database: ["PostgreSQL", "SQL Server", "MySQL", "Supabase"],
+    infrastructure: ["Docker", "Linux Server", "Windows Server 2022"],
+    other: ["C#", "Crystal Reports", "REST APIs", "Git"],
+  };
+
+  const stats = [
+    {
+      number: "4+",
+      label: t("about.stats.experience", "Years Experience"),
+      icon: <Calendar className="w-4 h-4" />,
+    },
+    {
+      number: "15+",
+      label: t("about.stats.projects", "Projects Completed"),
+      icon: <Target className="w-4 h-4" />,
+    },
+    {
+      number: "150+",
+      label: t("about.stats.students", "Students Taught"),
+      icon: <Users className="w-4 h-4" />,
+    },
+    {
+      number: "2000+",
+      label: t("about.stats.users", "Website Users"),
+      icon: <Globe className="w-4 h-4" />,
+    },
   ];
 
   return (
     <HydrationBoundary>
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12"
+          className="space-y-8 sm:space-y-12"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
-          {/* Profile Card - Better responsive layout */}
+          {/* Hero Section */}
           <motion.div
-            className="col-span-1 lg:col-span-2 order-1"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12"
             variants={fadeInUp}
           >
-            <Card className="w-full bg-gradient-to-br from-primary/10 to-muted/40 p-0 shadow-xl rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 transition-all duration-300 h-fit">
-              <div className="relative h-[280px] sm:h-[320px] lg:h-[360px] w-full">
-                <Image
-                  src="/me.jpg"
-                  alt="Profile picture of San Vert"
-                  className="object-cover w-full h-full"
-                  priority
-                  width={500}
-                  height={360}
-                  quality={90}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+            {/* Profile Card */}
+            <motion.div className="lg:col-span-1" variants={scaleIn}>
+              <Card className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-0 shadow-2xl rounded-3xl overflow-hidden border-2 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-3xl group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative h-[350px] w-full overflow-hidden rounded-t-3xl">
+                  <Image
+                    src="/me.jpg"
+                    alt="Profile picture of San Vert"
+                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                    priority
+                    width={400}
+                    height={350}
+                    quality={95}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="bg-background/80 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
+                    className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 }}
                   >
-                    {t("about.status", "Available for work")}
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                    {t("about.status", "Available")}
                   </motion.div>
                 </div>
-              </div>
-              <div className="p-4 sm:p-6 flex flex-col items-center text-center">
-                <motion.h2
-                  className="text-lg sm:text-xl lg:text-2xl font-bold text-primary mb-2 leading-tight"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  {t("about.title", "Full-Stack Developer & IT Professional")}
-                </motion.h2>
-                <motion.p
-                  className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
+
+                <div className="relative p-6 text-center">
+                  <motion.h1
+                    className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    San Vert
+                  </motion.h1>
+                  <motion.p
+                    className="text-lg font-semibold text-foreground/90 mb-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    {t("about.title", "Full-Stack Developer & IT Professional")}
+                  </motion.p>
+                  <motion.div
+                    className="flex items-center justify-center gap-1 text-sm text-muted-foreground mb-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <MapPin className="w-4 h-4" />
+                    <span>{t("about.location", "Phnom Penh, Cambodia")}</span>
+                  </motion.div>
+
+                  {/* Action Buttons */}
+                  <motion.div
+                    className="flex flex-col sm:flex-row gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <a
+                      href="/resume/resume.pdf"
+                      download
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white font-semibold shadow-lg hover:bg-primary/90 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <Download className="w-4 h-4" />
+                      {t("about.resume", "Resume")}
+                    </a>
+                    <a
+                      href="/resume/acheviements.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-secondary text-secondary-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-secondary/20"
+                    >
+                      <FileText className="w-4 h-4" />
+                      {t("about.achievements", "Achievements")}
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </motion.div>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Stats Grid */}
+            <motion.div className="lg:col-span-2 space-y-6" variants={fadeInUp}>
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
+                  {t("about.intro.title", "Computer Science Student")}
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   {t(
-                    "about.description",
-                    "Computer Science student with hands-on experience in web development, IT support, and network administration."
+                    "about.intro.description",
+                    "Passionate developer with hands-on experience in web development, IT support, and network administration. Currently building the future of educational technology while pursuing my degree."
                   )}
-                </motion.p>
-                <motion.a
-                  href="/resume/resume.pdf"
-                  download
-                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-primary text-white font-semibold shadow hover:bg-primary/80 transition-all duration-200 hover:shadow-md text-sm sm:text-base w-full sm:w-auto justify-center"
-                  aria-label="Download Resume"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                {stats.map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-background/80 dark:bg-muted/60 p-4 rounded-2xl border border-border/50 text-center hover:border-primary/30 transition-all duration-300 hover:shadow-lg group"
+                    variants={scaleIn}
+                    transition={{ delay: 0.1 * index }}
+                  >
+                    <div className="flex justify-center mb-2 text-primary group-hover:scale-110 transition-transform duration-300">
+                      {stat.icon}
+                    </div>
+                    <div className="text-2xl font-bold text-foreground mb-1">
+                      {stat.number}
+                    </div>
+                    <div className="text-xs text-muted-foreground font-medium">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Key Achievements Section */}
+          <motion.div variants={fadeInUp}>
+            <div className="text-center mb-8">
+              <motion.h2
+                className="text-3xl font-bold text-foreground mb-3"
+                variants={fadeInUp}
+              >
+                <Trophy className="inline w-8 h-8 text-yellow-500 mr-3" />
+                {t("about.achievements.title", "Key Achievements")}
+              </motion.h2>
+              <motion.p
+                className="text-muted-foreground text-lg max-w-2xl mx-auto"
+                variants={fadeInUp}
+              >
+                {t(
+                  "about.achievements.subtitle",
+                  "Highlighted accomplishments that showcase growth, impact, and technical excellence"
+                )}
+              </motion.p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {achievements.map((achievement, index) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  transition={{ delay: 0.1 * index }}
                 >
-                  <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-                  {t("about.resume", "Download Resume")}
-                </motion.a>
+                  <Card className="h-full bg-background/80 dark:bg-muted/60 p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="p-2 bg-background rounded-lg shadow-sm group-hover:shadow-md transition-shadow duration-300 flex-shrink-0">
+                        {achievement.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
+                            {achievement.category}
+                          </span>
+                          <span className="text-xs text-muted-foreground font-medium">
+                            {achievement.year}
+                          </span>
+                        </div>
+                        <h3 className="font-semibold text-foreground text-sm mb-2 leading-tight">
+                          {achievement.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {achievement.description}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Skills & Experience Grid */}
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            variants={fadeInUp}
+          >
+            {/* Technical Excellence */}
+            <Card className="bg-background/80 dark:bg-muted/60 p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Code2 className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {t("about.skills.title", "Technical Excellence")}
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    {t(
+                      "about.skills.subtitle",
+                      "Modern full-stack development"
+                    )}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-5">
+                {Object.entries(technicalSkills).map(
+                  ([category, skills], index) => (
+                    <div key={category}>
+                      <h3 className="text-sm font-medium text-muted-foreground mb-3 capitalize">
+                        {t(
+                          `about.skills.${category}`,
+                          category.replace(/([A-Z])/g, " $1").trim()
+                        )}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {skills.map((skill, skillIndex) => (
+                          <motion.span
+                            key={skill}
+                            className="px-3 py-1.5 bg-primary/5 hover:bg-primary/10 text-primary rounded-lg text-sm font-medium border border-primary/10 hover:border-primary/20 transition-all duration-200 hover:scale-105 cursor-default"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                              delay: 0.05 * skillIndex + 0.1 * index,
+                            }}
+                            whileHover={{ y: -2 }}
+                          >
+                            {skill}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+            </Card>
+
+            {/* Professional Journey */}
+            <Card className="bg-background/80 dark:bg-muted/60 p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Briefcase className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {t("about.experience.title", "Professional Journey")}
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    {t(
+                      "about.experience.subtitle",
+                      "Building expertise through diverse roles"
+                    )}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    role: t(
+                      "about.experience.current.position",
+                      "Volunteer Web Developer"
+                    ),
+                    company: t(
+                      "about.experience.current.company",
+                      "SBKU University"
+                    ),
+                    period: "2025 – Present",
+                    description: t(
+                      "about.experience.current.description",
+                      "Leading university website development"
+                    ),
+                    highlight: true,
+                  },
+                  {
+                    role: t(
+                      "about.experience.previous.ictTeacher",
+                      "ICT Teacher"
+                    ),
+                    company: t("about.experience.previous.ictCompany", "PPISA"),
+                    period: "2023 – 2025",
+                    description: t(
+                      "about.experience.previous.ictDescription",
+                      "Teaching & computer maintenance"
+                    ),
+                    highlight: false,
+                  },
+                  {
+                    role: t(
+                      "about.experience.previous.itSupport",
+                      "IT Support"
+                    ),
+                    company: t(
+                      "about.experience.previous.itCompany",
+                      "Bright Kids School"
+                    ),
+                    period: "2023 – 2024",
+                    description: t(
+                      "about.experience.previous.itDescription",
+                      "Comprehensive IT support"
+                    ),
+                    highlight: false,
+                  },
+                ].map((exp, index) => (
+                  <motion.div
+                    key={index}
+                    className={`relative pl-6 pb-4 ${index !== 2 ? "border-l-2 border-primary/20" : ""}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                  >
+                    <div
+                      className={`absolute -left-2 top-0 w-4 h-4 rounded-full ${exp.highlight ? "bg-primary" : "bg-primary/40"} border-4 border-background`}
+                    />
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                      <h3 className="font-medium text-foreground text-sm">
+                        {exp.role}
+                      </h3>
+                      <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded-full w-fit">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <p className="text-sm text-primary/80 font-medium mb-1">
+                      {exp.company}
+                    </p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {exp.description}
+                    </p>
+                  </motion.div>
+                ))}
               </div>
             </Card>
           </motion.div>
 
-          {/* Details Section - Better responsive grid */}
+          {/* Education & Certifications */}
           <motion.div
-            className="col-span-1 lg:col-span-3 order-2 space-y-4 sm:space-y-6 lg:space-y-8"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
             variants={fadeInUp}
           >
             {/* Education */}
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-background/80 dark:bg-muted/60 p-4 sm:p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                    <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-                    {t("about.education.title", "Education")}
-                  </h2>
+            <Card className="bg-background/80 dark:bg-muted/60 p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <GraduationCap className="w-6 h-6 text-primary" />
                 </div>
-                <div className="space-y-4 sm:space-y-6">
-                  {/* University */}
-                  <div className="pl-2 border-l-2 border-primary/20">
-                    <h3 className="text-base sm:text-lg font-medium text-foreground leading-tight">
+                <h2 className="text-xl font-semibold text-foreground">
+                  {t("about.education.title", "Education")}
+                </h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="relative pl-6 border-l-2 border-primary/30">
+                  <div className="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full border-4 border-background" />
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="font-medium text-foreground">
                       {t(
                         "about.education.degree",
                         "Bachelor of Computer Science"
                       )}
                     </h3>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      <span className="block sm:inline">
-                        {t(
-                          "about.education.university",
-                          "Samdech Preah Mahasangharajah Bour Kry University"
-                        )}
-                      </span>
-                      <span className="mx-0 sm:mx-2 block sm:inline text-primary/60">
-                        •
-                      </span>
-                      <span className="block sm:inline">
-                        {t("about.education.period", "2022 – Present")}
-                      </span>
-                    </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-2">
-                      {t(
-                        "about.education.specialization",
-                        "Expected Graduation: 2026"
-                      )}
-                    </p>
+                    <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-1 rounded-full flex-shrink-0 ml-2">
+                      {t("about.education.current", "Current")}
+                    </span>
                   </div>
-                  {/* High School */}
-                  <div className="pl-2 border-l-2 border-primary/20">
-                    <h3 className="text-base sm:text-lg font-medium text-foreground leading-tight">
-                      {t("about.education.highSchool", "High School Diploma")}
-                    </h3>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      <span className="block sm:inline">
-                        {t(
-                          "about.education.highSchoolName",
-                          "Samdech Preah Mahasangharajah Bour Kry High School"
-                        )}
-                      </span>
-                      <span className="mx-0 sm:mx-2 block sm:inline text-primary/60">
-                        •
-                      </span>
-                      <span className="block sm:inline">
-                        {t("about.education.highSchoolPeriod", "2021 – 2022")}
-                      </span>
-                    </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-2">
-                      {t(
-                        "about.education.highSchoolGrad",
-                        "Graduated November 2022"
-                      )}
-                    </p>
-                  </div>
+                  <p className="text-sm text-primary/80 font-medium mb-1">
+                    {t("about.education.university", "SBKU University")}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("about.education.period", "2022 – 2026 (Expected)")}
+                  </p>
                 </div>
-              </Card>
-            </motion.div>
 
-            {/* Experience */}
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-background/80 dark:bg-muted/60 p-4 sm:p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-                    {t("about.experience.title", "Professional Experience")}
-                  </h2>
+                <div className="relative pl-6">
+                  <div className="absolute -left-2 top-0 w-4 h-4 bg-primary/40 rounded-full border-4 border-background" />
+                  <h3 className="font-medium text-foreground mb-1">
+                    {t("about.education.highSchool", "High School Diploma")}
+                  </h3>
+                  <p className="text-sm text-primary/80 font-medium mb-1">
+                    {t("about.education.highSchoolName", "SBKU High School")}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("about.education.highSchoolPeriod", "2021 – 2022")}
+                  </p>
                 </div>
-                <div className="space-y-4 sm:space-y-6">
-                  {[
-                    {
-                      title: t(
-                        "about.experience.current.position",
-                        "Volunteer Web Developer"
-                      ),
-                      company: t(
-                        "about.experience.current.company",
-                        "Samdech Preah Mahasanghara Bour Kry University"
-                      ),
-                      period: t(
-                        "about.experience.current.period",
-                        "2025 – Present"
-                      ),
-                      description: t(
-                        "about.experience.current.description",
-                        "Developed and maintain the official university website (sbku.edu.kh). Currently developing a University Management System for research projects."
-                      ),
-                    },
-                    {
-                      title: t(
-                        "about.experience.previous.freelance",
-                        "Freelance Graphic Designer"
-                      ),
-                      company: t(
-                        "about.experience.previous.freelanceCompany",
-                        "Kampufreelancer"
-                      ),
-                      period: t(
-                        "about.experience.previous.freelancePeriod",
-                        "2024 – 2025"
-                      ),
-                      description: t(
-                        "about.experience.previous.freelanceDescription",
-                        "Designed kid cards and various digital assets for clients."
-                      ),
-                    },
-                    {
-                      title: t(
-                        "about.experience.previous.ictTeacher",
-                        "ICT Teacher & Computer Maintenance"
-                      ),
-                      company: t(
-                        "about.experience.previous.ictCompany",
-                        "Phnom Penh International Standard Academy"
-                      ),
-                      period: t(
-                        "about.experience.previous.ictPeriod",
-                        "2023 – 2025 (Part-time)"
-                      ),
-                      description: t(
-                        "about.experience.previous.ictDescription",
-                        "Teaching ICT courses and providing computer maintenance services."
-                      ),
-                    },
-                    {
-                      title: t(
-                        "about.experience.previous.itSupport",
-                        "IT Support"
-                      ),
-                      company: t(
-                        "about.experience.previous.itCompany",
-                        "Bright Kids School"
-                      ),
-                      period: t(
-                        "about.experience.previous.itPeriod",
-                        "2023 – 2024"
-                      ),
-                      description: t(
-                        "about.experience.previous.itDescription",
-                        "Provided comprehensive IT support and technical assistance."
-                      ),
-                    },
-                    {
-                      title: t(
-                        "about.experience.previous.salesDesigner",
-                        "Sales & Graphic Designer"
-                      ),
-                      company: t(
-                        "about.experience.previous.salesCompany",
-                        "AddMii.com"
-                      ),
-                      period: t(
-                        "about.experience.previous.salesPeriod",
-                        "2022 – 2023"
-                      ),
-                      description: t(
-                        "about.experience.previous.salesDescription",
-                        "Combined sales responsibilities with graphic design projects."
-                      ),
-                    },
-                  ].map((exp, index) => (
-                    <div
-                      key={index}
-                      className="pl-2 border-l-2 border-primary/20"
-                    >
-                      <h3 className="text-base sm:text-lg font-medium text-foreground leading-tight">
-                        {exp.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        <span className="block lg:inline">{exp.company}</span>
-                        <span className="mx-0 lg:mx-2 block lg:inline text-primary/60">
-                          •
-                        </span>
-                        <span className="block lg:inline">{exp.period}</span>
-                      </p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
-                        {exp.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </motion.div>
+              </div>
+            </Card>
 
-            {/* Skills & Certifications Grid - Improved responsive */}
-            <motion.div
-              className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
-              variants={fadeInUp}
-            >
-              {/* Technical Skills */}
-              <Card className="bg-background/80 dark:bg-muted/60 p-4 sm:p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-                    {t("about.skills.title", "Technical Skills")}
-                  </h2>
+            {/* Certifications & Languages */}
+            <Card className="bg-background/80 dark:bg-muted/60 p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Award className="w-6 h-6 text-primary" />
                 </div>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2">
-                      {t("about.skills.development", "Development")}
-                    </h3>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {technicalSkills.map((skill) => (
-                        <motion.span
-                          key={skill}
-                          className="px-2 sm:px-3 py-1 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2">
-                      {t("about.skills.it", "IT & Networking")}
-                    </h3>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {itSkills.map((skill) => (
-                        <motion.span
-                          key={skill}
-                          className="px-2 sm:px-3 py-1 bg-secondary/10 text-secondary-foreground rounded-full text-xs sm:text-sm font-medium"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
+                <h2 className="text-xl font-semibold text-foreground">
+                  {t(
+                    "about.certifications.title",
+                    "Certifications & Languages"
+                  )}
+                </h2>
+              </div>
 
-              {/* Certifications & Languages */}
-              <Card className="bg-background/80 dark:bg-muted/60 p-4 sm:p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Award className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-semibold text-foreground">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-3">
                     {t(
-                      "about.certifications.title",
-                      "Certifications & Languages"
+                      "about.certifications.certTitle",
+                      "Professional Certifications"
                     )}
-                  </h2>
-                </div>
-                <div className="space-y-4 sm:space-y-6">
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-3">
-                      {t("about.certifications.certTitle", "Certifications")}
-                    </h3>
-                    <div className="space-y-2 sm:space-y-3">
-                      {[
-                        {
-                          icon: (
-                            <Server className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                          ),
-                          text: t(
-                            "about.certifications.ccna1",
-                            "CCNA Level 1 (Completed, 2024)"
-                          ),
-                        },
-                        {
-                          icon: (
-                            <Server className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500" />
-                          ),
-                          text: t(
-                            "about.certifications.ccna2",
-                            "CCNA Level 2 (In Progress)"
-                          ),
-                        },
-                        {
-                          icon: (
-                            <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
-                          ),
-                          text: t(
-                            "about.certifications.toefl",
-                            "TOEFL ITP: 407 (CEFR A2)"
-                          ),
-                        },
-                        {
-                          icon: (
-                            <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
-                          ),
-                          text: t(
-                            "about.certifications.ielts",
-                            "IELTS Academic: Band 4.5 (CEFR B1)"
-                          ),
-                        },
-                      ].map((item, index) => (
-                        <div
-                          key={index}
-                          className="flex items-start gap-2 sm:gap-3"
-                        >
-                          <div className="flex-shrink-0 mt-0.5">
-                            {item.icon}
+                  </h3>
+                  <div className="space-y-3">
+                    {[
+                      {
+                        name: t("about.certifications.ccna1", "CCNA Level 1"),
+                        status: t(
+                          "about.certifications.completed",
+                          "Completed"
+                        ),
+                        year: "2024",
+                        icon: <Server className="w-4 h-4 text-green-500" />,
+                        color: "green",
+                      },
+                      {
+                        name: t("about.certifications.ccna2", "CCNA Level 2"),
+                        status: t(
+                          "about.certifications.inProgress",
+                          "In Progress"
+                        ),
+                        year: "2025",
+                        icon: <Server className="w-4 h-4 text-yellow-500" />,
+                        color: "yellow",
+                      },
+                    ].map((cert, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-3 bg-muted/30 rounded-lg"
+                      >
+                        <div className="flex items-center gap-3">
+                          {cert.icon}
+                          <div>
+                            <p className="text-sm font-medium">{cert.name}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {cert.year}
+                            </p>
                           </div>
-                          <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                            {item.text}
-                          </span>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-3">
-                      {t("about.languages.title", "Languages")}
-                    </h3>
-                    <div className="space-y-2 sm:space-y-3">
-                      {[
-                        {
-                          language: t("about.languages.khmer", "Khmer"),
-                          level: t("about.languages.khmerLevel", "Native"),
-                        },
-                        {
-                          language: t("about.languages.english", "English"),
-                          level: t(
-                            "about.languages.englishLevel",
-                            "Intermediate"
-                          ),
-                        },
-                        {
-                          language: t("about.languages.chinese", "Chinese"),
-                          level: t("about.languages.chineseLevel", "Fair"),
-                        },
-                      ].map((lang, index) => (
-                        <div
-                          key={index}
-                          className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0"
+                        <span
+                          className={`text-xs px-2 py-1 rounded-full ${
+                            cert.color === "green"
+                              ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                              : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
+                          }`}
                         >
-                          <span className="text-xs sm:text-sm font-medium">
-                            {lang.language}
-                          </span>
-                          <span className="text-xs sm:text-sm text-muted-foreground bg-muted/50 px-2 py-1 rounded-full w-fit">
-                            {lang.level}
+                          {cert.status}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-3">
+                    {t("about.languages.title", "Languages")}
+                  </h3>
+                  <div className="space-y-2">
+                    {[
+                      {
+                        lang: t("about.languages.khmer", "Khmer"),
+                        level: "Native",
+                        progress: 100,
+                      },
+                      {
+                        lang: t("about.languages.english", "English"),
+                        level: "B1 (IELTS 4.5)",
+                        progress: 65,
+                      },
+                      {
+                        lang: t("about.languages.chinese", "Chinese"),
+                        level: "Fair",
+                        progress: 40,
+                      },
+                    ].map((language, index) => (
+                      <div key={index} className="space-y-1">
+                        <div className="flex justify-between text-sm">
+                          <span className="font-medium">{language.lang}</span>
+                          <span className="text-muted-foreground text-xs">
+                            {language.level}
                           </span>
                         </div>
-                      ))}
-                    </div>
+                        <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${language.progress}%` }}
+                            transition={{
+                              delay: 0.5 + index * 0.1,
+                              duration: 1,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </Card>
-            </motion.div>
+              </div>
+            </Card>
+          </motion.div>
 
-            {/* Notable Projects */}
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-background/80 dark:bg-muted/60 p-4 sm:p-6 rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-                    {t("about.projects.title", "Notable Projects")}
-                  </h2>
-                </div>
-                <div className="space-y-4 sm:space-y-6">
-                  {[
-                    {
-                      title: t(
-                        "about.projects.universityWebsite",
-                        "University Website Development"
-                      ),
-                      details: `${t(
-                        "about.projects.universityWebsiteUrl",
-                        "sbku.edu.kh"
-                      )} • ${t("about.projects.universityWebsiteYear", "2025")}`,
-                      description: t(
-                        "about.projects.universityWebsiteDesc",
-                        "Developed and maintain the official university website with modern web technologies."
-                      ),
-                    },
-                    {
-                      title: t(
-                        "about.projects.barcodePOS",
-                        "Barcode POS System"
-                      ),
-                      details: `${t(
-                        "about.projects.barcodePOSProject",
-                        "University Event Project"
-                      )} • ${t("about.projects.barcodePOSYear", "2024")}`,
-                      description: t(
-                        "about.projects.barcodePOSDesc",
-                        "Built using C#, SQL Server, and Crystal Reports for university event management."
-                      ),
-                    },
-                    {
-                      title: t(
-                        "about.projects.ums",
-                        "University Management System"
-                      ),
-                      details: `${t(
-                        "about.projects.umsProject",
-                        "Research Project"
-                      )} • ${t("about.projects.umsStatus", "In Development")}`,
-                      description: t(
-                        "about.projects.umsDesc",
-                        "Comprehensive management system for university operations and research activities."
-                      ),
-                    },
-                  ].map((project, index) => (
-                    <div
-                      key={index}
-                      className="pl-2 border-l-2 border-primary/20"
-                    >
-                      <h3 className="text-base sm:text-lg font-medium text-foreground leading-tight">
-                        {project.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
-                        {project.details}
-                      </p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
-                        {project.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Contact Button - Better responsive */}
-            <motion.div
-              className="flex justify-center lg:justify-end pt-4"
-              variants={fadeInUp}
-            >
+          {/* Call to Action */}
+          <motion.div
+            className="text-center bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl p-8 border border-primary/10"
+            variants={fadeInUp}
+          >
+            <motion.div className="max-w-2xl mx-auto" variants={fadeInUp}>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                {t("about.cta.title", "Let's Build Something Amazing Together")}
+              </h2>
+              <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+                {t(
+                  "about.cta.description",
+                  "Ready to collaborate on your next project or discuss opportunities in web development and IT solutions."
+                )}
+              </p>
               <motion.a
                 href="mailto:itsanvert@gmail.com"
-                className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg bg-primary text-white font-semibold shadow hover:bg-primary/80 transition-all duration-200 hover:shadow-md text-sm sm:text-base w-full sm:w-auto justify-center"
-                aria-label={t("about.cta", "Get In Touch")}
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-white font-semibold shadow-xl hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl text-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                {t("about.cta", "Get In Touch")}
+                <Mail className="w-5 h-5" />
+                {t("about.cta.button", "Get In Touch")}
+                <Star className="w-4 h-4" />
               </motion.a>
             </motion.div>
           </motion.div>
