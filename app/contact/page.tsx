@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion, easeOut } from "framer-motion";
@@ -27,7 +27,8 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setError(
         t("contact.error.requiredFields", "Please fill in all required fields")
@@ -47,7 +48,7 @@ const Contact = () => {
     setError(null);
 
     try {
-      const response = await fetch("/api/send-email", {
+            const response = await fetch("/api/sent-mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -220,7 +221,7 @@ const Contact = () => {
                 </p>
               </div>
             )}
-            <div className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label
@@ -303,10 +304,10 @@ const Contact = () => {
                   )}
                 />
               </div>
-              <div
-                onClick={handleSubmit}
+              <button
+                type="submit"
                 className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium rounded-lg transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                aria-disabled={isSubmitting}
+                disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
@@ -321,8 +322,8 @@ const Contact = () => {
                     </span>
                   </>
                 )}
-              </div>
-            </div>
+              </button>
+            </form>
           </motion.div>
         </div>
 

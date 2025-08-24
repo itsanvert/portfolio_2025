@@ -1,6 +1,5 @@
 import { GifLoader } from "@/components/ui/loader";
 
-import { t } from "i18next";
 
 export default function LoadingPage() {
   return (

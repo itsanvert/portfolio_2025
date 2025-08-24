@@ -9,8 +9,8 @@ import ProjectsPage from "./projects/page";
 
 export default function Home() {
   return (
-    <main className="max-w-7xl w-full px-4 md:px-8 mx-auto">
-      <section id="hero" className="mb-15">
+    <main className="max-w-7xl w-full px-2 md:px-8 mx-auto">
+      <section id="hero">
         <HydrationBoundary>
           <HeroSectionOne />
         </HydrationBoundary>

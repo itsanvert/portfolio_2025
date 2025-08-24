@@ -2,15 +2,21 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
-  console.log("API route hit:", await req.json()); // Debug log
-  console.log(
-    "Env vars:",
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    process.env.GOOGLE_REFRESH_TOKEN
-  );
+  const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN } =
+    process.env;
 
-  const { name, email, subject, message } = await req.json();
+  if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REFRESH_TOKEN) {
+    console.error("Missing Google OAuth environment variables");
+    return NextResponse.json(
+      { message: "Server configuration error: Missing API credentials." },
+      { status: 500 }
+    );
+  }
+
+  const body = await req.json();
+  console.log("API route hit:", body); // Debug log
+
+  const { name, email, subject, message } = body;
 
   if (!name || !email || !message) {
     return NextResponse.json(
@@ -24,9 +30,9 @@ export async function POST(req: Request) {
     auth: {
       type: "OAuth2",
       user: "itsanvert@gmail.com",
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+      clientId: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      refreshToken: GOOGLE_REFRESH_TOKEN,
     },
   });
 
