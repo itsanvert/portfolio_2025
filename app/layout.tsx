@@ -119,20 +119,34 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased bg-black min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <main>
-            <Navbar />
-
-            <div className="container mx-auto px-4">{children}</div>
-
-            <Footer />
-          </main>
+          <div className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+            {/* Global Background Effects */}
+            <div className="fixed inset-0 pointer-events-none">
+              <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"></div>
+              <div
+                className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-600/10 to-pink-500/10 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
+                style={{ animationDelay: "2s" }}
+              ></div>
+              <div
+                className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
+                style={{ animationDelay: "4s" }}
+              ></div>
+            </div>
+            
+            <main className="relative z-10">
+              <Navbar />
+              <div className="w-full">{children}</div>
+              <Footer />
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

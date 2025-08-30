@@ -278,19 +278,7 @@
     };
 
     return (
-      <div className="min-h-screen bg-black relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0">
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)] bg-[size:32px_32px]"></div>
-
-          {/* Animated Gradient Orbs */}
-          <div className="absolute top-1/6 left-1/5 w-96 h-96 bg-gradient-to-r from-cyan-600/10 to-blue-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-pulse"></div>
-          <div
-            className="absolute bottom-1/4 right-1/5 w-80 h-80 bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-pulse"
-            style={{ animationDelay: "3s" }}
-          ></div>
-        </div>
+      <div className="min-h-screen relative overflow-hidden py-16">
 
         <div className="relative max-w-7xl mx-auto px-6 py-16 sm:px-8 lg:px-12 z-10">
           {/* Header */}

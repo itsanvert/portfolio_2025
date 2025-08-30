@@ -194,42 +194,30 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br bg-black relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-cyan-500/20 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"></div>
-        <div
-          className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-600/20 to-pink-500/20 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
-          style={{ animationDelay: "4s" }}
-        ></div>
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => {
-            // Use deterministic values based on index to avoid hydration mismatch
-            const seed = i * 12345; // Simple seed based on index
-            const pseudoRandom1 = ((seed * 9301 + 49297) % 233280) / 233280;
-            const pseudoRandom2 = (((seed + 1) * 9301 + 49297) % 233280) / 233280;
-            const pseudoRandom3 = (((seed + 2) * 9301 + 49297) % 233280) / 233280;
-            const pseudoRandom4 = (((seed + 3) * 9301 + 49297) % 233280) / 233280;
-            
-            return (
-              <div
-                key={i}
-                className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
-                style={{
-                  left: `${pseudoRandom1 * 100}%`,
-                  top: `${pseudoRandom2 * 100}%`,
-                  animationDelay: `${pseudoRandom3 * 3}s`,
-                  animationDuration: `${2 + pseudoRandom4 * 3}s`,
-                }}
-              ></div>
-            );
-          })}
-        </div>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Additional animated stars for hero section */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => {
+          // Use deterministic values based on index to avoid hydration mismatch
+          const seed = i * 12345; // Simple seed based on index
+          const pseudoRandom1 = ((seed * 9301 + 49297) % 233280) / 233280;
+          const pseudoRandom2 = (((seed + 1) * 9301 + 49297) % 233280) / 233280;
+          const pseudoRandom3 = (((seed + 2) * 9301 + 49297) % 233280) / 233280;
+          const pseudoRandom4 = (((seed + 3) * 9301 + 49297) % 233280) / 233280;
+          
+          return (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+              style={{
+                left: `${pseudoRandom1 * 100}%`,
+                top: `${pseudoRandom2 * 100}%`,
+                animationDelay: `${pseudoRandom3 * 3}s`,
+                animationDuration: `${2 + pseudoRandom4 * 3}s`,
+              }}
+            ></div>
+          );
+        })}
       </div>
 
       {/* Spline Viewer Script */}
