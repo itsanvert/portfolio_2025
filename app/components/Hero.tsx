@@ -27,7 +27,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     console.log("Hero component - Processed words array:", words);
   }, [i18n.language, flipWords, words]);
 
-  // Dark-optimized tech icons
+  // Dark-optimized tech icons - expanded with available icons from public/tech-icons
   const techIcons = [
     {
       id: "laravel",
@@ -148,6 +148,160 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
           <Image
             src="/tech-icons/mysql.svg"
             alt="MySQL"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "nodejs",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/node.svg"
+            alt="Node.js"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "docker",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/docker.svg"
+            alt="Docker"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "prisma",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-indigo-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/prisma.svg"
+            alt="Prisma"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "github",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-gray-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/github.svg"
+            alt="GitHub"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "figma",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-purple-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/figma.svg"
+            alt="Figma"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "vercel",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-white/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/vercel.svg"
+            alt="Vercel"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "supabase",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/supabase.svg"
+            alt="Supabase"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "sqlserver",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/sqlserver.svg"
+            alt="SQL Server"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "framer",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-pink-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/framer.svg"
+            alt="Framer"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "sanity",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/sanity.svg"
+            alt="Sanity"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "filament",
+      content: (
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-orange-400/50 transition-all duration-300 group">
+          <Image
+            src="/tech-icons/filament.svg"
+            alt="Filament"
             width={40}
             height={40}
             className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
