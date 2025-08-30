@@ -3,11 +3,12 @@
 import React from "react";
 import { motion, easeOut } from "framer-motion";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import Script from "next/script";
 import { useTranslation } from "react-i18next";
-import FlipWords from "@/components/ui/flip-words";
+import FlipWord from "@/components/ui/flip-words";
 import SlidingLogoMarquee from "../src/components/sliding-logo-marquee";
-import { GlobeDemo } from "./GlobeDemo";
+import { Download, Send } from "lucide-react";
+import GradientBlinds from "@/components/gradient";
 
 interface HeroSectionProps {
   className?: string;
@@ -19,30 +20,25 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
   const flipWords = t("flipWords", { returnObjects: true });
   const words = Array.isArray(flipWords) ? flipWords : [];
 
-  const headingClasses = isKhmer
-    ? "text-4xl lg:text-6xl leading-snug font-khmer"
-    : "text-5xl lg:text-7xl leading-tight";
-  const subheadingClasses = isKhmer
-    ? "text-2xl lg:text-4xl font-khmer"
-    : "text-3xl lg:text-5xl font-semibold";
+  // Debug logging
+  React.useEffect(() => {
+    console.log("Hero component - Current language:", i18n.language);
+    console.log("Hero component - FlipWords from translation:", flipWords);
+    console.log("Hero component - Processed words array:", words);
+  }, [i18n.language, flipWords, words]);
 
-  // Pass dynamic classes to FlipWords for consistent styling
-  const flipWordsClasses = isKhmer
-    ? "text-4xl lg:text-6xl leading-snug font-khmer"
-    : "text-5xl lg:text-7xl leading-tight";
-
-  // Tech icons for SlidingLogoMarquee component with standardized containers
+  // Dark-optimized tech icons
   const techIcons = [
     {
       id: "laravel",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-500/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/laravel.svg"
-            alt="Laravel - PHP Framework"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="Laravel"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
@@ -50,13 +46,13 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     {
       id: "springboot",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-500/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/spring-boot.svg"
-            alt="Spring Boot - Java Framework"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="Spring Boot"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
@@ -64,13 +60,13 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     {
       id: "react",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-400/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/react.svg"
-            alt="React - JavaScript Library"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="React"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
           />
         </div>
       ),
@@ -78,27 +74,27 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     {
       id: "nextjs",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-white/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/nextjs.svg"
-            alt="Next.js - React Framework"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="Next.js"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
     },
     {
-      id: ".net",
+      id: "dotnet",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-purple-500/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/net-framework.svg"
-            alt=".NET - Framework"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt=".NET Framework"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
@@ -106,13 +102,13 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     {
       id: "tailwind",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-cyan-400/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/tailwind.svg"
-            alt="Tailwind CSS - Utility Framework"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="Tailwind CSS"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
           />
         </div>
       ),
@@ -120,13 +116,13 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     {
       id: "vuejs",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/vue.svg"
-            alt="Vue.js - JavaScript Framework"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="Vue.js"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
           />
         </div>
       ),
@@ -134,13 +130,13 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     {
       id: "flutter",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-300/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/flutter.svg"
-            alt="Flutter - Mobile App Framework"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="Flutter"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
           />
         </div>
       ),
@@ -148,36 +144,38 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
     {
       id: "mysql",
       content: (
-        <div className="flex items-center justify-center w-16 h-16 p-2">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-orange-400/50 transition-all duration-300 group">
           <Image
             src="/tech-icons/mysql.svg"
-            alt="MySQL - Database"
-            width={60}
-            height={60}
-            className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-200"
+            alt="MySQL"
+            width={40}
+            height={40}
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
     },
   ];
 
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.6,
         ease: easeOut,
       },
     },
@@ -185,164 +183,218 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
 
   const buttonVariants = {
     hover: {
-      scale: 1.02,
-      y: -2,
+      scale: 1.05,
+      y: -3,
       transition: {
         duration: 0.2,
         ease: easeOut,
       },
     },
-    tap: {
-      scale: 0.98,
-    },
+    tap: { scale: 0.95 },
   };
 
   return (
-    <motion.div
-      className={cn(
-        "relative mx-auto my-10 flex max-w-7xl flex-col items-center justify-center px-4",
-        className
-      )}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      role="banner"
-      aria-labelledby="hero-heading"
-    >
-      <div className="px-4 py-10 md:py-20 lg:py-32">
-        <motion.h1
-          className={cn(
-            "relative z-10 mx-auto max-w-4xl text-center font-bold text-slate-700 dark:text-slate-300",
-            headingClasses
-          )}
-          variants={itemVariants}
-          animate="visible"
-          id="hero-heading"
-        >
-          {t("hero.greeting")
-            .split(" ")
-            .map((word, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      duration: 0.5,
-                      delay: index * 0.1,
-                      ease: easeOut,
-                    },
-                  },
-                }}
-                className="mr-2 inline-block"
-              >
-                {word}
-              </motion.span>
-            ))}
-        </motion.h1>
-
-        <motion.p
-          variants={itemVariants}
-          className={cn(
-            "relative z-10 mx-auto max-w-xl py-4 text-center font-normal text-neutral-600 dark:text-neutral-400",
-            isKhmer ? "text-lg md:text-xl font-khmer" : "text-base md:text-lg"
-          )}
-        >
-          {t("hero.description")}
-        </motion.p>
-
-        {/* Enhanced FlipWords */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center items-center mt-2"
-        >
-          <FlipWords
-            words={words}
-            className={cn(
-              "inline-block align-middle text-black dark:text-white font-semibold",
-              flipWordsClasses
-            )}
-          />
-        </motion.div>
-
-        {/* Enhanced CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
-        >
-          {/* Download Resume Button */}
-          <motion.a
-            href="/resume/resume.pdf"
-            download
-            variants={buttonVariants}
-            whileHover="hover"
-            whileTap="tap"
-            className="group relative w-60 overflow-hidden rounded-lg bg-gradient-to-r from-gray-900 to-black px-6 py-3 font-medium text-white transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:from-white dark:to-gray-100 dark:text-black dark:hover:from-gray-100 dark:hover:to-white flex items-center justify-center"
-            aria-label={t("hero.resume")}
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              {t("hero.resume")}
-            </span>
-          </motion.a>
-
-          {/* Contact Telegram Button */}
-          <motion.a
-            href="https://t.me/itsanvert"
-            target="_blank"
-            rel="noopener noreferrer"
-            variants={buttonVariants}
-            whileHover="hover"
-            whileTap="tap"
-            className="group relative w-60 overflow-hidden rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-black transition-all duration-300 hover:bg-gray-50 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900 flex items-center justify-center"
-            aria-label={t("hero.cta")}
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-              </svg>
-              {t("hero.cta")}
-            </span>
-          </motion.a>
-        </motion.div>
-
-        {/* Enhanced Tech Stack Marquee */}
-        <motion.div variants={itemVariants} className="mt-16">
-          <div className="text-center mb-8">
-            <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              {t("hero.techStack", "Technologies I Work With")}
-            </p>
-          </div>
-          {/* <GlobeDemo /> */}
-          <SlidingLogoMarquee
-            items={techIcons}
-            speed={40}
-            height="120px"
-            gap="1rem md:1.5rem"
-            enableBlur={true}
-            blurIntensity={2}
-            pauseOnHover={true}
-            showControls={false}
-            className="tech-marquee"
-          />
-        </motion.div>
-
-        {/* Enhanced Project Showcase */}
+    <div className="min-h-screen bg-gradient-to-br bg-black relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-cyan-500/20 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"></div>
+        <div
+          className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-600/20 to-pink-500/20 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
+          style={{ animationDelay: "4s" }}
+        ></div>
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 3}s`,
+              }}
+            ></div>
+          ))}
+        </div>
       </div>
-    </motion.div>
+
+      {/* Spline Viewer Script */}
+      <Script
+        type="module"
+        src="https://unpkg.com/@splinetool/viewer@1.10.53/build/spline-viewer.js"
+        strategy="beforeInteractive"
+      />
+
+      <motion.div
+        className={`relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32 z-10 ${className}`}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        role="banner"
+        aria-labelledby="hero-heading"
+      >
+        <div className="w-full space-y-8 lg:space-y-12">
+          {/* Main Heading */}
+          <motion.h1
+            className={`mx-auto max-w-5xl text-center font-bold text-white transition-colors duration-300 ${
+              isKhmer
+                ? "text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-relaxed font-khmer"
+                : "text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight font-display"
+            }`}
+            variants={itemVariants}
+            id="hero-heading"
+          >
+            {t("hero.greeting")
+              .split(" ")
+              .map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.5,
+                        delay: index * 0.1,
+                        ease: easeOut,
+                      },
+                    },
+                  }}
+                  className="inline-block mr-2 sm:mr-3 hover:text-cyan-400 transition-colors duration-200 cursor-default"
+                >
+                  {word}
+                </motion.span>
+              ))}
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            variants={itemVariants}
+            className={`mx-auto max-w-2xl text-center font-medium text-gray-300 transition-colors duration-300 ${
+              isKhmer
+                ? "text-base sm:text-lg lg:text-xl font-khmer leading-relaxed"
+                : "text-lg sm:text-xl lg:text-2xl leading-relaxed"
+            }`}
+          >
+            {t("hero.description")}
+          </motion.p>
+
+          {/* Flip Words */}
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center items-center"
+          >
+            <FlipWord
+              words={words}
+              className={`text-center font-semibold bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300 transition-all duration-300 ${
+                isKhmer
+                  ? "text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-khmer"
+                  : "text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display"
+              }`}
+            />
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+          >
+            {/* Download Resume Button */}
+            <motion.a
+              href="/resume/resume.pdf"
+              download
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className="group relative w-full sm:w-auto min-w-[220px] overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 px-8 py-4 font-bold text-white shadow-2xl shadow-blue-500/25 hover:shadow-3xl hover:shadow-blue-500/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+              aria-label={t("hero.resume")}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                <Download className="w-5 h-5 group-hover:animate-bounce" />
+                {t("hero.resume")}
+              </span>
+            </motion.a>
+
+            {/* Contact Button */}
+            <motion.a
+              href="https://t.me/itsanvert"
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className="group relative w-full sm:w-auto min-w-[220px] overflow-hidden rounded-2xl border-2 border-gray-600/50 bg-gray-800/50 backdrop-blur-sm px-8 py-4 font-bold text-gray-100 shadow-xl shadow-gray-900/20 hover:bg-gray-700/60 hover:border-cyan-400/60 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+              aria-label={t("hero.cta")}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                {t("hero.cta")}
+              </span>
+            </motion.a>
+          </motion.div>
+
+          {/* Tech Stack Section */}
+          <motion.div
+            variants={itemVariants}
+            className="space-y-6 lg:space-y-8"
+          >
+            <div className="text-center">
+              <p className="text-sm font-bold text-gray-400 uppercase tracking-wider">
+                {t("hero.techStack", "Technologies I Work With")}
+              </p>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent rounded-3xl blur-xl"></div>
+              <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 shadow-2xl shadow-gray-900/40">
+                <SlidingLogoMarquee
+                  items={techIcons}
+                  speed={45}
+                  height="100px"
+                  gap="1.5rem sm:2rem"
+                  enableBlur={true}
+                  blurIntensity={1}
+                  pauseOnHover={true}
+                  showControls={false}
+                  className="tech-marquee"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* 3D Interactive Section */}
+          <motion.div
+            variants={itemVariants}
+            className="space-y-6 lg:space-y-8"
+          >
+            <div className="text-center">
+              <p className="text-sm font-bold text-gray-400 uppercase tracking-wider">
+                Interactive 3D Experience
+              </p>
+            </div>
+
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+              <div className="relative w-full h-80 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl shadow-gray-900/60 border border-gray-700/50 bg-gray-800/40 backdrop-blur-sm">
+                {React.createElement("spline-viewer", {
+                  url: "https://prod.spline.design/Pq8vzJuux975pWaf/scene.splinecode",
+                  style: { width: "100%", height: "100%" },
+                  className: "rounded-3xl",
+                })}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
   );
 }

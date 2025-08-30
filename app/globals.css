@@ -1,6 +1,20 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./src/components/lightswind.css";
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, #00000010 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #ffffff08 1px, transparent 1px);
+  }
+}
 .tech-marquee {
   gap: 1.5rem !important;
 }
@@ -125,14 +139,5 @@
   }
   body {
     @apply bg-background text-foreground font-sans; /* Apply font-sans globally */
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }

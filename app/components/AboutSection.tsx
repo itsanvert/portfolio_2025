@@ -162,7 +162,8 @@ export function AboutSection() {
             {/* Profile Card */}
             <motion.div className="lg:col-span-1" variants={scaleIn}>
               <Card className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-0 shadow-2xl rounded-3xl overflow-hidden border-2 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-3xl group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+
                 <div className="relative h-[350px] w-full overflow-hidden rounded-t-3xl">
                   <Image
                     src="/me.jpg"
@@ -222,7 +223,7 @@ export function AboutSection() {
                     <a
                       href="/resume/resume.pdf"
                       download
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white font-semibold shadow-lg hover:bg-primary/90 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gray-900 text-white font-semibold shadow-lg hover:bg-gray-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                     >
                       <Download className="w-4 h-4" />
                       {t("hero.resume", "Resume")}

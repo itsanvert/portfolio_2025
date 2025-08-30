@@ -4,10 +4,9 @@ import { Geist, Geist_Mono, Kantumruy_Pro, Roboto } from "next/font/google";
 import "./globals.css";
 import "@fontsource/nokora";
 import { ThemeProvider } from "next-themes";
-import CardNav from "./components/CardNav";
+
 import { Footer } from "./components/Footer";
-import { HydrationBoundary } from "./components/HydrationBoundary";
-import type { CardNavItem } from "./components/CardNav";
+import Navbar from "./components/Navbar";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -23,84 +22,6 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-
-// Define navigation items
-const navItems: CardNavItem[] = [
-  {
-    label: "Home",
-    bgColor: "rgb(59, 130, 246)", // blue-500
-    textColor: "white",
-    links: [
-      {
-        label: "Welcome",
-        href: "/",
-        ariaLabel: "Go to homepage",
-      },
-      {
-        label: "About Me",
-        href: "/about",
-        ariaLabel: "Learn more about me",
-      },
-    ],
-  },
-  {
-    label: "Projects",
-    bgColor: "rgb(168, 85, 247)", // purple-500
-    textColor: "white",
-    links: [
-      {
-        label: "View All",
-        href: "/projects",
-        ariaLabel: "View all projects",
-      },
-    ],
-  },
-  {
-    label: "Experience",
-    bgColor: "rgb(34, 197, 94)", // green-500
-    textColor: "white",
-    links: [
-      {
-        label: "Resume",
-        href: "/resume/resume.pdf",
-        ariaLabel: "Download resume",
-        download: true,
-      },
-    ],
-  },
-  {
-    label: "Contact",
-    bgColor: "rgb(249, 115, 22)", // orange-500
-    textColor: "white",
-    links: [
-      {
-        label: "Contact",
-        href: "/contact",
-        ariaLabel: "Contact me",
-      },
-      {
-        label: "LinkedIn",
-        href: "https://linkedin.com/in/itsanvert",
-        ariaLabel: "Visit my LinkedIn profile",
-      },
-      {
-        label: "GitHub",
-        href: "https://github.com/itsanvert",
-        ariaLabel: "Visit my GitHub profile",
-      },
-      {
-        label: "Telegram",
-        href: "https://t.me/itsanvert",
-        ariaLabel: "Follow me on Telegram",
-      },
-      {
-        label: "Facebook",
-        href: "https://web.facebook.com/profile.php?id=61574843070322",
-        ariaLabel: "Visit my Facebook profile",
-      },
-    ],
-  },
-];
 
 export const metadata: Metadata = {
   title: "Vert San - Full-Stack Developer & IT Professional",
@@ -198,25 +119,20 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
-        <ThemeProvider>
-          <HydrationBoundary>
-            <CardNav
-              logoText="Vert San"
-              logoAlt="Vert San - Portfolio"
-              items={navItems}
-              homeHref="/"
-              contactHref="https://t.me/itsanvert"
-              showControls={true}
-            />
-          </HydrationBoundary>
+      <body className="antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main>
+            <Navbar />
 
-          <div className="pt-16">
-            <div className="container">{children}</div>
-            <HydrationBoundary>
-              <Footer />
-            </HydrationBoundary>
-          </div>
+            <div className="container mx-auto px-4">{children}</div>
+
+            <Footer />
+          </main>
         </ThemeProvider>
       </body>
     </html>
