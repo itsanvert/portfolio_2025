@@ -208,18 +208,27 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
           style={{ animationDelay: "4s" }}
         ></div>
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`,
-              }}
-            ></div>
-          ))}
+          {[...Array(20)].map((_, i) => {
+            // Use deterministic values based on index to avoid hydration mismatch
+            const seed = i * 12345; // Simple seed based on index
+            const pseudoRandom1 = ((seed * 9301 + 49297) % 233280) / 233280;
+            const pseudoRandom2 = (((seed + 1) * 9301 + 49297) % 233280) / 233280;
+            const pseudoRandom3 = (((seed + 2) * 9301 + 49297) % 233280) / 233280;
+            const pseudoRandom4 = (((seed + 3) * 9301 + 49297) % 233280) / 233280;
+            
+            return (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+                style={{
+                  left: `${pseudoRandom1 * 100}%`,
+                  top: `${pseudoRandom2 * 100}%`,
+                  animationDelay: `${pseudoRandom3 * 3}s`,
+                  animationDuration: `${2 + pseudoRandom4 * 3}s`,
+                }}
+              ></div>
+            );
+          })}
         </div>
       </div>
 
