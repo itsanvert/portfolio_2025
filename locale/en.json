@@ -2,7 +2,7 @@
   "flipWords": ["Software Developer 🐼", "Mentor 😆"],
   "nav": {
     "firstname": "San",
-    "lastname": "Voeurt",
+    "lastname": "Vert",
     "home": "Home",
     "guestbook": "Guestbook",
     "projects": "Projects",
@@ -15,11 +15,11 @@
     "project_desktop": "Desktop App"
   },
   "hero": {
-    "greeting": "Hello, I'm San Voeurt",
+    "greeting": "Hello, I'm San Vert",
     "description": "A passionate CS specialist with a keen interest in",
     "cta": "Contact",
     "resume": "Resume",
-    "alt": "San Voeurt's Photo",
+    "alt": "San Vert's Photo",
     "techStack": "Technologies I use"
   },
   "home": {
@@ -141,7 +141,7 @@
     }
   },
   "footer": {
-    "copyright": "© {{year}} San Voeurt, All rights reserved.",
+    "copyright": "© {{year}} San Vert, All rights reserved.",
     "social": {
       "github": "GitHub",
       "twitter": "Twitter",
