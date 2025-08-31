@@ -55,7 +55,7 @@ export function MobileMenu() {
           ))}
         </div>
         <div className="flex gap-4 justify-center align-middle">
-          <ModeToggle />
+          {/* <ModeToggle /> */}
           <LanguageSwitcher />
         </div>
         <div>

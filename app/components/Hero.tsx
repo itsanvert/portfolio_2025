@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 import FlipWord from "@/components/ui/flip-words";
 import SlidingLogoMarquee from "../src/components/sliding-logo-marquee";
 import { Download, Send } from "lucide-react";
-import GradientBlinds from "@/components/gradient";
 
 interface HeroSectionProps {
   className?: string;
@@ -20,291 +19,642 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
   const flipWords = t("flipWords", { returnObjects: true });
   const words = Array.isArray(flipWords) ? flipWords : [];
 
-  // Debug logging
-  React.useEffect(() => {
-    console.log("Hero component - Current language:", i18n.language);
-    console.log("Hero component - FlipWords from translation:", flipWords);
-    console.log("Hero component - Processed words array:", words);
-  }, [i18n.language, flipWords, words]);
-
-  // Dark-optimized tech icons - expanded with available icons from public/tech-icons
+  // Tech icons with masks, tooltips, and origin information
+  // Icons sourced from official brand guidelines and open-source libraries
   const techIcons = [
     {
       id: "laravel",
+      name: "Laravel",
+      origin: "Official Laravel Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-500/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-500/50 transition-all duration-300 group overflow-hidden"
+          title="Laravel"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Laravel
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/laravel.svg"
-            alt="Laravel"
+            alt="Laravel - PHP Web Framework"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "springboot",
+      name: "Spring Boot",
+      origin: "Official Spring Brand Guidelines",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-500/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-500/50 transition-all duration-300 group overflow-hidden"
+          title="Spring Boot"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Spring Boot
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/spring-boot.svg"
-            alt="Spring Boot"
+            alt="Spring Boot - Java Framework"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
     },
     {
       id: "react",
+      name: "React",
+      origin: "Official React Brand Resources",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-400/50 transition-all duration-300 group overflow-hidden"
+          title="React"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            React
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/react.svg"
-            alt="React"
+            alt="React - JavaScript Library"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "nextjs",
+      name: "Next.js",
+      origin: "Official Vercel/Next.js Brand Kit",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-white/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-white/50 transition-all duration-300 group overflow-hidden"
+          title="Next.js"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Next.js
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-gray-300/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/nextjs.svg"
-            alt="Next.js"
+            alt="Next.js - React Framework"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "dotnet",
+      name: ".NET Framework",
+      origin: "Official Microsoft Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-purple-500/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-purple-500/50 transition-all duration-300 group overflow-hidden"
+          title=".NET Framework"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            .NET Framework
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/net-framework.svg"
-            alt=".NET Framework"
+            alt=".NET Framework - Microsoft Platform"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
     },
     {
       id: "tailwind",
+      name: "Tailwind CSS",
+      origin: "Official Tailwind Labs Brand",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-cyan-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-cyan-400/50 transition-all duration-300 group overflow-hidden"
+          title="Tailwind CSS"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Tailwind CSS
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/tailwind.svg"
-            alt="Tailwind CSS"
+            alt="Tailwind CSS - Utility-First Framework"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "vuejs",
+      name: "Vue.js",
+      origin: "Official Vue.js Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group overflow-hidden"
+          title="Vue.js"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Vue.js
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-emerald-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/vue.svg"
-            alt="Vue.js"
+            alt="Vue.js - Progressive JavaScript Framework"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "flutter",
+      name: "Flutter",
+      origin: "Official Google Flutter Brand",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-300/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-300/50 transition-all duration-300 group overflow-hidden"
+          title="Flutter"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Flutter
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-300/20 to-sky-300/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-blue-300/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/flutter.svg"
-            alt="Flutter"
+            alt="Flutter - Cross-Platform Framework"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "mysql",
+      name: "MySQL",
+      origin: "Official Oracle MySQL Brand",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-orange-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-orange-400/50 transition-all duration-300 group overflow-hidden"
+          title="MySQL"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            MySQL
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-amber-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-orange-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/mysql.svg"
-            alt="MySQL"
+            alt="MySQL - Relational Database"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "nodejs",
+      name: "Node.js",
+      origin: "Official Node.js Foundation Brand",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group overflow-hidden"
+          title="Node.js"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Node.js
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-lime-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/node.svg"
-            alt="Node.js"
+            alt="Node.js - JavaScript Runtime"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "docker",
+      name: "Docker",
+      origin: "Official Docker Inc. Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-blue-400/50 transition-all duration-300 group overflow-hidden"
+          title="Docker"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Docker
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-sky-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/docker.svg"
-            alt="Docker"
+            alt="Docker - Containerization Platform"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "prisma",
+      name: "Prisma",
+      origin: "Official Prisma Brand Guidelines",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-indigo-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-indigo-400/50 transition-all duration-300 group overflow-hidden"
+          title="Prisma"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Prisma
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-indigo-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/prisma.svg"
-            alt="Prisma"
+            alt="Prisma - Database ORM"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "github",
+      name: "GitHub",
+      origin: "Official GitHub Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-gray-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-gray-400/50 transition-all duration-300 group overflow-hidden"
+          title="GitHub"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            GitHub
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-400/20 to-slate-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-gray-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/github.svg"
-            alt="GitHub"
+            alt="GitHub - Version Control Platform"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "figma",
+      name: "Figma",
+      origin: "Official Figma Brand Resources",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-purple-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-purple-400/50 transition-all duration-300 group overflow-hidden"
+          title="Figma"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Figma
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/figma.svg"
-            alt="Figma"
+            alt="Figma - Design & Prototyping Tool"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "vercel",
+      name: "Vercel",
+      origin: "Official Vercel Brand Kit",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-white/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-white/50 transition-all duration-300 group overflow-hidden"
+          title="Vercel"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Vercel
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-gray-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/vercel.svg"
-            alt="Vercel"
+            alt="Vercel - Deployment Platform"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "supabase",
+      name: "Supabase",
+      origin: "Official Supabase Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-green-400/50 transition-all duration-300 group overflow-hidden"
+          title="Supabase"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Supabase
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-emerald-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/supabase.svg"
-            alt="Supabase"
+            alt="Supabase - Backend-as-a-Service"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "sqlserver",
+      name: "SQL Server",
+      origin: "Official Microsoft Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-400/50 transition-all duration-300 group overflow-hidden"
+          title="SQL Server"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            SQL Server
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/sqlserver.svg"
-            alt="SQL Server"
+            alt="SQL Server - Microsoft Database"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "framer",
+      name: "Framer",
+      origin: "Official Framer Brand Guidelines",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-pink-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-pink-400/50 transition-all duration-300 group overflow-hidden"
+          title="Framer"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Framer
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-rose-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-pink-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/framer.svg"
-            alt="Framer"
+            alt="Framer - Design & Prototyping"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
           />
         </div>
       ),
     },
     {
       id: "sanity",
+      name: "Sanity",
+      origin: "Official Sanity.io Brand Assets",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-red-400/50 transition-all duration-300 group overflow-hidden"
+          title="Sanity"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Sanity
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/sanity.svg"
-            alt="Sanity"
+            alt="Sanity - Headless CMS"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 drop-shadow-lg"
           />
         </div>
       ),
     },
     {
       id: "filament",
+      name: "Filament",
+      origin: "Official Filament PHP Brand",
       content: (
-        <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-orange-400/50 transition-all duration-300 group">
+        <div
+          className="relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 p-2 rounded-xl bg-gray-800/60 backdrop-blur-sm border border-gray-700/40 hover:bg-gray-700/80 hover:border-orange-400/50 transition-all duration-300 group overflow-hidden"
+          title="Filament"
+        >
+          {/* Tooltip */}
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg border border-gray-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap shadow-xl">
+            Filament
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <div
+            className="absolute inset-0 bg-orange-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 30%, transparent 70%)",
+            }}
+          ></div>
           <Image
             src="/tech-icons/filament.svg"
-            alt="Filament"
+            alt="Filament - Laravel Admin Panel"
             width={40}
             height={40}
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 brightness-0 invert"
+            className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-200 filter brightness-0 invert-[1] drop-shadow-lg"
           />
         </div>
       ),
@@ -358,7 +708,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
           const pseudoRandom2 = (((seed + 1) * 9301 + 49297) % 233280) / 233280;
           const pseudoRandom3 = (((seed + 2) * 9301 + 49297) % 233280) / 233280;
           const pseudoRandom4 = (((seed + 3) * 9301 + 49297) % 233280) / 233280;
-          
+
           return (
             <div
               key={i}
@@ -500,6 +850,10 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
             <div className="text-center">
               <p className="text-sm font-bold text-gray-400 uppercase tracking-wider">
                 {t("hero.techStack", "Technologies I Work With")}
+              </p>
+              <p className="text-xs text-gray-500 mt-2">
+                Icons sourced from official brand guidelines and open-source
+                libraries
               </p>
             </div>
 
