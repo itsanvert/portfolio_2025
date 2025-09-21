@@ -22,17 +22,11 @@ const FlipWord: React.FC<FlipWordProps> = ({
   // Ensure we have valid words array
   const validWords = useMemo(() => {
     if (!Array.isArray(words) || words.length === 0) {
-      console.warn("FlipWord: No valid words provided, using fallback");
-      return ["Developer"];
+      return ["Word"];
     }
-    const filtered = words.filter(
+    return words.filter(
       (word) => word && typeof word === "string" && word.trim() !== ""
     );
-    if (filtered.length === 0) {
-      console.warn("FlipWord: All words filtered out, using fallback");
-      return ["Developer"];
-    }
-    return filtered;
   }, [words]);
 
   // Calculate the maximum width to prevent layout shifts

@@ -4,9 +4,10 @@ import { Geist, Geist_Mono, Kantumruy_Pro, Roboto } from "next/font/google";
 import "./globals.css";
 import "@fontsource/nokora";
 import { ThemeProvider } from "next-themes";
-
+import CardNav from "./components/CardNav";
 import { Footer } from "./components/Footer";
-import Navbar from "./components/Navbar";
+import { HydrationBoundary } from "./components/HydrationBoundary";
+import type { CardNavItem } from "./components/CardNav";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -22,6 +23,84 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
+
+// Define navigation items
+const navItems: CardNavItem[] = [
+  {
+    label: "Home",
+    bgColor: "rgb(59, 130, 246)", // blue-500
+    textColor: "white",
+    links: [
+      {
+        label: "Welcome",
+        href: "/",
+        ariaLabel: "Go to homepage",
+      },
+      {
+        label: "About Me",
+        href: "/about",
+        ariaLabel: "Learn more about me",
+      },
+    ],
+  },
+  {
+    label: "Projects",
+    bgColor: "rgb(168, 85, 247)", // purple-500
+    textColor: "white",
+    links: [
+      {
+        label: "View All",
+        href: "/projects",
+        ariaLabel: "View all projects",
+      },
+    ],
+  },
+  {
+    label: "Experience",
+    bgColor: "rgb(34, 197, 94)", // green-500
+    textColor: "white",
+    links: [
+      {
+        label: "Resume",
+        href: "/resume/resume.pdf",
+        ariaLabel: "Download resume",
+        download: true,
+      },
+    ],
+  },
+  {
+    label: "Contact",
+    bgColor: "rgb(249, 115, 22)", // orange-500
+    textColor: "white",
+    links: [
+      {
+        label: "Contact",
+        href: "/contact",
+        ariaLabel: "Contact me",
+      },
+      {
+        label: "LinkedIn",
+        href: "https://linkedin.com/in/itsanvert",
+        ariaLabel: "Visit my LinkedIn profile",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/itsanvert",
+        ariaLabel: "Visit my GitHub profile",
+      },
+      {
+        label: "Telegram",
+        href: "https://t.me/itsanvert",
+        ariaLabel: "Follow me on Telegram",
+      },
+      {
+        label: "Facebook",
+        href: "https://web.facebook.com/profile.php?id=61574843070322",
+        ariaLabel: "Visit my Facebook profile",
+      },
+    ],
+  },
+];
 
 export const metadata: Metadata = {
   title: "Vert San - Full-Stack Developer & IT Professional",
@@ -119,29 +198,26 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased bg-black min-h-screen">
-        <div className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
-          {/* Global Background Effects */}
-          <div className="fixed inset-0 pointer-events-none">
-            <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"></div>
-            <div
-              className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-600/10 to-pink-500/10 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
-              style={{ animationDelay: "2s" }}
-            ></div>
-            <div
-              className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full mix-blend-screen blur-3xl opacity-60 animate-pulse"
-              style={{ animationDelay: "4s" }}
-            ></div>
-          </div>
+      <body>
+        <ThemeProvider>
+          <HydrationBoundary>
+            <CardNav
+              logoText="Vert San"
+              logoAlt="Vert San - Portfolio"
+              items={navItems}
+              homeHref="/"
+              contactHref="https://t.me/itsanvert"
+              showControls={true}
+            />
+          </HydrationBoundary>
 
-          <main className="relative z-10">
-            <Navbar />
-            <div className="w-full">{children}</div>
-            <Footer />
-          </main>
-        </div>
-        {/* </ThemeProvider> */}
+          <div className="pt-16">
+            <div className="container">{children}</div>
+            <HydrationBoundary>
+              <Footer />
+            </HydrationBoundary>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

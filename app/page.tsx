@@ -1,41 +1,40 @@
 import { AboutSection } from "./components/AboutSection";
 import { HeroSectionOne } from "./components/Hero";
-
-
-
 import { HydrationBoundary } from "./components/HydrationBoundary";
 
-
+import SectionTwo from "./components/SectionTwo";
 import Contact from "./contact/page";
 
 import ProjectsPage from "./projects/page";
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main className="max-w-7xl w-full px-2 md:px-8 mx-auto">
       <section id="hero">
-        <HeroSectionOne />
+        <HydrationBoundary>
+          <HeroSectionOne />
+        </HydrationBoundary>
       </section>
-      <section id="about" className="py-16">
+      <section id="about" className="mb-16">
         <HydrationBoundary>
           <AboutSection />
         </HydrationBoundary>
       </section>
-      <section id="projects">
+      <section id="projects" className="mb-16">
         <HydrationBoundary>
           <ProjectsPage />
         </HydrationBoundary>
       </section>
-      {/* <section id="more" className="py-16">
+      {/* <section id="more" className="mb-16">
         <HydrationBoundary>
           <SectionTwo />
         </HydrationBoundary>
       </section> */}
       {/* Uncomment to enable guestbook */}
-      {/* <section id="guestbook" className="py-16">
+      {/* <section id="guestbook" className="mb-16">
         <GuestbookPage />
       </section> */}
-      <section id="contact">
+      <section id="contact" className="mb-16">
         <HydrationBoundary>
           <Contact />
         </HydrationBoundary>
