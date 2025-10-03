@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { motion, easeOut } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -48,7 +48,7 @@ const Contact = () => {
     setError(null);
 
     try {
-            const response = await fetch("/api/sent-mail", {
+      const response = await fetch("/api/sent-mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,11 +75,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white py-8 px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-white dark:bg-black">
+      <div className="max-w-4xl mx-auto px-6 py-20">
         {/* Header Section */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-20"
           initial="hidden"
           animate="visible"
           variants={{
@@ -88,7 +88,7 @@ const Contact = () => {
           }}
         >
           <motion.h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-black dark:text-white mb-4 uppercase tracking-tight"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -97,7 +97,7 @@ const Contact = () => {
             {t("contact.title", "Contact")}
           </motion.h1>
           <motion.p
-            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            className="text-lg text-black/60 dark:text-white/60 max-w-2xl mx-auto"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -122,7 +122,7 @@ const Contact = () => {
             }}
           >
             <motion.h2
-              className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6"
+              className="text-2xl font-black text-black dark:text-white mb-6 uppercase tracking-tight"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -132,58 +132,58 @@ const Contact = () => {
             </motion.h2>
             <div className="space-y-4">
               <motion.div
-                className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 transition-colors"
+                className="flex items-center p-4 border-2 border-black dark:border-white rounded-2xl hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-300"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
                 }}
               >
-                <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg mr-4">
-                  <Mail className="w-5 h-5 text-blue-600 dark:text-blue-300" />
+                <div className="p-2 bg-black/10 dark:bg-white/10 rounded-xl mr-4">
+                  <Mail className="w-5 h-5 text-black dark:text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900 dark:text-gray-100">
+                  <h3 className="font-bold text-black dark:text-white">
                     Email
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-black/70 dark:text-white/70">
                     itsanvert@gmail.com
                   </p>
                 </div>
               </motion.div>
               <motion.div
-                className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 transition-colors"
+                className="flex items-center p-4 border-2 border-black dark:border-white rounded-2xl hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-300"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
                 }}
               >
-                <div className="p-2 bg-green-100 dark:bg-green-900 rounded-lg mr-4">
-                  <Phone className="w-5 h-5 text-green-600 dark:text-green-300" />
+                <div className="p-2 bg-black/10 dark:bg-white/10 rounded-xl mr-4">
+                  <Phone className="w-5 h-5 text-black dark:text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900 dark:text-gray-100">
+                  <h3 className="font-bold text-black dark:text-white">
                     Phone
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-black/70 dark:text-white/70">
                     +855 (97) 90 78 615
                   </p>
                 </div>
               </motion.div>
               <motion.div
-                className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 transition-colors"
+                className="flex items-center p-4 border-2 border-black dark:border-white rounded-2xl hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-300"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
                 }}
               >
-                <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg mr-4">
-                  <MapPin className="w-5 h-5 text-purple-600 dark:text-purple-300" />
+                <div className="p-2 bg-black/10 dark:bg-white/10 rounded-xl mr-4">
+                  <MapPin className="w-5 h-5 text-black dark:text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900 dark:text-gray-100">
+                  <h3 className="font-bold text-black dark:text-white">
                     Location
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-black/70 dark:text-white/70">
                     Kandal, Cambodia
                   </p>
                 </div>
@@ -193,7 +193,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <motion.div
-            className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700"
+            className="bg-white dark:bg-black rounded-2xl p-6 sm:p-8 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"
             initial="hidden"
             animate="visible"
             variants={{
@@ -201,12 +201,12 @@ const Contact = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
             }}
           >
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+            <h2 className="text-2xl font-black text-black dark:text-white mb-6 uppercase tracking-tight">
               {t("contact.sendMessage", "Send a Message")}
             </h2>
             {submitted && (
-              <div className="mb-6 p-4 bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg">
-                <p className="text-green-800 dark:text-green-200 font-medium">
+              <div className="mb-6 p-4 bg-black/5 dark:bg-white/5 border-2 border-black dark:border-white rounded-xl">
+                <p className="text-black dark:text-white font-bold">
                   {t(
                     "contact.successMessage",
                     "✓ Message sent successfully! I'll get back to you soon."
@@ -215,10 +215,8 @@ const Contact = () => {
               </div>
             )}
             {error && (
-              <div className="mb-6 p-4 bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-lg">
-                <p className="text-red-800 dark:text-red-200 font-medium">
-                  {error}
-                </p>
+              <div className="mb-6 p-4 bg-black/10 dark:bg-white/10 border-2 border-black dark:border-white rounded-xl">
+                <p className="text-black dark:text-white font-bold">{error}</p>
               </div>
             )}
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -226,7 +224,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    className="block text-sm font-bold text-black dark:text-white mb-2"
                   >
                     {t("contact.nameLabel", "Your Name")} *
                   </label>
@@ -237,14 +235,14 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors dark:bg-gray-700"
+                    className="w-full px-3 py-2 border-2 border-black dark:border-white rounded-xl text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-all bg-white dark:bg-black"
                     placeholder={t("contact.namePlaceholder", "John Doe")}
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    className="block text-sm font-bold text-black dark:text-white mb-2"
                   >
                     {t("contact.emailLabel", "Email Address")} *
                   </label>
@@ -255,7 +253,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors dark:bg-gray-700"
+                    className="w-full px-3 py-2 border-2 border-black dark:border-white rounded-xl text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-all bg-white dark:bg-black"
                     placeholder={t(
                       "contact.emailPlaceholder",
                       "john@example.com"
@@ -266,7 +264,7 @@ const Contact = () => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-bold text-black dark:text-white mb-2"
                 >
                   {t("contact.subjectLabel", "Subject")}
                 </label>
@@ -276,7 +274,7 @@ const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors dark:bg-gray-700"
+                  className="w-full px-3 py-2 border-2 border-black dark:border-white rounded-xl text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-all bg-white dark:bg-black"
                   placeholder={t(
                     "contact.subjectPlaceholder",
                     "Project Collaboration"
@@ -286,7 +284,7 @@ const Contact = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-bold text-black dark:text-white mb-2"
                 >
                   {t("contact.messageLabel", "Message")} *
                 </label>
@@ -297,7 +295,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none dark:bg-gray-700"
+                  className="w-full px-3 py-2 border-2 border-black dark:border-white rounded-xl text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-all resize-none bg-white dark:bg-black"
                   placeholder={t(
                     "contact.messagePlaceholder",
                     "Tell me about your project or how I can help..."
@@ -306,18 +304,20 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium rounded-lg transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black border-2 border-black dark:border-white font-black uppercase tracking-wider rounded-xl transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:scale-105"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    <span>{t("contact.sending", "Sending...")}</span>
+                    <div className="w-4 h-4 border-2 border-black/30 dark:border-white/30 border-t-black dark:border-t-white rounded-full animate-spin"></div>
+                    <span className="font-bold">
+                      {t("contact.sending", "Sending...")}
+                    </span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>
+                    <span className="font-bold">
                       {t("contact.sendMessageButton", "Send Message")}
                     </span>
                   </>
@@ -329,7 +329,7 @@ const Contact = () => {
 
         {/* Footer */}
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-20"
           initial="hidden"
           animate="visible"
           variants={{
@@ -338,7 +338,7 @@ const Contact = () => {
           }}
         >
           <motion.p
-            className="text-gray-500 dark:text-gray-400"
+            className="text-black/50 dark:text-white/50 font-bold uppercase tracking-wider"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },

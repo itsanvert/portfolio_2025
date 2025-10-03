@@ -83,7 +83,6 @@ const CardNav: React.FC<CardNavProps> = ({
   ease = "power3.out",
   baseColor,
   menuColor,
-
   homeHref = "/",
   showControls = true,
   contactHref = "https://t.me/itsanvert",
@@ -107,7 +106,6 @@ const CardNav: React.FC<CardNavProps> = ({
 
   const toggleMenu = () => {
     if (!isExpanded) {
-      // Opening menu
       setIsHamburgerOpen(true);
       setIsExpanded(true);
       if (tlRef.current) {
@@ -115,7 +113,6 @@ const CardNav: React.FC<CardNavProps> = ({
         tlRef.current.play();
       }
     } else {
-      // Closing menu
       setIsHamburgerOpen(false);
       if (tlRef.current) {
         tlRef.current.eventCallback("onReverseComplete", () => {
@@ -163,14 +160,13 @@ const CardNav: React.FC<CardNavProps> = ({
       }
     }
 
-    // Desktop calculation - ensure enough space for cards
-    const itemCount = items.length || 4; // Default to 4 if no items
+    const itemCount = items.length || 4;
     const rows = Math.ceil(itemCount / 2);
     const cardHeight = 140;
     const gap = 16;
     const padding = 32;
     const topBar = 60;
-    const controlsHeight = 0; // Controls are in top bar on desktop
+    const controlsHeight = 0;
 
     const calculatedHeight =
       topBar +
@@ -179,7 +175,6 @@ const CardNav: React.FC<CardNavProps> = ({
       padding +
       controlsHeight;
 
-    // Minimum height to ensure visibility
     return Math.max(calculatedHeight, 300);
   };
 
@@ -189,7 +184,6 @@ const CardNav: React.FC<CardNavProps> = ({
     const navEl = navRef.current;
     if (!navEl) return null;
 
-    // Reset initial states
     gsap.set(navEl, { height: 60, overflow: "hidden" });
     gsap.set(".card-nav-content", { opacity: 0, visibility: "hidden" });
     gsap.set(cardsRef.current.filter(Boolean), { y: 30, opacity: 0 });
@@ -199,7 +193,6 @@ const CardNav: React.FC<CardNavProps> = ({
 
     const tl = gsap.timeline({ paused: true });
 
-    // Expand height and show content
     tl.to(navEl, {
       height: calculateHeight,
       duration: 0.5,
@@ -247,7 +240,7 @@ const CardNav: React.FC<CardNavProps> = ({
       tl?.kill();
       tlRef.current = null;
     };
-  }, [ease, , isMounted, showControls]);
+  }, [ease, isMounted, showControls]);
 
   useLayoutEffect(() => {
     if (!isMounted) return;
@@ -287,7 +280,7 @@ const CardNav: React.FC<CardNavProps> = ({
       <div
         className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[900px] z-[99] top-[1.2em] lg:top-[2em] ${className}`}
       >
-        <nav className="card-nav block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden backdrop-blur-md bg-white/90 dark:bg-black/90 border border-white/20 dark:border-gray-800/30">
+        <nav className="card-nav block h-[60px] p-0 rounded-2xl shadow-2xl relative overflow-hidden backdrop-blur-xl bg-white/80 dark:bg-black/80 border border-gray-200/50 dark:border-gray-800/50">
           <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] pr-4 z-[2]">
             <div className="hamburger-menu group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 lg:order-1">
               <div className="hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear" />
@@ -295,23 +288,23 @@ const CardNav: React.FC<CardNavProps> = ({
             </div>
             <div className="logo-container flex items-center lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 order-1 lg:order-2">
               <Link href={homeHref} className="no-underline">
-                <span className="logo-text text-lg lg:text-xl font-semibold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                <span className="logo-text text-lg lg:text-xl font-bold text-black dark:text-white">
                   {logoText}
                 </span>
               </Link>
             </div>
             {showControls && (
               <div className="desktop-controls hidden lg:flex items-center gap-3 order-3">
-                <div className="p-1 rounded-lg">
+                <div className="p-1.5 rounded-xl">
                   <ModeToggle />
                 </div>
-                <div className="p-1 rounded-lg">
+                <div className="p-1.5 rounded-xl">
                   <LanguageSwitcher />
                 </div>
                 <Link href={contactHref}>
                   <Button
                     size="sm"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+                    className="bg-black dark:bg-white text-white dark:text-black border border-black/20 dark:border-white/20"
                   >
                     Contact
                   </Button>
@@ -334,7 +327,7 @@ const CardNav: React.FC<CardNavProps> = ({
           ref={navRef}
           className={`card-nav ${
             isExpanded ? "open" : ""
-          } block h-[60px] p-0 rounded-xl shadow-lg relative will-change-[height] backdrop-blur-md bg-white/90 dark:bg-black/90 border border-white/20 dark:border-gray-800/30`}
+          } block h-[60px] p-0 rounded-2xl shadow-2xl relative will-change-[height] backdrop-blur-xl bg-white/80 dark:bg-black/80 border border-gray-200/50 dark:border-gray-800/50`}
           style={{ backgroundColor: baseColor, overflow: "hidden" }}
         >
           <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] pr-4 z-[2]">
@@ -355,20 +348,20 @@ const CardNav: React.FC<CardNavProps> = ({
               style={{ color: menuColor || "currentColor" }}
             >
               <div
-                className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${
+                className={`hamburger-line w-[30px] h-[2px] bg-current transition-all duration-300 ease-out [transform-origin:50%_50%] ${
                   isHamburgerOpen ? "translate-y-[4px] rotate-45" : ""
-                } group-hover:opacity-75`}
+                } group-hover:opacity-70`}
               />
               <div
-                className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${
+                className={`hamburger-line w-[30px] h-[2px] bg-current transition-all duration-300 ease-out [transform-origin:50%_50%] ${
                   isHamburgerOpen ? "-translate-y-[4px] -rotate-45" : ""
-                } group-hover:opacity-75`}
+                } group-hover:opacity-70`}
               />
             </div>
 
             <div className="logo-container flex items-center lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 order-1 lg:order-2">
               <Link href={homeHref} className="no-underline">
-                <span className="logo-text text-lg lg:text-xl font-semibold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                <span className="logo-text text-lg lg:text-xl font-bold text-black dark:text-white hover:scale-105 transition-transform duration-300">
                   {logoText}
                 </span>
               </Link>
@@ -376,16 +369,16 @@ const CardNav: React.FC<CardNavProps> = ({
 
             {showControls && (
               <div className="desktop-controls hidden lg:flex items-center gap-3 order-3">
-                <div className="p-1 rounded-lg hover:bg-white/10 dark:hover:bg-black/10 transition-colors duration-300">
+                <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                   <ModeToggle />
                 </div>
-                <div className="p-1 rounded-lg hover:bg-white/10 dark:hover:bg-black/10 transition-colors duration-300">
+                <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                   <LanguageSwitcher />
                 </div>
                 <Link href={contactHref}>
                   <Button
                     size="sm"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                    className="bg-black dark:bg-white text-white dark:text-black border border-black/20 dark:border-white/20 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-white/20 hover:scale-105"
                   >
                     {t ? t("nav.contact") : "Contact"}
                   </Button>
@@ -405,36 +398,37 @@ const CardNav: React.FC<CardNavProps> = ({
               {items?.map((item, idx) => (
                 <div
                   key={`${item.label}-${idx}`}
-                  className={`nav-card select-none relative flex flex-col gap-3 p-4 rounded-lg min-w-0 h-[140px] transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
+                  className={`nav-card select-none relative flex flex-col gap-3 p-5 rounded-2xl min-w-0 h-[140px] transition-all duration-500 hover:scale-[1.03] cursor-pointer backdrop-blur-sm ${
                     activeCard === idx
-                      ? "ring-2 ring-offset-2 shadow-lg"
-                      : "shadow-sm"
+                      ? "ring-2 ring-offset-2 shadow-2xl scale-[1.02]"
+                      : "shadow-md hover:shadow-xl"
                   }`}
                   ref={setCardRef(idx)}
                   style={
                     {
-                      backgroundColor: item.bgColor,
-                      color: item.textColor,
-                      "--tw-ring-color": item.textColor,
+                      backgroundColor:
+                        item.bgColor || (idx % 2 === 0 ? "white" : "#f5f5f5"),
+                      color: item.textColor || "black",
+                      "--tw-ring-color": item.textColor || "#000",
                     } as React.CSSProperties
                   }
                   onMouseEnter={() => setActiveCard(idx)}
                   onMouseLeave={() => setActiveCard(null)}
                 >
-                  <div className="nav-card-label font-semibold tracking-[-0.5px] text-[18px] flex-shrink-0">
+                  <div className="nav-card-label font-bold tracking-tight text-[19px] flex-shrink-0 text-black dark:text-white">
                     {item.label}
                   </div>
-                  <div className="nav-card-links mt-auto flex flex-col gap-2">
+                  <div className="nav-card-links mt-auto flex flex-col gap-2.5">
                     {item.links?.map((lnk, i) => (
                       <Link
                         key={`${lnk.label}-${i}`}
                         href={lnk.href}
                         download={lnk.download}
-                        className="nav-card-link inline-flex items-center gap-2 no-underline cursor-pointer transition-all duration-300 hover:opacity-75 hover:translate-x-1 text-[14px] text-current font-medium"
+                        className="nav-card-link inline-flex items-center gap-2 no-underline cursor-pointer transition-all duration-300 hover:opacity-70 hover:translate-x-2 text-[14px] text-current font-semibold"
                         aria-label={lnk.ariaLabel}
                       >
                         <GoArrowUpRight
-                          className="nav-card-link-icon shrink-0 w-4 h-4"
+                          className="nav-card-link-icon shrink-0 w-4 h-4 text-black dark:text-white"
                           aria-hidden="true"
                         />
                         {lnk.label}
@@ -448,18 +442,18 @@ const CardNav: React.FC<CardNavProps> = ({
             {showControls && (
               <div
                 ref={controlsRef}
-                className="mobile-controls lg:hidden flex items-center justify-center gap-3 mt-4 pt-3 border-t border-white/20 dark:border-gray-800/30"
+                className="mobile-controls lg:hidden flex items-center justify-center gap-3 mt-4 pt-3 border-t border-gray-200/50 dark:border-gray-800/50"
               >
-                <div className="p-1 rounded-lg">
+                <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                   <ModeToggle />
                 </div>
-                <div className="p-1 rounded-lg">
+                <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                   <LanguageSwitcher />
                 </div>
                 <Link href={contactHref}>
                   <Button
                     size="sm"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                    className="bg-black dark:bg-white text-white dark:text-black border border-black/20 dark:border-white/20 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-white/20 hover:scale-105"
                   >
                     {t ? t("nav.contact") : "Contact"}
                   </Button>
@@ -472,7 +466,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
       {/* Mobile Bottom Navigation */}
       <div className="lg:hidden fixed inset-x-0 bottom-0 z-[98] bg-transparent">
-        <nav className="relative flex h-20 items-center justify-around bg-black/90 dark:bg-neutral-900/90 rounded-xl shadow-2xl mx-2 mb-2">
+        <nav className="relative flex h-20 items-center justify-around bg-white/90 dark:bg-black/90 backdrop-blur-xl rounded-2xl shadow-2xl mx-3 mb-3 border border-gray-200/50 dark:border-gray-800/50">
           {mobileNavItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeMobile === item.key;
@@ -487,12 +481,12 @@ const CardNav: React.FC<CardNavProps> = ({
                     href={item.href}
                     download
                     aria-label={item.label}
-                    className={`flex h-16 w-16 items-center justify-center rounded-full border-4 border-blue-300 bg-violet-600 shadow-xl transition-transform duration-300 hover:scale-110 ${
-                      isActive ? "scale-110" : "scale-100 opacity-80"
+                    className={`flex h-16 w-16 items-center justify-center rounded-full border-4 border-white dark:border-black bg-black dark:bg-white shadow-2xl shadow-black/20 dark:shadow-white/20 transition-all duration-300 hover:scale-110 hover:shadow-black/30 dark:hover:shadow-white/30 ${
+                      isActive ? "scale-110" : "scale-100"
                     }`}
                     onClick={() => setActiveMobile(item.key)}
                   >
-                    <Icon className="h-8 w-8" />
+                    <Icon className="h-8 w-8 text-white dark:text-black" />
                   </Link>
                 </div>
               );
@@ -509,14 +503,14 @@ const CardNav: React.FC<CardNavProps> = ({
                   }
                   setActiveMobile(item.key);
                 }}
-                className={`flex flex-col items-center justify-center gap-1 w-full h-full px-2 transition-colors ${
+                className={`flex flex-col items-center justify-center gap-1 w-full h-full px-2 transition-all duration-300 ${
                   isActive
-                    ? "text-blue-500 dark:text-blue-400"
-                    : "text-gray-400 dark:text-gray-500"
+                    ? "text-black dark:text-white scale-105"
+                    : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
                 }`}
               >
                 <Icon className="h-6 w-6" />
-                <span className="text-xs font-medium">{item.label}</span>
+                <span className="text-xs font-semibold">{item.label}</span>
               </Link>
             );
           })}

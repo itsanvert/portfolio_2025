@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/components/CardNav.tsx"
+    "app/components/NavBar.tsx"
   ],
   "exclude": ["node_modules"]
 }

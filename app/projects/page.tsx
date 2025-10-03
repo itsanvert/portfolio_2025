@@ -5,8 +5,8 @@ import { ProjectsCard } from "../lib/interface";
 import { client } from "../lib/sanity";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ExternalLink, Github, Eye, Code2, Calendar, Tag } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Github, Eye, Code2, Tag, Filter } from "lucide-react";
 
 async function getData(): Promise<ProjectsCard[]> {
   const query = `*[_type == 'project'] | order(_createdAt desc) {
@@ -44,47 +44,38 @@ const ProjectCard = ({
 }) => {
   const { t } = useTranslation();
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <motion.div
-      className="group relative overflow-hidden bg-white dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-gray-900/20 transition-all duration-500 hover:-translate-y-2"
-      initial="hidden"
-      animate="visible"
-      whileHover={{ scale: 1.02 }}
+      layout
+      className="group relative bg-white dark:bg-black border-4 border-black dark:border-white overflow-hidden transition-all duration-500 ease-out hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)]"
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -20, scale: 0.95 }}
+      transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
     >
       {/* Image Section */}
-      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-t-2xl">
+      <div className="relative h-64 overflow-hidden bg-black dark:bg-white">
         <Image
           src={project.imageUrl}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={index < 3}
         />
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-        {/* Hover Actions */}
-        <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        {/* Overlay on hover */}
+        <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out flex items-center justify-center gap-4">
           {(project.demoLink || project.link) && (
             <motion.a
               href={project.demoLink || project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 font-medium rounded-lg hover:bg-white transition-all duration-200 shadow-lg"
+              className="flex items-center gap-2 px-6 py-3 bg-white text-black font-black text-sm uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white transition-all duration-300"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -98,7 +89,10 @@ const ProjectCard = ({
               href={project.sourceLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900/90 backdrop-blur-sm text-white font-medium rounded-lg hover:bg-gray-900 transition-all duration-200 shadow-lg"
+              className="flex items-center gap-2 px-6 py-3 bg-black text-white font-black text-sm uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black transition-all duration-300"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.15 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -110,69 +104,100 @@ const ProjectCard = ({
       </div>
 
       {/* Content Section */}
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-3">
-          <h3 className="font-bold text-lg text-gray-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+      <div className="p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <motion.h3
+            className="font-black text-xl text-black dark:text-white leading-tight uppercase tracking-tight"
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.2 }}
+          >
             {project.title}
-          </h3>
-          <div className="flex gap-1 ml-2 flex-shrink-0">
-            {(project.demoLink || project.link) && (
-              <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
-            )}
-          </div>
+          </motion.h3>
+          {(project.demoLink || project.link) && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <ExternalLink className="w-5 h-5 text-black dark:text-white flex-shrink-0" />
+            </motion.div>
+          )}
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 leading-relaxed">
+        <motion.p
+          className="text-black/70 dark:text-white/70 text-sm leading-relaxed line-clamp-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+        >
           {project.description}
-        </p>
+        </motion.p>
 
         {/* Tags */}
-        {project.tags && project.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.slice(0, 3).map((tag: string, tagIndex: number) => (
-              <motion.span
-                key={tagIndex}
-                className="inline-flex items-center gap-1 px-3 py-1 text-xs bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-blue-700 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/50 rounded-full font-medium"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 + tagIndex * 0.1 }}
-              >
-                <Tag className="w-3 h-3" />
-                {tag}
-              </motion.span>
-            ))}
-            {project.tags.length > 3 && (
-              <span className="inline-flex items-center gap-1 px-3 py-1 text-xs bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600 rounded-full font-medium">
-                +{project.tags.length - 3}
-              </span>
-            )}
-          </div>
-        )}
+        <AnimatePresence>
+          {project.tags && project.tags.length > 0 && (
+            <motion.div
+              className="flex flex-wrap gap-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              {project.tags.slice(0, 4).map((tag: string, tagIndex: number) => (
+                <motion.span
+                  key={tag}
+                  className="inline-flex items-center gap-1 px-3 py-1 text-xs bg-black dark:bg-white text-white dark:text-black font-bold uppercase tracking-wider border-2 border-black dark:border-white"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: tagIndex * 0.05 }}
+                  whileHover={{ scale: 1.1, rotate: 2 }}
+                >
+                  <Tag className="w-3 h-3" />
+                  {tag}
+                </motion.span>
+              ))}
+              {project.tags.length > 4 && (
+                <motion.span
+                  className="inline-flex items-center px-3 py-1 text-xs bg-white dark:bg-black text-black dark:text-white font-bold uppercase tracking-wider border-2 border-black dark:border-white"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  +{project.tags.length - 4}
+                </motion.span>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Action Buttons */}
-        <div className="flex gap-2 pt-2">
+        <div className="flex gap-3 pt-2">
           {(project.demoLink || project.link) && (
-            <a
+            <motion.a
               href={project.demoLink || project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-sm font-medium transition-all duration-200 rounded-lg shadow-sm hover:shadow-md"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-black dark:bg-white text-white dark:text-black text-sm font-black uppercase tracking-wider border-2 border-black dark:border-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-300 active:shadow-none"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               <Eye className="w-4 h-4" />
-              {t("projects.title", "Live Demo")}
-            </a>
+              {t("projects.demo", "Demo")}
+            </motion.a>
           )}
 
           {project.sourceLink && (
-            <a
+            <motion.a
               href={project.sourceLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 text-white text-sm font-medium transition-all duration-200 rounded-lg shadow-sm hover:shadow-md"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-black text-black dark:text-white text-sm font-black uppercase tracking-wider border-2 border-black dark:border-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-300 active:shadow-none"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               <Github className="w-4 h-4" />
-              {t("nav.project_desktop", "Source")}
-            </a>
+              {t("projects.code", "Code")}
+            </motion.a>
           )}
         </div>
       </div>
@@ -185,51 +210,61 @@ const EmptyState = () => {
 
   return (
     <motion.div
-      className="text-center py-20"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      className="text-center py-32"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <motion.div
-        className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-sm"
-        whileHover={{ scale: 1.05, rotate: 5 }}
-        transition={{ type: "spring", stiffness: 300 }}
+        className="w-32 h-32 bg-black dark:bg-white mx-auto mb-10 flex items-center justify-center border-4 border-black dark:border-white"
+        whileHover={{ rotate: 360 }}
+        transition={{ duration: 0.8 }}
       >
-        <Code2 className="w-10 h-10 text-gray-400 dark:text-gray-500" />
+        <Code2 className="w-16 h-16 text-white dark:text-black" />
       </motion.div>
-      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-        {t("projects.title", "No Projects Available")}
-      </h3>
-      <p className="text-gray-600 dark:text-gray-300 text-lg max-w-md mx-auto leading-relaxed">
-        {t(
-          "projects.description",
-          "Projects will appear here once they are published."
-        )}
-      </p>
+      <motion.h3
+        className="text-4xl font-black text-black dark:text-white mb-4 uppercase tracking-tight"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
+        {t("projects.no_projects", "No Projects Yet")}
+      </motion.h3>
+      <motion.p
+        className="text-black/60 dark:text-white/60 text-lg max-w-md mx-auto"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        {t("projects.no_projects_desc", "Check back later for new creations.")}
+      </motion.p>
     </motion.div>
   );
 };
 
 const LoadingState = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
     {[1, 2, 3, 4, 5, 6].map((i) => (
-      <div
+      <motion.div
         key={i}
-        className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-sm border border-gray-200/50 dark:border-gray-700/50 overflow-hidden"
+        className="bg-white dark:bg-black border-4 border-black dark:border-white overflow-hidden"
+        initial={{ opacity: 0.5 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
       >
-        <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 animate-pulse" />
+        <div className="h-64 bg-black/5 dark:bg-white/5 animate-pulse" />
         <div className="p-6 space-y-4">
-          <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+          <div className="h-6 bg-black/5 dark:bg-white/5 rounded animate-pulse" />
           <div className="space-y-2">
-            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
-            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-3/4" />
+            <div className="h-4 bg-black/5 dark:bg-white/5 rounded animate-pulse" />
+            <div className="h-4 bg-black/5 dark:bg-white/5 rounded animate-pulse w-3/4" />
           </div>
           <div className="flex gap-2">
-            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse flex-1" />
-            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse flex-1" />
+            <div className="h-10 bg-black/5 dark:bg-white/5 rounded animate-pulse flex-1" />
+            <div className="h-10 bg-black/5 dark:bg-white/5 rounded animate-pulse flex-1" />
           </div>
         </div>
-      </div>
+      </motion.div>
     ))}
   </div>
 );
@@ -238,6 +273,8 @@ export default function ProjectsPage() {
   const { t } = useTranslation();
   const [projects, setProjects] = useState<ProjectsCard[]>([]);
   const [loading, setLoading] = useState(true);
+  const [filterTag, setFilterTag] = useState<string>("all");
+  const [allTags, setAllTags] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -245,6 +282,10 @@ export default function ProjectsPage() {
         setLoading(true);
         const data = await getData();
         setProjects(data);
+
+        // Extract unique tags
+        const tags = Array.from(new Set(data.flatMap((p) => p.tags || [])));
+        setAllTags(tags);
       } catch (error) {
         console.error("Error fetching projects:", error);
         setProjects([]);
@@ -256,122 +297,178 @@ export default function ProjectsPage() {
     fetchProjects();
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
+  const filteredProjects =
+    filterTag === "all"
+      ? projects
+      : projects.filter((p) => p.tags?.includes(filterTag));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-500">
+      <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
-          initial="hidden"
-          animate="visible"
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-              <Code2 className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-            </div>
-            <motion.h1
-              className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 dark:from-white dark:via-blue-400 dark:to-white bg-clip-text text-transparent"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {t("projects.title", "My Projects")}
-            </motion.h1>
-          </div>
+          {/* Decorative Line */}
+          <motion.div
+            className="w-24 h-[4px] bg-black dark:bg-white mx-auto mb-8"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          />
 
+          {/* Title */}
+          <motion.div
+            className="flex items-center justify-center gap-4 mb-6"
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div
+              className="p-3 bg-black dark:bg-white border-4 border-black dark:border-white"
+              whileHover={{ rotate: [0, -5, 5, 0] }}
+              transition={{ duration: 0.5 }}
+            >
+              <Code2 className="w-10 h-10 text-white dark:text-black" />
+            </motion.div>
+            <h1 className="text-6xl lg:text-8xl font-black text-black dark:text-white uppercase tracking-tighter">
+              {t("projects.title", "Projects")}
+            </h1>
+          </motion.div>
+
+          {/* Subtitle */}
           <motion.p
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="text-lg text-black/60 dark:text-white/60 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             {t(
               "projects.description",
-              "Here are some of the cool projects I've built recently."
+              "A collection of my recent work and experiments"
             )}
           </motion.p>
-
-          <motion.div
-            className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-8 rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: 96 }}
-            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          />
         </motion.div>
 
+        {/* Filter */}
+        {allTags.length > 0 && (
+          <motion.div
+            className="flex flex-wrap justify-center gap-2 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <motion.button
+              onClick={() => setFilterTag("all")}
+              className={`px-4 py-2 border-2 border-black dark:border-white font-bold text-sm uppercase tracking-wider transition-all duration-300 ${
+                filterTag === "all"
+                  ? "bg-black dark:bg-white text-white dark:text-black"
+                  : "bg-white dark:bg-black text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Filter className="w-4 h-4 inline mr-2" />
+              All
+            </motion.button>
+            {allTags.map((tag) => (
+              <motion.button
+                key={tag}
+                onClick={() => setFilterTag(tag)}
+                className={`px-4 py-2 border-2 border-black dark:border-white font-bold text-sm uppercase tracking-wider transition-all duration-300 ${
+                  filterTag === tag
+                    ? "bg-black dark:bg-white text-white dark:text-black"
+                    : "bg-white dark:bg-black text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {tag}
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
+
         {/* Projects Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <AnimatePresence mode="wait">
           {loading ? (
             <LoadingState />
-          ) : projects.length === 0 ? (
+          ) : filteredProjects.length === 0 ? (
             <EmptyState />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-              {projects.map((project: ProjectsCard, index: number) => (
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              {filteredProjects.map((project: ProjectsCard, index: number) => (
                 <ProjectCard
                   key={project._id}
                   project={project}
                   index={index}
                 />
               ))}
-            </div>
+            </motion.div>
           )}
-        </motion.div>
+        </AnimatePresence>
 
         {/* Stats Section */}
         {!loading && projects.length > 0 && (
           <motion.div
-            className="mt-20 text-center"
-            initial={{ opacity: 0, y: 30 }}
+            className="mt-32 text-center"
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="inline-flex items-center gap-6 px-8 py-4 bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+            <motion.div
+              className="inline-flex items-center gap-12 px-12 py-8 bg-white dark:bg-black border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="text-center"
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.7 }}
+              >
+                <motion.div
+                  className="text-4xl font-black text-black dark:text-white mb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
                   {projects.length}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                </motion.div>
+                <div className="text-sm font-bold uppercase tracking-wider text-black/60 dark:text-white/60">
                   {t("nav.projects", "Projects")}
                 </div>
-              </div>
-              <div className="w-px h-8 bg-gray-200 dark:bg-gray-700" />
-              <div className="text-center">
-                <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
+              </motion.div>
+              <div className="w-[4px] h-16 bg-black dark:bg-white" />
+              <motion.div
+                className="text-center"
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                <motion.div
+                  className="text-4xl font-black text-black dark:text-white mb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
                   {projects.reduce(
                     (acc, project) => acc + (project.tags?.length || 0),
                     0
                   )}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                </motion.div>
+                <div className="text-sm font-bold uppercase tracking-wider text-black/60 dark:text-white/60">
                   Technologies
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </div>

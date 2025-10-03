@@ -1,11 +1,15 @@
 import { AboutSection } from "./components/AboutSection";
 import { HeroSectionOne } from "./components/Hero";
 import { HydrationBoundary } from "./components/HydrationBoundary";
-
-import SectionTwo from "./components/SectionTwo";
 import Contact from "./contact/page";
+import Project from "./projects/page";
+// Remove these imports as they are page components
+// import Contact from "./contact/page";
+// import Project from "./projects/page";
+// import ProjectsPage from "./projects/page";
 
-import ProjectsPage from "./projects/page";
+// Instead, create separate components for these sections
+
 
 export default function Home() {
   return (
@@ -15,25 +19,19 @@ export default function Home() {
           <HeroSectionOne />
         </HydrationBoundary>
       </section>
+
       <section id="about" className="mb-16">
         <HydrationBoundary>
           <AboutSection />
         </HydrationBoundary>
       </section>
+
       <section id="projects" className="mb-16">
         <HydrationBoundary>
-          <ProjectsPage />
+          <Project  />
         </HydrationBoundary>
       </section>
-      {/* <section id="more" className="mb-16">
-        <HydrationBoundary>
-          <SectionTwo />
-        </HydrationBoundary>
-      </section> */}
-      {/* Uncomment to enable guestbook */}
-      {/* <section id="guestbook" className="mb-16">
-        <GuestbookPage />
-      </section> */}
+
       <section id="contact" className="mb-16">
         <HydrationBoundary>
           <Contact />
