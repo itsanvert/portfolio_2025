@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
 import { FiHome, FiUser, FiFileText, FiCode, FiMenu } from "react-icons/fi";
+import { Contact } from "lucide-react";
 
 type CardNavLink = {
   label: string;
@@ -68,10 +69,10 @@ const mobileNavItems = [
     href: "/projects",
   },
   {
-    key: "menu",
-    label: "Menu",
-    icon: FiMenu,
-    href: "#",
+    key: "contact",
+    label: "Contact",
+    icon: Contact,
+    href: "/contact",
   },
 ];
 
