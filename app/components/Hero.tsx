@@ -309,7 +309,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
           className="relative z-10 mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto px-4"
         >
           <motion.a
-            href="/resume/resume.pdf"
+            href="/resume/Resume_Web_Developer_SAN_VERT.pdf"
             download
             whileHover={{ scale: 1.03, y: -3 }}
             whileTap={{ scale: 0.97 }}

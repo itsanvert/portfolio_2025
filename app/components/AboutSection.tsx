@@ -272,7 +272,7 @@ export function AboutSection() {
                 {/* Action Buttons */}
                 <div className="p-4 sm:p-6 flex flex-col sm:flex-row gap-3 sm:gap-4 bg-white dark:bg-black">
                   <motion.a
-                    href="/resume/resume.pdf"
+                    href="/resume/Resume_Web_Developer_SAN_VERT.pdf"
                     download
                     className="flex-1 flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-4 font-bold text-white dark:text-black bg-black dark:bg-white border-2 border-black dark:border-white hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all duration-200 active:shadow-none text-sm sm:text-base"
                     whileHover={{ scale: 1.02 }}
