@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 
-interface FlipWordProps {
+interface FlipWordsProps {
   words: string[];
   duration?: number;
   className?: string;
   style?: React.CSSProperties;
 }
 
-const FlipWord: React.FC<FlipWordProps> = ({
+const FlipWords: React.FC<FlipWordsProps> = ({
   words,
   duration = 3000,
   className = "",
@@ -22,40 +22,12 @@ const FlipWord: React.FC<FlipWordProps> = ({
   // Ensure we have valid words array
   const validWords = useMemo(() => {
     if (!Array.isArray(words) || words.length === 0) {
-      return ["Word"];
+      return ["Web Applications"];
     }
     return words.filter(
       (word) => word && typeof word === "string" && word.trim() !== ""
     );
   }, [words]);
-
-  // Calculate the maximum width to prevent layout shifts
-  const maxWidth = useMemo(() => {
-    if (typeof window === "undefined") return "auto";
-
-    // Create a temporary element to measure text width
-    const tempElement = document.createElement("span");
-    tempElement.style.visibility = "hidden";
-    tempElement.style.position = "absolute";
-    tempElement.style.fontSize = "inherit";
-    tempElement.style.fontFamily = "inherit";
-    tempElement.style.fontWeight = "inherit";
-    tempElement.style.whiteSpace = "nowrap";
-
-    document.body.appendChild(tempElement);
-
-    let maxWidthValue = 0;
-    validWords.forEach((word) => {
-      tempElement.textContent = word;
-      const width = tempElement.offsetWidth;
-      if (width > maxWidthValue) {
-        maxWidthValue = width;
-      }
-    });
-
-    document.body.removeChild(tempElement);
-    return `${maxWidthValue + 4}px`; // Add small buffer
-  }, [validWords]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -69,7 +41,7 @@ const FlipWord: React.FC<FlipWordProps> = ({
     setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % validWords.length);
       setIsFlipping(false);
-    }, 200); // Half of the flip animation duration
+    }, 300); // Half of the flip animation duration
   }, [validWords.length]);
 
   useEffect(() => {
@@ -85,8 +57,7 @@ const FlipWord: React.FC<FlipWordProps> = ({
       <span
         className={`inline-block ${className}`}
         style={{
-          minWidth: "100px",
-          textAlign: "center",
+          minHeight: "1em",
           ...style,
         }}
       >
@@ -97,29 +68,63 @@ const FlipWord: React.FC<FlipWordProps> = ({
 
   return (
     <span
-      className={`flip-word-container inline-block relative overflow-hidden ${className}`}
+      className={`flip-words-container inline-block relative ${className}`}
       style={{
-        minWidth: maxWidth,
-        textAlign: "center",
+        minHeight: "1em",
         ...style,
       }}
     >
       <span
-        className={`flip-word-text inline-block transition-all duration-400 ease-in-out transform ${
-          isFlipping ? "scale-y-0 opacity-0" : "scale-y-100 opacity-100"
-        }`}
+        className="flip-words-wrapper relative inline-block"
         style={{
-          transformOrigin: "center",
-          backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden",
+          perspective: "1000px",
+          minWidth: "fit-content",
         }}
       >
-        {validWords[currentIndex]}
+        <span
+          className={`flip-word-text inline-block whitespace-nowrap transition-all duration-600 ease-in-out ${
+            isFlipping ? "animate-flip-out" : "animate-flip-in"
+          }`}
+          style={{
+            transformOrigin: "center center",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+          }}
+          key={currentIndex}
+        >
+          {validWords[currentIndex]}
+        </span>
       </span>
 
       <style jsx>{`
-        .flip-word-container {
-          perspective: 1000px;
+        @keyframes flipOut {
+          0% {
+            transform: rotateX(0deg);
+            opacity: 1;
+          }
+          100% {
+            transform: rotateX(90deg);
+            opacity: 0;
+          }
+        }
+
+        @keyframes flipIn {
+          0% {
+            transform: rotateX(-90deg);
+            opacity: 0;
+          }
+          100% {
+            transform: rotateX(0deg);
+            opacity: 1;
+          }
+        }
+
+        .animate-flip-out {
+          animation: flipOut 0.3s ease-in forwards;
+        }
+
+        .animate-flip-in {
+          animation: flipIn 0.3s ease-out forwards;
         }
 
         .flip-word-text {
@@ -128,9 +133,18 @@ const FlipWord: React.FC<FlipWordProps> = ({
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .flip-word-text {
+          .animate-flip-out,
+          .animate-flip-in {
+            animation: none;
             transition: opacity 0.3s ease-in-out;
-            transform: none !important;
+          }
+
+          .animate-flip-out {
+            opacity: 0;
+          }
+
+          .animate-flip-in {
+            opacity: 1;
           }
         }
       `}</style>
@@ -138,4 +152,4 @@ const FlipWord: React.FC<FlipWordProps> = ({
   );
 };
 
-export default FlipWord;
+export default FlipWords;
