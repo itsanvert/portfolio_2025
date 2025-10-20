@@ -34,29 +34,29 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
   // Dynamic responsive classes based on language
   const headingClasses = useMemo(() => {
     if (isKhmer) {
-      return "text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-khmer";
+      return "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight font-khmer";
     }
     if (isChinese) {
-      return "text-4xl sm:text-5xl md:text-6xl lg:text-8xl leading-tight font-chinese";
+      return "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight font-chinese";
     }
-    return "text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight";
+    return "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight";
   }, [isKhmer, isChinese]);
 
   const flipWordsClasses = useMemo(() => {
     if (isKhmer) {
-      return "text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-khmer";
+      return "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight font-khmer";
     }
     if (isChinese) {
-      return "text-4xl sm:text-5xl md:text-6xl lg:text-8xl leading-tight font-chinese";
+      return "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight font-chinese";
     }
-    return "text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight";
+    return "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight";
   }, [isKhmer, isChinese]);
 
   const descriptionClasses = useMemo(() => {
     if (isAsianLanguage) {
-      return "text-lg sm:text-xl md:text-2xl font-khmer";
+      return "text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-khmer";
     }
-    return "text-base sm:text-lg md:text-xl";
+    return "text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl";
   }, [isAsianLanguage]);
 
   // Tech icons configuration
@@ -65,7 +65,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "laravel",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/laravel.svg"
               alt="Laravel"
@@ -80,7 +80,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "springboot",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/spring-boot.svg"
               alt="Spring Boot"
@@ -95,7 +95,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "react",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/react.svg"
               alt="React"
@@ -110,7 +110,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "nextjs",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/nextjs.svg"
               alt="Next.js"
@@ -125,7 +125,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "dotnet",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/net-framework.svg"
               alt=".NET"
@@ -140,7 +140,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "tailwind",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/tailwind.svg"
               alt="Tailwind CSS"
@@ -155,7 +155,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "vuejs",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/vue.svg"
               alt="Vue.js"
@@ -170,7 +170,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "flutter",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/flutter.svg"
               alt="Flutter"
@@ -185,7 +185,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       {
         id: "mysql",
         content: (
-          <div className="flex items-center justify-center w-20 h-20 p-3">
+          <div className="flex items-center justify-center w-16 xs:w-18 sm:w-20 h-16 xs:h-18 sm:h-20 p-2 xs:p-2.5 sm:p-3">
             <Image
               src="/tech-icons/mysql.svg"
               alt="MySQL"
@@ -250,7 +250,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
       role="banner"
       aria-labelledby="hero-heading"
     >
-      <div className="w-full py-16 sm:py-20 md:py-32 lg:py-40">
+      <div className="w-full py-8 xs:py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40">
         {/* Main Heading with word animation */}
         <motion.h1
           className={cn(
@@ -268,7 +268,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
                 key={`word-${index}-${word}`}
                 custom={index}
                 variants={wordVariants}
-                className="inline-block mr-2 sm:mr-3 md:mr-4"
+                className="inline-block mr-1 xs:mr-2 sm:mr-3 md:mr-4"
               >
                 {word}
               </motion.span>
@@ -279,7 +279,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
         <motion.p
           variants={itemVariants}
           className={cn(
-            "relative z-10 mx-auto max-w-2xl py-6 sm:py-8 text-center font-medium",
+            "relative z-10 mx-auto max-w-2xl py-4 xs:py-5 sm:py-6 md:py-8 text-center font-medium",
             "text-black/70 dark:text-white/70",
             descriptionClasses
           )}
@@ -290,7 +290,7 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
         {/* FlipWords Section */}
         <motion.div
           variants={itemVariants}
-          className="relative z-10 flex justify-center items-center min-h-[80px] sm:min-h-[100px] md:min-h-[120px] py-4"
+          className="relative z-10 flex justify-center items-center min-h-[60px] xs:min-h-[70px] sm:min-h-[90px] md:min-h-[110px] lg:min-h-[130px] py-3 xs:py-3.5 sm:py-4"
         >
           <FlipWords
             words={words}
@@ -306,26 +306,27 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="relative z-10 mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto px-4"
+          className="relative z-10 mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-16 flex flex-col sm:flex-row items-center justify-center gap-2 xs:gap-3 sm:gap-4 max-w-lg mx-auto px-4"
         >
           <motion.a
             href="/resume/Resume_Web_Developer_SAN_VERT.pdf"
             download
             whileHover={{ scale: 1.03, y: -3 }}
             whileTap={{ scale: 0.97 }}
-            className="group w-full sm:w-auto min-w-[200px] px-6 sm:px-8 py-3 sm:py-4 text-center font-bold text-base sm:text-lg
+            className="group w-full sm:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] px-4 xs:px-5 sm:px-8 py-2.5 xs:py-3 sm:py-4 text-center font-bold text-sm xs:text-base sm:text-lg
                      bg-black dark:bg-white 
                      text-white dark:text-black
                      rounded-none border-2 border-black dark:border-white
                      transition-all duration-200
-                     hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]
-                     sm:hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:sm:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]
+                     hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]
+                     xs:hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:xs:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)]
+                     sm:hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:sm:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]
                      active:shadow-none"
             aria-label={t("hero.resume")}
           >
-            <span className="flex items-center justify-center gap-2 sm:gap-3">
+            <span className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3">
               <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-y-0.5"
+                className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-y-0.5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -349,19 +350,20 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03, y: -3 }}
             whileTap={{ scale: 0.97 }}
-            className="group w-full sm:w-auto min-w-[200px] px-6 sm:px-8 py-3 sm:py-4 text-center font-bold text-base sm:text-lg
+            className="group w-full sm:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] px-4 xs:px-5 sm:px-8 py-2.5 xs:py-3 sm:py-4 text-center font-bold text-sm xs:text-base sm:text-lg
                      bg-white dark:bg-black
                      text-black dark:text-white
                      rounded-none border-2 border-black dark:border-white
                      transition-all duration-200
-                     hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]
+                     hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]
+                     xs:hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:xs:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)]
                      sm:hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:sm:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]
                      active:shadow-none"
             aria-label={t("hero.cta")}
           >
-            <span className="flex items-center justify-center gap-2 sm:gap-3">
+            <span className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3">
               <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110"
+                className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -375,10 +377,13 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
         </motion.div>
 
         {/* Tech Stack Section */}
-        <motion.div variants={itemVariants} className="mt-16 sm:mt-20 md:mt-24">
-          <div className="text-center mb-8 sm:mb-10">
+        <motion.div
+          variants={itemVariants}
+          className="mt-12 xs:mt-14 sm:mt-16 md:mt-20 lg:mt-24"
+        >
+          <div className="text-center mb-6 xs:mb-7 sm:mb-8 md:mb-10">
             <motion.div
-              className="inline-block mb-4"
+              className="inline-block mb-3 xs:mb-3.5 sm:mb-4"
               initial={{ width: 0 }}
               animate={{ width: "60px" }}
               transition={{ duration: 0.8, delay: 0.6, ease: easeOut }}
@@ -397,12 +402,12 @@ export function HeroSectionOne({ className }: HeroSectionProps) {
             </h2>
           </div>
 
-          <div className="relative -mx-4 sm:-mx-6">
+          <div className="relative -mx-4 xs:-mx-4 sm:-mx-6">
             <SlidingLogoMarquee
               items={techIcons}
               speed={35}
-              height="140px"
-              gap="2rem"
+              height="100px"
+              gap="1rem"
               enableBlur={true}
               blurIntensity={3}
               pauseOnHover={true}

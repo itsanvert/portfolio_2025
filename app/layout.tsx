@@ -8,6 +8,7 @@ import CardNav from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import { HydrationBoundary } from "./components/HydrationBoundary";
 import type { CardNavItem } from "./components/NavBar";
+
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -153,6 +154,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
 };
 
 export default function RootLayout({
@@ -163,10 +170,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${notoKhmer.variable} ${roboto.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoKhmer.variable} ${roboto.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="Vert San" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -198,8 +219,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
-        <ThemeProvider>
+      <body className="bg-white dark:bg-black transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <HydrationBoundary>
             <CardNav
               logoText="Vert San"
@@ -211,12 +232,16 @@ export default function RootLayout({
             />
           </HydrationBoundary>
 
-          <div className="pt-16">
-            <div className="container">{children}</div>
+          <main className="min-h-screen pt-14 xs:pt-14 sm:pt-16 md:pt-16 lg:pt-16 xl:pt-16">
+            <div className="w-full">
+              <div className="mx-auto max-w-7xl px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8">
+                {children}
+              </div>
+            </div>
             <HydrationBoundary>
               <Footer />
             </HydrationBoundary>
-          </div>
+          </main>
         </ThemeProvider>
       </body>
     </html>
