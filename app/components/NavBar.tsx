@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
+import { ModeToggle } from "@/app/components/ModeToggle";
 import { FiHome, FiUser, FiFileText, FiCode, FiMenu } from "react-icons/fi";
 import { Contact } from "lucide-react";
 
@@ -296,9 +297,9 @@ const CardNav: React.FC<CardNavProps> = ({
             </div>
             {showControls && (
               <div className="desktop-controls hidden lg:flex items-center gap-3 order-3">
-                {/* <div className="p-1.5 rounded-xl">
+                <div className="p-1.5 rounded-xl">
                   <ModeToggle />
-                </div> */}
+                </div>
                 <div className="p-1.5 rounded-xl">
                   <LanguageSwitcher />
                 </div>
@@ -370,9 +371,9 @@ const CardNav: React.FC<CardNavProps> = ({
 
             {showControls && (
               <div className="desktop-controls hidden lg:flex items-center gap-3 order-3">
-                {/* <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                <div className="p-1.5 rounded-xl">
                   <ModeToggle />
-                </div> */}
+                </div>
                 <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                   <LanguageSwitcher />
                 </div>
@@ -445,9 +446,9 @@ const CardNav: React.FC<CardNavProps> = ({
                 ref={controlsRef}
                 className="mobile-controls lg:hidden flex items-center justify-center gap-3 mt-4 pt-3 border-t border-gray-200/50 dark:border-gray-800/50"
               >
-                {/* <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                <div className="p-1.5 rounded-xl">
                   <ModeToggle />
-                </div> */}
+                </div>
                 <div className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                   <LanguageSwitcher />
                 </div>
